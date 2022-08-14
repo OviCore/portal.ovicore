@@ -12,7 +12,6 @@ import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import routes from "routes";
-import Home from "layouts/home";
 import { useSoftUIController, setMiniSidenav, setOpenConfigurator } from "context";
 import brand from "assets/images/logo-ct.png";
 import { getAuth } from "firebase/auth";
@@ -140,7 +139,7 @@ export default function App() {
             <Sidenav
               color={sidenavColor}
               brand={brand}
-              brandName="Ovium"
+              brandName="OviCore Dashboard"
               routes={routes}
               onMouseEnter={handleOnMouseEnter}
               onMouseLeave={handleOnMouseLeave}
@@ -152,8 +151,7 @@ export default function App() {
         <Routes>
           {getRoutes(routes)}
           {isLoggedIn && <Route path="*" element={<Navigate to="/dashboard" />} />}
-          {!isLoggedIn && <Route path="*" element={<Navigate to="/" />} />}
-          <Route path="/" exact component={<Home />} />
+          {!isLoggedIn && <Route path="*" element={<Navigate to="/sign-in" />} />}
         </Routes>
       </ThemeProvider>
     </CacheProvider>
@@ -165,7 +163,7 @@ export default function App() {
           <Sidenav
             color={sidenavColor}
             brand={brand}
-            brandName="Ovium Dashboard"
+            brandName="OviCore Dashboard"
             routes={routes}
             onMouseEnter={handleOnMouseEnter}
             onMouseLeave={handleOnMouseLeave}
@@ -177,7 +175,7 @@ export default function App() {
       <Routes>
         {getRoutes(routes)}
         {isLoggedIn && <Route path="*" element={<Navigate to="/dashboard" />} />}
-        {!isLoggedIn && <Route path="*" element={<Navigate to="/" />} />}
+        {!isLoggedIn && <Route path="*" element={<Navigate to="/sign-in" />} />}
       </Routes>
     </ThemeProvider>
   );

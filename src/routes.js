@@ -20,7 +20,6 @@ import Wiki from "layouts/wiki";
 import Timesheet from "layouts/timesheet";
 import Reports from "layouts/reports";
 import GroupsAndMessages from "layouts/groupsAndMessages";
-import Home from "layouts/home";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
@@ -34,8 +33,6 @@ import AccountBalanceOutlinedIcon from '@mui/icons-material/AccountBalanceOutlin
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import DonutSmallOutlinedIcon from '@mui/icons-material/DonutSmallOutlined';
 import CorporateFareIcon from '@mui/icons-material/CorporateFare';
-import PublicIcon from '@mui/icons-material/Public';
-import Markets from "layouts/markets";
 
 const routes = [
   {
@@ -85,16 +82,6 @@ const routes = [
     route: "/wiki",
     icon: <HomeRepairServiceOutlinedIcon />,
     component: <Wiki />,
-    noCollapse: true,
-    owner: "none",
-  },
-  {
-    type: "non-visible",
-    name: "Home",
-    key: "home",
-    route: "/",
-    icon: <DeleteIcon />,
-    component: <Home />,
     noCollapse: true,
     owner: "none",
   },

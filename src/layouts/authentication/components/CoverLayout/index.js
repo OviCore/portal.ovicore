@@ -2,21 +2,12 @@ import PropTypes from "prop-types";
 import Grid from "@mui/material/Grid";
 import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
-import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import PageLayout from "examples/LayoutContainers/PageLayout";
 import Footer from "layouts/authentication/components/Footer";
 
 function CoverLayout({ color, header, title, description, image, top, children }) {
   return (
     <PageLayout background="white">
-      <DefaultNavbar
-        action={{
-          type: "internal",
-          route: "/sign-up",
-          label: "Sign Up",
-          color: "dark",
-        }}
-      />
       <Grid
         container
         justifyContent="center"

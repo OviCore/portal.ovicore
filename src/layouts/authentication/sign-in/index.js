@@ -9,7 +9,7 @@ import CoverLayout from "layouts/authentication/components/CoverLayout";
 import curved9 from "assets/images/curved-images/curved-6.jpg";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import ErrorIcon from '@mui/icons-material/Error';
-import SuiAlert from "components/SuiAlert";
+
 function SignIn() {
   const [rememberMe, setRememberMe] = useState(true);
   const [loginError, setLoginError] = useState(false);

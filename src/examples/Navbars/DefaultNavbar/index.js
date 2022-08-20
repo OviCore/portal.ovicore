@@ -77,15 +77,11 @@ function DefaultNavbar({ transparent, light, action }) {
         })}
       >
         <SuiBox component={Link} to="/home" py={transparent ? 1.5 : 0.75} lineHeight={1}>
-          <SuiTypography variant="button" fontWeight="bold" color={light ? "white" : "dark"}>
-            Ovium
+          <SuiTypography variant="button" fontWeight="300" color={light ? "white" : "dark"}>
+            ovicore.
           </SuiTypography>
         </SuiBox>
-        <SuiBox color="inherit" display={{ xs: "none", lg: "flex" }} m={0} p={0}>
-          <DefaultNavbarLink icon="donut_large" name="dashboard" route="/dashboard" light={light} />
-          <DefaultNavbarLink icon="person" name="profile" route="/profile" light={light} />
-         
-        </SuiBox>
+        
         {action &&
           (action.type === "internal" ? (
             <SuiBox display={{ xs: "none", lg: "inline-block" }}>

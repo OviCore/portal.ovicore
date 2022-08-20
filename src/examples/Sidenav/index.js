@@ -12,7 +12,7 @@ import SidenavCollapse from "examples/Sidenav/SidenavCollapse";
 import SidenavCard from "examples/Sidenav/SidenavCard";
 import SidenavRoot from "examples/Sidenav/SidenavRoot";
 import sidenavLogoLabel from "examples/Sidenav/styles/sidenav";
-import LogoImage from '../../assets/images/logos/logo-transparent-name.png';;
+import LogoImage from '../../assets/images/logos/logo.png';;
 import { useSoftUIController, setMiniSidenav } from "context";
 import {getAuth} from "firebase/auth";
 import { doc, onSnapshot, getFirestore } from "firebase/firestore"; 

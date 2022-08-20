@@ -14,32 +14,27 @@ function Footer() {
         <Grid item xs={10} lg={8}>
           <SuiBox display="flex" justifyContent="center" flexWrap="wrap" mb={3}>
             <SuiBox mr={{ xs: 2, lg: 3, xl: 6 }}>
-              <SuiTypography component="a" href="/" variant="body2" color="secondary">
+              <SuiTypography component="a" href="https://ovicore.com" variant="body2" color="secondary">
                 Company
               </SuiTypography>
             </SuiBox>
             <SuiBox mr={{ xs: 2, lg: 3, xl: 6 }}>
-              <SuiTypography component="a" href="/" variant="body2" color="secondary">
+              <SuiTypography component="a" href="https://ovicore.com/about-us" variant="body2" color="secondary">
                 About Us
               </SuiTypography>
             </SuiBox>
             <SuiBox mr={{ xs: 0, lg: 3, xl: 6 }}>
-              <SuiTypography component="a" href="/" variant="body2" color="secondary">
-                Ratings
+              <SuiTypography component="a" href="https://ovicore.com/investors" variant="body2" color="secondary">
+                Investors
               </SuiTypography>
             </SuiBox>
             <SuiBox mr={{ xs: 2, lg: 3, xl: 6 }}>
-              <SuiTypography component="a" href="/" variant="body2" color="secondary">
-                Dashboard
-              </SuiTypography>
-            </SuiBox>
-            <SuiBox mr={{ xs: 2, lg: 3, xl: 6 }}>
-              <SuiTypography component="a" href="/" variant="body2" color="secondary">
-                Compare
+              <SuiTypography component="a" href="https://ovicore.com/payroll-software" variant="body2" color="secondary">
+                Payroll Software
               </SuiTypography>
             </SuiBox>
             <SuiBox>
-              <SuiTypography component="a" href="/" variant="body2" color="secondary">
+              <SuiTypography component="a" href="https://ovicore.com/contact" variant="body2" color="secondary">
                 Contact
               </SuiTypography>
             </SuiBox>
@@ -53,20 +48,14 @@ function Footer() {
             <SuiBox mr={3} color="secondary">
               <TwitterIcon fontSize="small" />
             </SuiBox>
-            <SuiBox mr={3} color="secondary">
-              <InstagramIcon fontSize="small" />
-            </SuiBox>
-            <SuiBox mr={3} color="secondary">
-              <PinterestIcon fontSize="small" />
-            </SuiBox>
             <SuiBox color="secondary">
-              <LinkedInIcon fontSize="small" />
+              <LinkedInIcon fontSize="small"/>
             </SuiBox>
           </SuiBox>
         </Grid>
         <Grid item xs={12} lg={8} sx={{ textAlign: "center" }}>
           <SuiTypography variant="body2" color="secondary">
-            Copyright &copy; 2022 Ovium.
+            Copyright &copy; 2022 Ovicore Platform.
           </SuiTypography>
         </Grid>
       </Grid>

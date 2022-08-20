@@ -1,18 +1,3 @@
-/**
-=========================================================
-* Soft UI Dashboard React - v3.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 // @mui material components
 import Card from "@mui/material/Card";
 import Icon from "@mui/material/Icon";
@@ -36,30 +21,28 @@ function WorkWithTheRockets() {
           px={2}
           borderRadius="lg"
           sx={{
-            backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
-              `${linearGradient(
-                rgba(gradients.dark.main, 0.8),
-                rgba(gradients.dark.state, 0.8)
-              )}, url(${ivancik})`,
+            backgroundColor: "white",
             backgroundSize: "cover",
           }}
         >
           <SuiBox mb={3} pt={1}>
-            <SuiTypography variant="h5" color="white" fontWeight="bold">
-              Work with the rockets
+            <SuiTypography variant="h5" color="black" fontWeight="bold">
+              Sick Leave
             </SuiTypography>
           </SuiBox>
           <SuiBox mb={2}>
-            <SuiTypography variant="body2" color="white">
-              Wealth creation is an evolutionarily recent positive-sum game. It is all about who
-              take the opportunity first.
+            <SuiTypography variant="body2" color="black">
+              Hours remaining: <strong>8</strong><br />
+              Hours used this year: <strong>0</strong><br />
+              Hours pending: <strong>0</strong>
             </SuiTypography>
+            
           </SuiBox>
           <SuiTypography
             component="a"
-            href="#"
+            href="#/timesheet"
             variant="button"
-            color="white"
+            color="black"
             fontWeight="medium"
             sx={{
               mt: "auto",

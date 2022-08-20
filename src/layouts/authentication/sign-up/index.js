@@ -60,6 +60,9 @@ function SignUp() {
           </RadioGroup>
         </FormControl></SuiBox>
           <SuiBox component="form" role="form" mt={2}>
+          <SuiBox mb={2}>
+              <SuiInput placeholder="Company ID" />
+            </SuiBox>
             <SuiBox mb={2}>
               <SuiInput placeholder="Name" />
             </SuiBox>

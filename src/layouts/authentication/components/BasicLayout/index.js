@@ -9,15 +9,6 @@ import Footer from "layouts/authentication/components/Footer";
 function BasicLayout({ title, description, image, children }) {
   return (
     <PageLayout>
-      <DefaultNavbar
-        action={{
-          type: "internal",
-          route: "/sign-in",
-          label: "Sign in",
-        }}
-        transparent
-        light
-      />
       <SuiBox
         width="calc(100% - 2rem)"
         minHeight="50vh"

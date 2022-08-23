@@ -27,8 +27,18 @@ import OrderOverview from "layouts/dashboard/components/OrderOverview";
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import gradientLineChartData from "layouts/dashboard/data/gradientLineChartData";
 import DayCalendar from "./components/DayCalendar";
-
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 function Dashboard() {
+  let navigate = useNavigate();
+  useEffect(() => {
+    let authToken = sessionStorage.getItem('Auth Token')
+    if (authToken) {
+        navigate('/dashboard')
+    }
+    if (!authToken) {
+        navigate('/sign-in')
+    }}, [])
   const { size } = typography;
   const { chart, items } = reportsBarChartData;
 
@@ -61,19 +71,19 @@ function Dashboard() {
               />
             </Grid>
             <Grid item xs={12} lg={7}>
-              <Card>
-
-              
-              <SuiTypography variant="h6" gutterBottom ml={10} mt={2}>
-                Todays Schedule
-              </SuiTypography>
-              <DayCalendar /></Card>
+              <Projects />
             </Grid>
           </Grid>
         </SuiBox>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={8}>
-            <Projects />
+          <Card>
+
+                        
+          <SuiTypography variant="h6" gutterBottom ml={10} mt={2}>
+            Todays Schedule
+          </SuiTypography>
+          <DayCalendar /></Card>
           </Grid>
           <Grid item xs={12} md={6} lg={4}>
             <OrderOverview />

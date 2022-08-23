@@ -32,7 +32,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import { getAuth } from "firebase/auth";
 import { collection, getDoc, getFirestore, doc, onSnapshot } from "firebase/firestore"; 
 import { getApp } from "firebase/app";
-
+import { useNavigate } from "react-router-dom";
 // @mui material components
 import Icon from "@mui/material/Icon";
 
@@ -40,6 +40,15 @@ import Icon from "@mui/material/Icon";
 import SuiButton from "components/SuiButton";
 
 function Organization() {
+  let navigate = useNavigate();
+  useEffect(() => {
+    let authToken = sessionStorage.getItem('Auth Token')
+    if (authToken) {
+        navigate('/organization')
+    }
+    if (!authToken) {
+        navigate('/sign-in')
+    }}, [])
 
     const [properties, setProperties] = useState([]);
     const [loading, setLoading] = useState(true);

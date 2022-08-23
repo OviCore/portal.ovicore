@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Icon from "@mui/material/Icon";
@@ -25,7 +25,6 @@ export default function App() {
   const [onMouseEnter, setOnMouseEnter] = useState(false);
   const [rtlCache, setRtlCache] = useState(null);
   const { pathname } = useLocation();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const firebaseConfig = {
     apiKey: "AIzaSyC2Q7qFGnrIBQ2ekRuQImxdDQz3slzxEao",
@@ -42,16 +41,14 @@ export default function App() {
   const auth = getAuth(app);
   const db = getFirestore(app);
   const analytics = getAnalytics(app);
-  
+
+  let navigate = useNavigate();
   useEffect(() => {
-    const auth = getAuth();
-    const user = auth.currentUser;
-    if (user) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
+    let authToken = sessionStorage.getItem('Auth Token')
+    if (authToken) {
+      navigate('/sign-in')
     }
-  }, []);
+  }, [])
 
   // Cache for the rtl
   useMemo(() => {
@@ -150,8 +147,8 @@ export default function App() {
         )}
         <Routes>
           {getRoutes(routes)}
-          {isLoggedIn && <Route path="*" element={<Navigate to="/dashboard" />} />}
-          {!isLoggedIn && <Route path="*" element={<Navigate to="/sign-in" />} />}
+          <Route path="*" element={<Navigate to="/dashboard" />} />
+          <Route path="*" element={<Navigate to="/sign-in" />} />
         </Routes>
       </ThemeProvider>
     </CacheProvider>
@@ -174,8 +171,8 @@ export default function App() {
       )}
       <Routes>
         {getRoutes(routes)}
-        {isLoggedIn && <Route path="*" element={<Navigate to="/dashboard" />} />}
-        {!isLoggedIn && <Route path="*" element={<Navigate to="/sign-in" />} />}
+        <Route path="*" element={<Navigate to="/dashboard" />} />
+        <Route path="*" element={<Navigate to="/sign-in" />} />
       </Routes>
     </ThemeProvider>
   );

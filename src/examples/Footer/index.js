@@ -44,13 +44,11 @@ function Footer({ company, links }) {
             favorite
           </Icon>
         </SuiBox>
-        by
         <Link href={href} target="_blank">
           <SuiTypography variant="button" fontWeight="medium">
-            &nbsp;{name}&nbsp;
+            &nbsp;OviCore.&nbsp;
           </SuiTypography>
         </Link>
-        for you
       </SuiBox>
       <SuiBox
         component="ul"
@@ -77,12 +75,12 @@ function Footer({ company, links }) {
 
 // Setting default values for the props of Footer
 Footer.defaultProps = {
-  company: { href: "https://www.creative-tim.com/", name: "Oval" },
+  company: { href: "https://ovicore.com/", name: "OviCore" },
   links: [
-    { href: "https://www.creative-tim.com/", name: "Oval" },
-    { href: "https://www.creative-tim.com/presentation", name: "About Us" },
-    { href: "https://www.creative-tim.com/blog", name: "Blog" },
-    { href: "https://www.creative-tim.com/license", name: "License" },
+    { href: "https://ovicore.com/", name: "OviCore" },
+    { href: "https://ovicore.com/about-us", name: "About Us" },
+    { href: "https://ovicore.com/blog", name: "Blog" },
+    { href: "https:/ovicore.com/privacy-policy", name: "Privacy" },
   ],
 };
 

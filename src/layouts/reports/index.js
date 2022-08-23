@@ -15,9 +15,23 @@ import BillingInformation from "layouts/reports/components/BillingInformation";
 import typography from "assets/theme/base/typography";
 import Icon from "@mui/material/Icon";
 
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 function Reports() {
+
+  let navigate = useNavigate();
+  useEffect(() => {
+    let authToken = sessionStorage.getItem('Auth Token')
+    if (authToken) {
+        navigate('/reports')
+    }
+    if (!authToken) {
+        navigate('/sign-in')
+    }}, [])
+
+
   const { size } = typography;
 
   return (
@@ -87,9 +101,9 @@ function Reports() {
             </Grid>
             <Grid item xs={12} md={5}>
             <PieChart
-              title="Pie Chart"
+              title="Year to Date"
               chart={{
-                labels: ["Facebook", "Direct", "Organic", "Referral"],
+                labels: ["Net Pay", "Tax Withheld", "Deductions", "Other"],
                 datasets: {
                   label: "Projects",
                   backgroundColors: ["info", "primary", "dark", "secondary", "primary"],

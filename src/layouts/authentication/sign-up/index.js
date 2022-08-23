@@ -4,7 +4,7 @@ import { useState } from "react";
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 // react-router-dom components
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import FormControl from '@mui/material/FormControl';
 
 // @mui material components
@@ -24,11 +24,32 @@ import Separator from "layouts/authentication/components/Separator";
 
 // Images
 import curved6 from "assets/images/curved-images/curved14.jpg";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignUp() {
   const [agreement, setAgremment] = useState(true);
-
   const handleSetAgremment = () => setAgremment(!agreement);
+ 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  let navigate = useNavigate();
+  const handleSignUpAction = (id) => {
+    const authentication = getAuth();
+    
+      createUserWithEmailAndPassword(authentication, email, password)
+        .then((response) => {
+          navigate('/dashboard');
+          sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
+        })
+        .catch((error) => {
+          if (error.code === 'auth/email-already-in-use') {
+            toast.error('Email Already in Use');
+          }
+        })
+  }
 
   return (
     <BasicLayout
@@ -36,6 +57,7 @@ function SignUp() {
       description="Please sign up to continue."
       image={curved6}
     >
+      <ToastContainer />
       <Card>
         <SuiBox p={3} mb={1} textAlign="center">
           <SuiTypography variant="h5" fontWeight="medium">
@@ -67,10 +89,14 @@ function SignUp() {
               <SuiInput placeholder="Name" />
             </SuiBox>
             <SuiBox mb={2}>
-              <SuiInput type="email" placeholder="Email" />
+              <SuiInput type="email" placeholder="Email" 
+              value={email} onChange={(e) => setEmail(e.target.value)}
+              />
             </SuiBox>
             <SuiBox mb={2}>
-              <SuiInput type="password" placeholder="Password" />
+              <SuiInput type="password" placeholder="Password" 
+              value={password} onChange={(e) => setPassword(e.target.value)}
+              />
             </SuiBox>
             <SuiBox display="flex" alignItems="center">
               <Checkbox checked={agreement} onChange={handleSetAgremment} />
@@ -87,7 +113,9 @@ function SignUp() {
               </SuiTypography>
             </SuiBox>
             <SuiBox mt={4} mb={1}>
-              <SuiButton variant="gradient" color="dark" fullWidth>
+              <SuiButton variant="gradient" color="dark" fullWidth
+              onClick={handleSignUpAction}
+              >
                 sign up
               </SuiButton>
             </SuiBox>

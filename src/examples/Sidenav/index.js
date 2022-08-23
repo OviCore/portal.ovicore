@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, NavLink } from "react-router-dom";
+import { useLocation, NavLink, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
@@ -12,7 +12,7 @@ import SidenavCollapse from "examples/Sidenav/SidenavCollapse";
 import SidenavCard from "examples/Sidenav/SidenavCard";
 import SidenavRoot from "examples/Sidenav/SidenavRoot";
 import sidenavLogoLabel from "examples/Sidenav/styles/sidenav";
-import LogoImage from '../../assets/images/logos/logo.png';;
+import LogoImage from '../../assets/images/logos/logo-blue-trans.png';;
 import { useSoftUIController, setMiniSidenav } from "context";
 import {getAuth} from "firebase/auth";
 import { doc, onSnapshot, getFirestore } from "firebase/firestore"; 
@@ -193,6 +193,12 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
     return returnValue ;
   });
 
+  let navigate = useNavigate();
+  const handleLogout = () => {
+    sessionStorage.removeItem('Auth Token');
+    navigate('/sign-in')
+  }
+
   return (
     <SidenavRoot {...rest} variant="permanent" ownerState={{ transparentSidenav, miniSidenav }}>
       <SuiBox pt={3} pb={1} px={4} textAlign="center">
@@ -223,9 +229,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
       </SuiBox>
       <Divider />
       <List>
-        <SuiTypography variant="h6" color="secondary" fontWeight="bold" textTransform="uppercase" opacity={0.6} pl={3} mt={2} mb={1} ml={1}>
-          {userType === "employee" ? "Employee" : "Employer"}
-        </SuiTypography>
+        
         {
         userType === "employer" ? renderEmployerRoutes : renderEmployeeRoutes
         }{renderRoutes}</List>
@@ -234,14 +238,12 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
         <SuiBox mt={2}>
           <SuiButton
             component="a"
-            href="/"
-            target="_blank"
-            rel="noreferrer"
+            onClick={handleLogout}
             variant="gradient"
             color={color}
             fullWidth
           >
-            Get Mobile App
+            Log Out
           </SuiButton>
         </SuiBox>
       </SuiBox>

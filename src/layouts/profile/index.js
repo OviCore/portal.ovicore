@@ -23,17 +23,19 @@ import PlatformSettings from "layouts/profile/components/PlatformSettings";
 
 // Data
 import profilesListData from "layouts/profile/data/profilesListData";
-
-// Images
-import homeDecor1 from "assets/images/home-decor-1.jpg";
-import homeDecor2 from "assets/images/home-decor-2.jpg";
-import homeDecor3 from "assets/images/home-decor-3.jpg";
-import team1 from "assets/images/team-1.jpg";
-import team2 from "assets/images/team-2.jpg";
-import team3 from "assets/images/team-3.jpg";
-import team4 from "assets/images/team-4.jpg";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function Overview() {
+  let navigate = useNavigate();
+  useEffect(() => {
+    let authToken = sessionStorage.getItem('Auth Token')
+    if (authToken) {
+        navigate('/profile')
+    }
+    if (!authToken) {
+        navigate('/sign-in')
+    }}, [])
   return (
     <DashboardLayout>
       <Header />
@@ -78,23 +80,8 @@ function Overview() {
         </Grid>
       </SuiBox>
       <SuiBox mb={3}>
-        <Card>
-          <SuiBox pt={2} px={2}>
-            <SuiBox mb={0.5}>
-              <SuiTypography variant="h6" fontWeight="medium">
-                Projects
-              </SuiTypography>
-            </SuiBox>
-            <SuiBox mb={1}>
-              <SuiTypography variant="button" fontWeight="regular" color="text">
-                Architects design houses
-              </SuiTypography>
-            </SuiBox>
-          </SuiBox>
-          <SuiBox p={2}>
-            
-          </SuiBox>
-        </Card>
+       
+       
       </SuiBox>
 
       <Footer />

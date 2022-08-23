@@ -5,6 +5,7 @@ import Icon from "@mui/material/Icon";
 // Soft UI Dashboard React components
 import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
+import SuiButton from "components/SuiButton";
 
 // Images
 import ivancik from "assets/images/ivancik.jpg";
@@ -31,11 +32,17 @@ function WorkWithTheRockets() {
             </SuiTypography>
           </SuiBox>
           <SuiBox mb={2}>
-            <SuiTypography variant="body2" color="black">
-              Hours remaining: <strong>8</strong><br />
-              Hours used this year: <strong>0</strong><br />
-              Hours pending: <strong>0</strong>
-            </SuiTypography>
+            <SuiButton variant="outlined" color="info" mt={1} fullWidth>
+                Hours Worked: 75.42
+            </SuiButton>
+            <br /> <br />
+            <SuiButton variant="outlined" color="info" mt={1} fullWidth>
+                Hours used this year: 0
+            </SuiButton>
+            <br /> <br />
+            <SuiButton variant="outlined" color="info" mt={1} fullWidth>
+                Hours Pending: 10.24
+            </SuiButton>
             
           </SuiBox>
           <SuiTypography

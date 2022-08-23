@@ -10,33 +10,31 @@ import curved9 from "assets/images/curved-images/curved-6.jpg";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import ErrorIcon from '@mui/icons-material/Error';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function SignIn() {
   const [rememberMe, setRememberMe] = useState(true);
-  const [loginError, setLoginError] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
-  const navigate = useNavigate();
-  const handleOnClick = useCallback(() => navigate('/dashboard', {replace: true}), [navigate]);
+  let navigate = useNavigate();
 
   const handleSignIn = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        console.log("Sign in successful");
-        console.log(auth.currentUser);
-        
-        setLoginError(false);
-        handleOnClick();
-        
-
-
+      .then((response) => {
+          navigate('/dashboard')
+          sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
       })
       .catch((error) => {
         console.log(error);
-        console.log("Sign in failed");
-        setLoginError(true);
-        // make a toast   
+        if(error.code === 'auth/wrong-password'){
+          toast.error('Please check the Password');
+        }
+        if(error.code === 'auth/user-not-found'){
+          toast.error('Please check the Email');
+        }
       });
   };
 
@@ -46,6 +44,7 @@ function SignIn() {
       description="Enter your email and password to sign in"
       image={curved9}
     >
+      <ToastContainer />
       <SuiBox component="form" role="form">
         <SuiBox mb={2}>
           <SuiBox mb={1} ml={0.5}>
@@ -81,17 +80,6 @@ function SignIn() {
         <SuiBox mt={4} mb={1}>
           <SuiButton variant="gradient" color="info" fullWidth onClick={handleSignIn} >sign in</SuiButton>
         </SuiBox>
-        {loginError ? ( <SuiBox mt={2}>
-          
-            <SuiTypography variant="caption" color="error">
-            <ErrorIcon 
-              fontSize="small"
-              color="error"
-              style={{ marginRight: "0.5rem" }}
-            /> invalid email or password, please try again
-          </SuiTypography>
-        
-        </SuiBox> ) : null}
         <SuiBox mt={3} textAlign="center">
           <SuiTypography variant="button" color="text" fontWeight="regular">
             Don&apos;t have an account?{" "}

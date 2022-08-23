@@ -11,7 +11,7 @@ import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
 import SuiButton from "components/SuiButton";
 import ConfiguratorRoot from "examples/Configurator/ConfiguratorRoot";
-import LogoImage from '../../assets/images/logos/logo-transparent-name.png';
+import LogoImage from '../../assets/images/logos/logo-blue-name.png';
 import {
   useSoftUIController,
   setOpenConfigurator,
@@ -72,9 +72,9 @@ function Configurator() {
         px={3}
       >
         <SuiBox>
-          <SuiTypography variant="h5">Soft UI Configurator</SuiTypography>
+          <SuiTypography variant="h5">Settings</SuiTypography>
           <SuiTypography variant="body2" color="text">
-            See our dashboard options.
+            Change the settings of the application.
           </SuiTypography>
         </SuiBox>
 
@@ -131,41 +131,8 @@ function Configurator() {
         </SuiBox>
 
         <SuiBox mt={3} lineHeight={1}>
-          <SuiTypography variant="h6">Sidenav Type</SuiTypography>
-          <SuiTypography variant="button" color="text" fontWeight="regular">
-            Choose between 2 different sidenav types.
-          </SuiTypography>
-
-          <SuiBox
-            sx={{
-              display: "flex",
-              mt: 2,
-            }}
-          >
-            <SuiButton
-              color="info"
-              variant={transparentSidenav ? "gradient" : "outlined"}
-              onClick={handleTransparentSidenav}
-              disabled={disabled}
-              fullWidth
-              sx={{
-                mr: 1,
-                ...sidenavTypeButtonsStyles,
-              }}
-            >
-              Transparent
-            </SuiButton>
-            <SuiButton
-              color="info"
-              variant={transparentSidenav ? "outlined" : "gradient"}
-              onClick={handleWhiteSidenav}
-              disabled={disabled}
-              fullWidth
-              sx={sidenavTypeButtonsStyles}
-            >
-              White
-            </SuiButton>
-          </SuiBox>
+        
+         
         </SuiBox>
         <SuiBox mt={3} mb={2} lineHeight={1}>
           <SuiTypography variant="h6">Navbar Fixed</SuiTypography>
@@ -176,35 +143,49 @@ function Configurator() {
         <Divider />
 
         <SuiBox mt={3} mb={2}>
-          <SuiBox mb={2}>
-            <SuiButton
-              component={Link}
-              href="https://www.creative-tim.com/product/soft-ui-dashboard-react"
-              target="_blank"
-              rel="noreferrer"
-              color="dark"
-              variant="gradient"
-              fullWidth
-            >
-              free download
-            </SuiButton>
-          </SuiBox>
+          
           <SuiButton
             component={Link}
-            href="https://www.creative-tim.com/learning-lab/react/quick-start/soft-ui-dashboard/"
+            href="https://ovicore.com/mobile"
             target="_blank"
             rel="noreferrer"
             color="dark"
             variant="outlined"
             fullWidth
           >
-            view documentation
+            Mobile App
           </SuiButton>
         </SuiBox>
+        <SuiBox mt={3} mb={2}>
+          
+          <SuiButton
+            component={Link}
+            href="https://ovicore.com/profile"
+            target="_blank"
+            rel="noreferrer"
+            color="dark"
+            variant="outlined"
+            fullWidth
+          >
+            Profile
+          </SuiButton>
+        </SuiBox>
+        <SuiBox sx={{display: "flex",mt: 2,}}>   
+            <SuiButton
+              color="info"
+              variant="outlined"
+              onClick={handleWhiteSidenav}
+              disabled={disabled}
+              fullWidth
+              sx={sidenavTypeButtonsStyles}
+            >
+              Log Out
+            </SuiButton>
+          </SuiBox>
         
         <SuiBox mt={3} textAlign="center">
           <SuiBox mb={0.8}>
-            <img src={LogoImage} alt="Ovium" />
+            <img src={LogoImage} alt="ovicore." width="60%"/>
           </SuiBox>
           <SuiBox display="flex" justifyContent="center">
             <SuiBox mr={1.5}>

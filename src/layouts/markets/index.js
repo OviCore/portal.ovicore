@@ -8,9 +8,19 @@ import SuiBox from "components/SuiBox";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-
+import { useNavigate } from "react-router-dom";
 
 function Markets() {
+  let navigate = useNavigate();
+  useEffect(() => {
+    let authToken = sessionStorage.getItem('Auth Token')
+    if (authToken) {
+        navigate('/markets')
+    }
+    if (!authToken) {
+        navigate('/sign-in')
+    }}, [])
+
   return (
     <DashboardLayout>
       <DashboardNavbar />

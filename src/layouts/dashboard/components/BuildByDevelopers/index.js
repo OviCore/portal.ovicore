@@ -1,18 +1,3 @@
-/**
-=========================================================
-* Soft UI Dashboard React - v3.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 // @mui material components
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
@@ -24,8 +9,9 @@ import SuiTypography from "components/SuiTypography";
 
 // Images
 import wavesWhite from "assets/images/shapes/waves-white.svg";
-import rocketWhite from "assets/images/illustrations/rocket-white.png";
+import rocketWhite from "assets/images/rocket.png";
 import SuiButton from "components/SuiButton";
+import Clock from 'react-live-clock';
 
 function BuildByDevelopers() {
   return (
@@ -50,7 +36,11 @@ function BuildByDevelopers() {
               </SuiBox>
               <SuiBox mb={6}>
                 <SuiTypography variant="h2" color="text" mb={2}>
-                      1:40:00 PM, PST
+                <Clock
+                  ticking={true}
+                  date={'1997-12-31T14:15:23+01:00'}
+                  format={'dddd Mo, h:mm:ss A'}
+                  timezone={'US/Pacific'} />
                 </SuiTypography>
                 <SuiButton variant="contained" color="info" fullWidth>
                   Clock In <SuiBox mr={2}/> <Icon ml={2}>play_circle_outline</Icon>
@@ -81,8 +71,38 @@ function BuildByDevelopers() {
                 left={0}
                 width="100%"
                 height="100%"
+
               />
-              <SuiBox component="img" src={rocketWhite} alt="rocket" width="100%" pt={3} />
+              <SuiBox 
+              display="grid"
+              justifyContent="center"
+              alignItems="center"
+              padding={2}
+              >
+                <SuiTypography variant="h5" color="white" fontWeight="bold">
+                  Your Latest Paycheck 
+                </SuiTypography>
+                <SuiBox mt={2}>
+                <SuiButton variant="outlined" color="white" mt={5}>
+                  Net Pay: $1,000.00
+                </SuiButton>
+                &nbsp;
+                <SuiButton variant="outlined"  color="white" mt={1}>
+                  Hours Worked: 75.42
+                </SuiButton>
+                </SuiBox>
+                <SuiTypography variant="body2" color="white" mt={1}>
+                Paid on Aug 22, 2022
+                </SuiTypography>
+                <SuiTypography variant="body2" color="white" mt={0}>
+                Pay Period Aug 01 - Aug 15, 2022
+                </SuiTypography>
+                <SuiBox mt={2}>
+                  <SuiButton variant="contained" color="info" fullWidth>
+                    View Details <SuiBox mr={2}/> <Icon ml={2}>rocket</Icon>
+                  </SuiButton>
+                 </SuiBox>
+              </SuiBox>
             </SuiBox>
           </Grid>
         </Grid>

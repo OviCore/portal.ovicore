@@ -7,7 +7,11 @@ import SuiTypography from "components/SuiTypography";
 
 function DefaultInfoCard({ color, icon, title, description, value }) {
   return (
-    <Card>
+    <Card sx={{
+      minHeight: "300px",
+      alignItems: "center",
+      justifyContent: "center",
+    }}>
       <SuiBox p={2} mx={3} display="flex" justifyContent="center">
         <SuiBox
           display="grid"

@@ -11,6 +11,7 @@ import SuiTypography from "components/SuiTypography";
 import SuiInput from "components/SuiInput";
 import Breadcrumbs from "examples/Breadcrumbs";
 import NotificationItem from "examples/Items/NotificationItem";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import {
   navbar,
   navbarContainer,
@@ -85,14 +86,14 @@ function DashboardNavbar({ absolute, light, isMini }) {
       sx={{ mt: 2 }}
     >
       <NotificationItem
-        image={<img src={team2} alt="person" />}
-        title={["New message", "from Laur"]}
+        image={<CheckCircleIcon color="success" fontSize="medium"/>}
+        title={["Paycheck Received", "Aug 18"]}
         date="13 minutes ago"
         onClick={handleCloseMenu}
       />
       <NotificationItem
-        image={<img src={logoSpotify} alt="person" />}
-        title={["New album", "by Travis Scott"]}
+        image={<CheckCircleIcon color="info" fontSize="medium"/>}
+        title={["W2 Available", "2022"]}
         date="1 day"
         onClick={handleCloseMenu}
       />

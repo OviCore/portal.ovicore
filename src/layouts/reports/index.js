@@ -53,7 +53,8 @@ function Reports() {
                         data: [15, 40, 32, 60, 25, 15, 10],
                       }],
                     }}
-                    height={410}
+                    height={'560px'}
+                   
                   />
                 </Grid>
                 
@@ -78,6 +79,7 @@ function Reports() {
                     title="Hourly Rate"
                     description="Billable Hours & Non-Billable Rate"
                     value="$16.75/hour"
+    
                   />
                   <SuiBox mt={4}/>
                   <DefaultInfoCard

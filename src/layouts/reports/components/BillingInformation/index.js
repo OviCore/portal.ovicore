@@ -5,7 +5,13 @@ import Bill from "layouts/reports/components/Bill";
 
 function BillingInformation() {
   return (
-    <Card id="delete-account">
+    <Card id="delete-account" sx={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "left",
+      justifyContent: "left",
+      minHeight: "100%",
+    }}>
       <SuiBox pt={3} px={2}>
         <SuiTypography variant="h6" fontWeight="medium">
           Forms and Documents

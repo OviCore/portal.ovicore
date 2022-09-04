@@ -4,10 +4,21 @@ import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
 import PageLayout from "examples/LayoutContainers/PageLayout";
 import Footer from "layouts/authentication/components/Footer";
+import { Image } from "@mui/icons-material";
+import Logo from "assets/images/logos/logo-blue-name.png";
+import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 
 function CoverLayout({ color, header, title, description, image, top, children }) {
   return (
     <PageLayout background="white">
+      <DefaultNavbar
+        action={{
+          type: "internal",
+          route: "/sign-up",
+          label: "Sign Up",
+          color: "dark",
+        }}
+      />
       <Grid
         container
         justifyContent="center"
@@ -18,6 +29,7 @@ function CoverLayout({ color, header, title, description, image, top, children }
       >
         <Grid item xs={11} sm={8} md={5} xl={3}>
           <SuiBox mt={top}>
+            
             <SuiBox pt={3} px={3}>
               {!header ? (
                 <>

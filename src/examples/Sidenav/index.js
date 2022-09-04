@@ -23,9 +23,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
   const { miniSidenav, transparentSidenav } = controller;
   const location = useLocation();
   const { pathname } = location;
-  const collapseName = pathname.split("/").slice(1)[0];
-  const [userType, setUserType] = useState("");
-  
+  const collapseName = pathname.split("/").slice(1)[0];  
 
   useEffect(() => {
     const auth = getAuth();
@@ -63,79 +61,9 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
   }, [dispatch, location]);
 
   // Render all the routes from the routes.js (All the visible items on the Sidenav)
-  const renderEmployeeRoutes = routes.map(({ type, name, icon, title, noCollapse, key, route, href, owner }) => {
-    let returnValue;
-    if (type === "collapse" && userType === "employee" && owner === "employee") {
-        returnValue = href ? (
-          <Link
-            href={href}
-            key={key}
-            target="_blank"
-            rel="noreferrer"
-            sx={{ textDecoration: "none" }}
-          >
-            <SidenavCollapse
-              color={color}
-              name={name}
-              icon={icon}
-              active={key === collapseName}
-              noCollapse={noCollapse}
-            />
-          </Link>
-        ) : (
-          <NavLink to={route} key={key}>
-            <SidenavCollapse
-              color={color}
-              key={key}
-              name={name}
-              icon={icon}
-              active={key === collapseName}
-              noCollapse={noCollapse}
-            />
-          </NavLink>
-        );
-    } 
-    return returnValue ;
-  });
-
-  const renderEmployerRoutes = routes.map(({ type, name, icon, title, noCollapse, key, route, href, owner }) => {
-    let returnValue;
-    if (type === "collapse" && userType === "employer" && owner === "employer") {
-        returnValue = href ? (
-          <Link
-            href={href}
-            key={key}
-            target="_blank"
-            rel="noreferrer"
-            sx={{ textDecoration: "none" }}
-          >
-            <SidenavCollapse
-              color={color}
-              name={name}
-              icon={icon}
-              active={key === collapseName}
-              noCollapse={noCollapse}
-            />
-          </Link>
-        ) : (
-          <NavLink to={route} key={key}>
-            <SidenavCollapse
-              color={color}
-              key={key}
-              name={name}
-              icon={icon}
-              active={key === collapseName}
-              noCollapse={noCollapse}
-            />
-          </NavLink>
-        );
-    } 
-    return returnValue ;
-  });
-
   const renderRoutes = routes.map(({ type, name, icon, title, noCollapse, key, route, href, owner }) => {
     let returnValue;
-     if (owner === "none"){
+     
       if (type === "collapse") {
         returnValue = href ? (
           <Link
@@ -165,7 +93,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
             />
           </NavLink>
         );
-      } 
+      
     } else if (type === "title") {
         returnValue = (
           <SuiTypography
@@ -216,7 +144,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
           </SuiTypography>
         </SuiBox>
         <SuiBox component={NavLink} to="/" display="flex" alignItems="center">
-          {brand && <SuiBox component="img" src={LogoImage} alt="Oval Logo" width="10rem" />}
+          {brand && <SuiBox component="img" src={LogoImage} alt="OviCore Logo" width="10rem" />}
           <SuiBox
             width={!brandName && "100%"}
             sx={(theme) => sidenavLogoLabel(theme, { miniSidenav })}
@@ -230,9 +158,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
       <Divider />
       <List>
         
-        {
-        userType === "employer" ? renderEmployerRoutes : renderEmployeeRoutes
-        }{renderRoutes}</List>
+       {renderRoutes}</List>
       <SuiBox pt={2} my={2} mx={2} mt="auto">
         <SidenavCard />
         <SuiBox mt={2}>

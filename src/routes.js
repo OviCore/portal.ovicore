@@ -25,14 +25,20 @@ import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
 import Organization from "layouts/organization";
 import DeleteIcon from '@mui/icons-material/Delete';
+import Taxes from "layouts/taxes";
 
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import HomeRepairServiceOutlinedIcon from '@mui/icons-material/HomeRepairServiceOutlined';
 import TimerOutlinedIcon from '@mui/icons-material/TimerOutlined';
-import AccountBalanceOutlinedIcon from '@mui/icons-material/AccountBalanceOutlined';
+import MessageIcon from '@mui/icons-material/Message';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import DonutSmallOutlinedIcon from '@mui/icons-material/DonutSmallOutlined';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import CorporateFareIcon from '@mui/icons-material/CorporateFare';
+import FormatAlignJustifyIcon from '@mui/icons-material/FormatAlignJustify';
+import PieChartIcon from '@mui/icons-material/PieChart';
+import PaidIcon from '@mui/icons-material/Paid';
+import Payroll from "layouts/payroll";
+import People from "layouts/people";
 
 const routes = [
   {
@@ -43,37 +49,51 @@ const routes = [
     icon: <DashboardOutlinedIcon />,
     component: <Dashboard />,
     noCollapse: true,
-    owner: "employee",
   },
   {
     type: "collapse",
-    name: "Timesheet",
+    name: "Payroll",
+    key: "payroll",
+    route: "/payroll",
+    icon:<PaidIcon />,
+    component: <Payroll />,
+    noCollapse: true,
+  },
+  {
+    type: "collapse",
+    name: "Timekeeping",
     key: "timesheet",
     route: "/timesheet",
     icon: <TimerOutlinedIcon />,
     component: <Timesheet />,
     noCollapse: true,
-    owner: "employee",
   },
   {
     type: "collapse",
     name: "Reports",
     key: "reports",
     route: "/reports",
-    icon: <AccountBalanceOutlinedIcon />,
+    icon: <PieChartIcon />,
     component: <Reports />,
     noCollapse: true,
-    owner: "employee",
   },
   {
-    type: "non-visible",
+    type: "collapse",
+    name: "Taxes",
+    key: "taxes",
+    route: "/taxes",
+    icon:<FormatAlignJustifyIcon />,
+    component: <Taxes />,
+    noCollapse: true,
+  },
+  {
+    type: "collapse",
     name: "Groups & Messages",
     key: "groups&messages",
     route: "/groups&messages",
-    icon: <DonutSmallOutlinedIcon />,
+    icon: <MessageIcon />,
     component: <GroupsAndMessages />,
     noCollapse: true,
-    owner: "none",
   },
   {
     type: "non-visible",
@@ -83,10 +103,9 @@ const routes = [
     icon: <HomeRepairServiceOutlinedIcon />,
     component: <Wiki />,
     noCollapse: true,
-    owner: "none",
   },
   
-  { type: "title", title: "Account Pages", key: "account-pages" },
+  { type: "title", title: "Manage", key: "account-pages" },
   {
     type: "collapse",
     name: "Profile",
@@ -95,7 +114,6 @@ const routes = [
     icon:<AccountCircleOutlinedIcon />,
     component: <Profile />,
     noCollapse: true,
-    owner: "none",
   },
   {
     type: "collapse",
@@ -105,7 +123,6 @@ const routes = [
     icon:<CorporateFareIcon />,
     component: <Organization />,
     noCollapse: true,
-    owner: "none",
   },
   {
     type: "non-visible",
@@ -115,7 +132,6 @@ const routes = [
     icon: <DeleteIcon />,
     component: <SignIn />,
     noCollapse: true,
-    owner: "none",
   },
   {
     type: "non-visible",
@@ -125,58 +141,18 @@ const routes = [
     icon:<DeleteIcon />,
     component: <SignUp />,
     noCollapse: true,
-    owner: "none",
   },
+  
   {
     type: "collapse",
-    name: "dashboard",
-    key: "employer-dashboard",
-    route: "/employer-dashboard",
-    icon:<DeleteIcon />,
-    component: <SignUp />,
-    noCollapse: true,
-    owner: "employer",
-  },
-  {
-    type: "collapse",
-    name: "payroll",
-    key: "payroll",
-    route: "/payroll",
-    icon:<DeleteIcon />,
-    component: <SignUp />,
-    noCollapse: true,
-    owner: "employer",
-  },
-  {
-    type: "collapse",
-    name: "people",
+    name: "People",
     key: "people",
     route: "/people",
-    icon:<DeleteIcon />,
-    component: <SignUp />,
+    icon:<PeopleAltIcon />,
+    component: <People />,
     noCollapse: true,
-    owner: "employer",
   },
-  {
-    type: "collapse",
-    name: "employer-reports",
-    key: "reports",
-    route: "/reports",
-    icon:<DeleteIcon />,
-    component: <SignUp />,
-    noCollapse: true,
-    owner: "employer",
-  },
-  {
-    type: "collapse",
-    name: "taxes",
-    key: "taxes",
-    route: "/taxes",
-    icon:<DeleteIcon />,
-    component: <SignUp />,
-    noCollapse: true,
-    owner: "employer",
-  },
+  
 ];
 
 export default routes;

@@ -21,6 +21,8 @@ import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMob
 
 // Soft UI Dashboard React base styles
 import breakpoints from "assets/theme/base/breakpoints";
+import Logo from "assets/images/logos/logo-blue-name.png";
+
 
 function DefaultNavbar({ transparent, light, action }) {
   const [mobileNavbar, setMobileNavbar] = useState(false);
@@ -58,12 +60,9 @@ function DefaultNavbar({ transparent, light, action }) {
     <Container>
       <SuiBox
         py={1.5}
-        px={{ xs: transparent ? 4 : 5, sm: transparent ? 2 : 5, lg: transparent ? 0 : 5 }}
         my={2}
         mx={3}
         width="calc(100% - 48px)"
-        borderRadius="section"
-        shadow={transparent ? "none" : "md"}
         color={light ? "white" : "dark"}
         display="flex"
         justifyContent="space-between"
@@ -71,14 +70,11 @@ function DefaultNavbar({ transparent, light, action }) {
         position="absolute"
         left={0}
         zIndex={3}
-        sx={({ palette: { transparent: transparentColor, white }, functions: { rgba } }) => ({
-          backgroundColor: transparent ? transparentColor.main : rgba(white.main, 0.8),
-          backdropFilter: transparent ? "none" : `saturate(200%) blur(30px)`,
-        })}
+       
       >
         <SuiBox component={Link} to="/home" py={transparent ? 1.5 : 0.75} lineHeight={1}>
+        <img src={Logo} alt="logo" width={200} />
           <SuiTypography variant="button" fontWeight="300" color={light ? "white" : "dark"}>
-            ovicore.
           </SuiTypography>
         </SuiBox>
         
@@ -121,7 +117,7 @@ function DefaultNavbar({ transparent, light, action }) {
           sx={{ cursor: "pointer" }}
           onClick={openMobileNavbar}
         >
-          <Icon fontSize="default">{mobileNavbar ? "close" : "menu"}</Icon>
+          
         </SuiBox>
       </SuiBox>
       {mobileView && <DefaultNavbarMobile open={mobileNavbar} close={closeMobileNavbar} />}

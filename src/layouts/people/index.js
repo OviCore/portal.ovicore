@@ -18,13 +18,14 @@ import ProfileInfoCard from "examples/Cards/InfoCards/ProfileInfoCard";
 import ProfilesList from "examples/Lists/ProfilesList";
 
 // Overview page components
-import Header from "layouts/profile/components/Header";
-import PlatformSettings from "layouts/profile/components/PlatformSettings";
+import Workers from "layouts/people/components/Workers";
 
 // Data
 import profilesListData from "layouts/profile/data/profilesListData";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import DashboardNavbar from "examples/Navbars/DashboardNavbar";
+import Header from "layouts/people/components/Header";
 
 function People() {
   let navigate = useNavigate();
@@ -38,21 +39,12 @@ function People() {
     }}, [])
   return (
     <DashboardLayout>
+      <DashboardNavbar />
       <Header />
-      <SuiBox mt={5} mb={3}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={6} xl={4}>
-            <PlatformSettings />
-          </Grid>
-          <Grid item xs={12} md={6} xl={4}>
-            
-          </Grid>
-          <Grid item xs={12} xl={4}>
-          </Grid>
-        </Grid>
+      <SuiBox mt={3} mb={3}>
+        <Workers />
       </SuiBox>
       <SuiBox mb={3}>
-       
        
       </SuiBox>
 

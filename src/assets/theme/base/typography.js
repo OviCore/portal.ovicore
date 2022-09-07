@@ -1,25 +1,3 @@
-/**
-=========================================================
-* Soft UI Dashboard React - v3.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-pro-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-/**
- * The base typography styles for the Soft UI Dashboard React.
- * You can add new typography style using this file.
- * You can customized the typography styles for the entire Soft UI Dashboard React using thie file.
- */
-
-// Soft UI Dashboard React Base Styles
 import colors from "assets/theme/base/colors";
 
 // Soft UI Dashboard React Helper Functions
@@ -33,12 +11,12 @@ const baseProperties = {
   fontWeightRegular: 400,
   fontWeightMedium: 500,
   fontWeightBold: 700,
-  fontSizeXXS: pxToRem(10.4),
-  fontSizeXS: pxToRem(12),
-  fontSizeSM: pxToRem(14),
-  fontSizeMD: pxToRem(16),
-  fontSizeLG: pxToRem(18),
-  fontSizeXL: pxToRem(20),
+  fontSizeXXS: pxToRem(8.4),
+  fontSizeXS: pxToRem(10.4),
+  fontSizeSM: pxToRem(11),
+  fontSizeMD: pxToRem(14),
+  fontSizeLG: pxToRem(16),
+  fontSizeXL: pxToRem(18),
 };
 
 const baseHeadingProperties = {
@@ -62,37 +40,37 @@ const typography = {
   fontWeightBold: baseProperties.fontWeightBold,
 
   h1: {
-    fontSize: pxToRem(48),
+    fontSize: pxToRem(36),
     lineHeight: 1.25,
     ...baseHeadingProperties,
   },
 
   h2: {
-    fontSize: pxToRem(36),
+    fontSize: pxToRem(30),
     lineHeight: 1.3,
     ...baseHeadingProperties,
   },
 
   h3: {
-    fontSize: pxToRem(30),
-    lineHeight: 1.375,
-    ...baseHeadingProperties,
-  },
-
-  h4: {
     fontSize: pxToRem(24),
     lineHeight: 1.375,
     ...baseHeadingProperties,
   },
 
-  h5: {
+  h4: {
     fontSize: pxToRem(20),
     lineHeight: 1.375,
     ...baseHeadingProperties,
   },
 
-  h6: {
+  h5: {
     fontSize: pxToRem(16),
+    lineHeight: 1.375,
+    ...baseHeadingProperties,
+  },
+
+  h6: {
+    fontSize: pxToRem(14),
     lineHeight: 1.625,
     ...baseHeadingProperties,
   },

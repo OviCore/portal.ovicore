@@ -14,7 +14,7 @@ import SuiTypography from "components/SuiTypography";
 import Table from "examples/Tables/Table";
 
 // Data
-import data from "layouts/dashboard/components/Projects/data";
+import data from "layouts/people/components/Workers/data";
 
 function Projects() {
   const { columns, rows } = data();
@@ -49,7 +49,7 @@ function Projects() {
       <SuiBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
         <SuiBox>
           <SuiTypography variant="h6" gutterBottom>
-            Recent Payroll
+            Employee List
           </SuiTypography>
           <SuiBox display="flex" alignItems="center" lineHeight={0}>
             <Icon
@@ -62,7 +62,7 @@ function Projects() {
               done
             </Icon>
             <SuiTypography variant="button" fontWeight="regular" color="text">
-              &nbsp;<strong>30 done</strong> this year
+              &nbsp;<strong>30</strong> total employees
             </SuiTypography>
           </SuiBox>
         </SuiBox>

@@ -14,7 +14,8 @@ import SuiTypography from "components/SuiTypography";
 import Table from "examples/Tables/Table";
 
 // Data
-import data from "layouts/dashboard/components/Projects/data";
+import data from "layouts/payroll/components/Pay/data";
+import SuiButton from "components/SuiButton";
 
 function Projects() {
   const { columns, rows } = data();
@@ -49,7 +50,7 @@ function Projects() {
       <SuiBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
         <SuiBox>
           <SuiTypography variant="h6" gutterBottom>
-            Recent Payroll
+            Preview Payroll
           </SuiTypography>
           <SuiBox display="flex" alignItems="center" lineHeight={0}>
             <Icon
@@ -62,7 +63,7 @@ function Projects() {
               done
             </Icon>
             <SuiTypography variant="button" fontWeight="regular" color="text">
-              &nbsp;<strong>30 done</strong> this year
+              &nbsp;<strong>7 employees</strong> paid this period
             </SuiTypography>
           </SuiBox>
         </SuiBox>
@@ -84,6 +85,27 @@ function Projects() {
         }}
       >
         <Table columns={columns} rows={rows} />
+
+        <SuiBox display="flex" justifyContent="space-between" p={3} >
+          <SuiTypography variant="button" fontWeight="regular" color="text">
+            <strong>Payrun Total:</strong> $1,000.00
+          </SuiTypography>
+          <SuiTypography variant="button" fontWeight="regular" color="text">
+            <strong>Payroll Cash Required:</strong> $1,000.00
+          </SuiTypography>
+          <SuiButton variant="contained" color="info" size="small">
+            Check Stub Message
+          </SuiButton>
+          <SuiButton variant="outlined" color="info" size="small">
+            Previous Payroll
+          </SuiButton>
+          <SuiButton variant="gradient" color="info" size="small">
+            Save Payroll
+          </SuiButton>
+          <SuiButton variant="gradient" color="info" size="small">
+            Pay Now
+          </SuiButton>
+        </SuiBox>
       </SuiBox>
     </Card>
   );

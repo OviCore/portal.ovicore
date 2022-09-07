@@ -45,7 +45,7 @@ function Dashboard() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      <SuiBox py={3}>
+      <SuiBox py={1}>
         <SuiBox mb={3}>
           <Grid container spacing={3}>
             <Grid item xs={12} lg={7}>

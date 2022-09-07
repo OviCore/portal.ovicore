@@ -18,7 +18,7 @@ function WorkWithTheRockets() {
           display="flex"
           flexDirection="column"
           height="100%"
-          py={2}
+          py={1}
           px={2}
           borderRadius="lg"
           sx={{
@@ -26,20 +26,20 @@ function WorkWithTheRockets() {
             backgroundSize: "cover",
           }}
         >
-          <SuiBox mb={3} pt={1}>
+          <SuiBox mb={1} pt={1}>
             <SuiTypography variant="h5" color="black" fontWeight="bold">
               Sick Leave
             </SuiTypography>
           </SuiBox>
-          <SuiBox mb={2}>
+          <SuiBox mb={1} display="flex" flexDirection="column" >
             <SuiButton variant="outlined" color="info" mt={1} fullWidth>
                 Hours Worked: 75.42
             </SuiButton>
-            <br /> <br />
+            <br /> 
             <SuiButton variant="outlined" color="info" mt={1} fullWidth>
                 Hours used this year: 0
             </SuiButton>
-            <br /> <br />
+            <br /> 
             <SuiButton variant="outlined" color="info" mt={1} fullWidth>
                 Hours Pending: 10.24
             </SuiButton>

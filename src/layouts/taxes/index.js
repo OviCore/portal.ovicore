@@ -19,7 +19,7 @@ import ProfilesList from "examples/Lists/ProfilesList";
 
 // Overview page components
 import Header from "layouts/profile/components/Header";
-import PlatformSettings from "layouts/profile/components/PlatformSettings";
+import Quarter from "layouts/taxes/components/Quarter";
 
 // Data
 import profilesListData from "layouts/profile/data/profilesListData";
@@ -42,7 +42,7 @@ function Taxes() {
       <SuiBox mt={5} mb={3}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} xl={4}>
-            <PlatformSettings />
+            <Quarter />
           </Grid>
           <Grid item xs={12} md={6} xl={4}>
             

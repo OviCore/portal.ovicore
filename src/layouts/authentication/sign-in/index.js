@@ -6,7 +6,7 @@ import SuiTypography from "components/SuiTypography";
 import SuiInput from "components/SuiInput";
 import SuiButton from "components/SuiButton";
 import CoverLayout from "layouts/authentication/components/CoverLayout";
-import curved9 from "assets/images/curved-images/curved-6.jpg";
+import curved9 from "assets/images/logos/banner.png";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import ErrorIcon from '@mui/icons-material/Error';
 import { Image } from "@mui/icons-material";

@@ -1,22 +1,10 @@
-
-// prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
-
-// @mui material components
 import Grid from "@mui/material/Grid";
-
-// Soft UI Dashboard React components
 import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
-
-// Soft UI Dashboard React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import PageLayout from "examples/LayoutContainers/PageLayout";
-
-// Soft UI Dashboard React page layout routes
 import pageRoutes from "page.routes";
-
-// Images
 import pattern from "assets/images/shapes/pattern-lines.svg";
 
 function IllustrationLayout({ color, header, title, description, illustration, children }) {
@@ -26,7 +14,7 @@ function IllustrationLayout({ color, header, title, description, illustration, c
         routes={pageRoutes}
         action={{
           type: "external",
-          route: "https://creative-tim.com/product/soft-ui-dashboard-pro-react",
+          route: "https://ovicore.com",
           label: "buy now",
         }}
       />

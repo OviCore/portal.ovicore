@@ -145,7 +145,7 @@ export default function App() {
             {configsButton}
           </>
         )}
-        <Routes>
+        <Routes basename="/">
           {getRoutes(routes)}
           <Route path="*" element={<Navigate to="/dashboard" />} />
           <Route path="*" element={<Navigate to="/sign-in" />} />
@@ -160,7 +160,7 @@ export default function App() {
           <Sidenav
             color={sidenavColor}
             brand={brand}
-            brandName="OviCore Dashboard"
+            brandName="Ovicore Labs"
             routes={routes}
             onMouseEnter={handleOnMouseEnter}
             onMouseLeave={handleOnMouseLeave}

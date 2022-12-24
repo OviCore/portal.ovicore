@@ -37,7 +37,6 @@ import CorporateFareIcon from '@mui/icons-material/CorporateFare';
 import FormatAlignJustifyIcon from '@mui/icons-material/FormatAlignJustify';
 import PieChartIcon from '@mui/icons-material/PieChart';
 import PaidIcon from '@mui/icons-material/Paid';
-import Payroll from "layouts/payroll";
 import People from "layouts/people";
 
 const routes = [
@@ -50,15 +49,7 @@ const routes = [
     component: <Dashboard />,
     noCollapse: true,
   },
-  {
-    type: "collapse",
-    name: "Payroll",
-    key: "payroll",
-    route: "/payroll",
-    icon:<PaidIcon />,
-    component: <Payroll />,
-    noCollapse: true,
-  },
+ 
   {
     type: "collapse",
     name: "Timekeeping",

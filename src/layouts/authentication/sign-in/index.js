@@ -6,7 +6,8 @@ import SuiTypography from "components/SuiTypography";
 import SuiInput from "components/SuiInput";
 import SuiButton from "components/SuiButton";
 import CoverLayout from "layouts/authentication/components/CoverLayout";
-import curved9 from "assets/images/logos/banner.png";
+import banner from "assets/images/illustrations/banner.jpg";
+import Logo from "assets/images/logos/logo-name.png";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import ErrorIcon from '@mui/icons-material/Error';
 import { Image } from "@mui/icons-material";
@@ -43,7 +44,7 @@ function SignIn() {
     <CoverLayout
       title="Welcome back"
       description="Enter your email and password to sign in"
-      image={curved9}
+      image={banner}
     >
       <ToastContainer />
        

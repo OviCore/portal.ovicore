@@ -19,22 +19,22 @@ function Footer() {
               </SuiTypography>
             </SuiBox>
             <SuiBox mr={{ xs: 2, lg: 3, xl: 6 }}>
-              <SuiTypography component="a" href="https://ovicore.com/about-us" variant="body2" color="secondary">
+              <SuiTypography component="a" href="https://ovicore.com/about" variant="body2" color="secondary">
                 About Us
               </SuiTypography>
             </SuiBox>
             <SuiBox mr={{ xs: 0, lg: 3, xl: 6 }}>
-              <SuiTypography component="a" href="https://ovicore.com/investors" variant="body2" color="secondary">
-                Investors
+              <SuiTypography component="a" href="https://ovicore.com/ar" variant="body2" color="secondary">
+                Augmented Reality
               </SuiTypography>
             </SuiBox>
             <SuiBox mr={{ xs: 2, lg: 3, xl: 6 }}>
-              <SuiTypography component="a" href="https://ovicore.com/payroll-software" variant="body2" color="secondary">
-                Payroll Software
+              <SuiTypography component="a" href="https://ovicore.com/blog" variant="body2" color="secondary">
+                Blog
               </SuiTypography>
             </SuiBox>
             <SuiBox>
-              <SuiTypography component="a" href="https://ovicore.com/contact" variant="body2" color="secondary">
+              <SuiTypography component="a" href="https://ovicore.com/about" variant="body2" color="secondary">
                 Contact
               </SuiTypography>
             </SuiBox>
@@ -55,7 +55,7 @@ function Footer() {
         </Grid>
         <Grid item xs={12} lg={8} sx={{ textAlign: "center" }}>
           <SuiTypography variant="body2" color="secondary">
-            Copyright &copy; 2022 Ovicore Platform.
+            Copyright &copy; 2022 Ovicore Labs.
           </SuiTypography>
         </Grid>
       </Grid>

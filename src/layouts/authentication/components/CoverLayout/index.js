@@ -4,9 +4,7 @@ import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
 import PageLayout from "examples/LayoutContainers/PageLayout";
 import Footer from "layouts/authentication/components/Footer";
-import { Image } from "@mui/icons-material";
-import Logo from "assets/images/logos/logo-blue-name.png";
-import DefaultNavbar from "examples/Navbars/DefaultNavbar";
+import DefaultNavbar from "components/DefaultNavbar";
 
 function CoverLayout({ color, header, title, description, image, top, children }) {
   return (

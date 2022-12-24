@@ -146,7 +146,7 @@ function Configurator() {
           
           <SuiButton
             component={Link}
-            href="https://ovicore.com/mobile"
+            href="https://ovicore.com"
             target="_blank"
             rel="noreferrer"
             color="dark"
@@ -160,7 +160,7 @@ function Configurator() {
           
           <SuiButton
             component={Link}
-            href="https://ovicore.com/profile"
+            href="https://ovicore.com/"
             target="_blank"
             rel="noreferrer"
             color="dark"

@@ -29,6 +29,7 @@ import gradientLineChartData from "layouts/dashboard/data/gradientLineChartData"
 import DayCalendar from "./components/DayCalendar";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+
 function Dashboard() {
   let navigate = useNavigate();
   useEffect(() => {

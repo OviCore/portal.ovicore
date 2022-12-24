@@ -48,9 +48,13 @@ function Footer() {
             <SuiBox mr={3} color="secondary">
               <TwitterIcon fontSize="small" />
             </SuiBox>
-            <SuiBox color="secondary">
-              <LinkedInIcon fontSize="small"/>
+            <SuiBox mr={3} color="secondary">
+              <InstagramIcon fontSize="small" />
             </SuiBox>
+            <SuiBox mr={3} color="secondary">
+              <LinkedInIcon fontSize="small" />
+            </SuiBox>
+         
           </SuiBox>
         </Grid>
         <Grid item xs={12} lg={8} sx={{ textAlign: "center" }}>

@@ -8,7 +8,7 @@ import SuiButton from "components/SuiButton";
 import DefaultNavbarLink from "examples/Navbars/DefaultNavbar/DefaultNavbarLink";
 import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMobile";
 import breakpoints from "assets/theme/base/breakpoints";
-import Logo from "assets/images/logos/logo-namebw.png";
+import Logo from "assets/images/logos/logo-name-bw.png";
 
 
 function DefaultNavbar({ transparent, light, action }) {
@@ -48,53 +48,23 @@ function DefaultNavbar({ transparent, light, action }) {
       <SuiBox
         py={1.5}
         my={2}
-        mx={3}
-        width="calc(100% - 48px)"
+        mx={0}
+        width="100%"
         color={light ? "white" : "dark"}
-        display="flex"
-        justifyContent="space-between"
         alignItems="center"
         position="absolute"
-        left={0}
         zIndex={3}
        
       >
-        <SuiBox component={Link} to="/home" py={transparent ? 1.5 : 0.75} lineHeight={1}>
-        <img src={Logo} alt="logo" width={200} style={{}}/>
-          <SuiTypography variant="button" fontWeight="300" color={light ? "white" : "dark"}>
-          </SuiTypography>
+        <SuiBox component={Link} to="/" py={transparent ? 1.5 : 0.75} lineHeight={1}>
+        <img src={Logo} alt="logo" width={200}/>
+          
         </SuiBox>
+        <SuiTypography variant="h6" fontWeight="200" color={light ? "white" : "dark"} mx={3} mt={1}>
+            Advance Research and Education.
+        </SuiTypography>
         
-        {action &&
-          (action.type === "internal" ? (
-            <SuiBox display={{ xs: "none", lg: "inline-block" }}>
-              <SuiButton
-                component={Link}
-                to={action.route}
-                variant="gradient"
-                color={action.color ? action.color : "info"}
-                size="small"
-                circular
-              >
-                {action.label}
-              </SuiButton>
-            </SuiBox>
-          ) : (
-            <SuiBox display={{ xs: "none", lg: "inline-block" }}>
-              <SuiButton
-                component="a"
-                href={action.route}
-                target="_blank"
-                rel="noreferrer"
-                variant="gradient"
-                color={action.color ? action.color : "info"}
-                size="small"
-                circular
-              >
-                {action.label}
-              </SuiButton>
-            </SuiBox>
-          ))}
+      
         <SuiBox
           display={{ xs: "inline-block", lg: "none" }}
           lineHeight={0}

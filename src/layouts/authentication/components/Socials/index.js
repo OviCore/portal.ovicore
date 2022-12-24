@@ -4,7 +4,7 @@ import SuiBox from "components/SuiBox";
 function Socials() {
   return (
     <SuiBox display="flex" justifyContent="center">
-      <SuiButton variant="outlined" color="light">
+      <SuiButton variant="outlined" color="black">
         <svg width="24px" height="32px" viewBox="0 0 64 64" version="1.1">
           <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
             <g transform="translate(3.000000, 3.000000)" fillRule="nonzero">
@@ -18,7 +18,7 @@ function Socials() {
         </svg>
       </SuiButton>
       <SuiBox px={1}>
-        <SuiButton variant="outlined" color="light">
+        <SuiButton variant="outlined" color="black">
           <svg width="24px" height="32px" viewBox="0 0 64 64" version="1.1">
             <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
               <g transform="translate(7.000000, 0.564551)" fill="#000000" fillRule="nonzero">
@@ -28,7 +28,7 @@ function Socials() {
           </svg>
         </SuiButton>
       </SuiBox>
-      <SuiButton variant="outlined" color="light">
+      <SuiButton variant="outlined" color="black">
         <svg width="24px" height="32px" viewBox="0 0 64 64" version="1.1">
           <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
             <g transform="translate(3.000000, 2.000000)" fillRule="nonzero">

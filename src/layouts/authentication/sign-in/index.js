@@ -7,7 +7,6 @@ import SuiInput from "components/SuiInput";
 import SuiButton from "components/SuiButton";
 import CoverLayout from "layouts/authentication/components/CoverLayout";
 import banner from "assets/images/illustrations/banner.jpg";
-import Logo from "assets/images/logos/logo-name.png";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import ErrorIcon from '@mui/icons-material/Error';
 import { Image } from "@mui/icons-material";

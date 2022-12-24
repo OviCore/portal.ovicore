@@ -21,9 +21,8 @@ import SuiButton from "components/SuiButton";
 import BasicLayout from "layouts/authentication/components/BasicLayout";
 import Socials from "layouts/authentication/components/Socials";
 import Separator from "layouts/authentication/components/Separator";
-
-// Images
-import curved6 from "assets/images/curved-images/curved14.jpg";
+import banner from "assets/images/illustrations/banner.jpg";
+import Logo from "assets/images/logos/logo-name.png";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -55,11 +54,15 @@ function SignUp() {
     <BasicLayout
       title="Welcome!"
       description="Please sign up to continue."
-      image={curved6}
+      image={banner}
     >
       <ToastContainer />
       <Card>
-        <SuiBox p={3} mb={1} textAlign="center">
+        
+        <SuiBox p={3} mb={0.5} textAlign="center">
+        <SuiTypography variant="h2" fontWeight="medium" mb={2}>
+            Ovicore Labs.
+          </SuiTypography>
           <SuiTypography variant="h5" fontWeight="medium">
             Register with
           </SuiTypography>
@@ -70,21 +73,9 @@ function SignUp() {
         <Separator />
         <SuiBox pt={2} pb={3} px={3}>
           <SuiBox ml={2}>
-        <FormControl >
-            <RadioGroup
-            row
-            defaultValue="disabled"
-            name="radio-buttons-group"
-            >
-            <FormControlLabel value="landlord" control={<Radio />} label="Employee" />
-            <SuiBox ml={2}/>
-            <FormControlLabel value="tenant" control={<Radio />} label="Employeer" />
-          </RadioGroup>
-        </FormControl></SuiBox>
+          </SuiBox>
           <SuiBox component="form" role="form" mt={2}>
-          <SuiBox mb={2}>
-              <SuiInput placeholder="Company ID" />
-            </SuiBox>
+
             <SuiBox mb={2}>
               <SuiInput placeholder="Name" />
             </SuiBox>

@@ -36,7 +36,7 @@ function TimelineItem({ color, icon, title, dateTime, description, badges, lastI
       >
         <Icon sx={(theme) => timelineItemIcon(theme, { color })}>{icon}</Icon>
       </SuiBox>
-      <SuiBox ml={5.75} pt={description ? 0.7 : 0.5} lineHeight={0} maxWidth="30rem">
+      <SuiBox ml={5.00} pt={description ? 0.6 : 0.5} lineHeight={0} maxWidth="30rem">
         <SuiTypography variant="button" fontWeight="medium" color={isDark ? "white" : "dark"}>
           {title}
         </SuiTypography>
@@ -49,7 +49,7 @@ function TimelineItem({ color, icon, title, dateTime, description, badges, lastI
             {dateTime}
           </SuiTypography>
         </SuiBox>
-        <SuiBox mt={2} mb={1.5}>
+        <SuiBox mt={1} mb={1} >
           {description ? (
             <SuiTypography variant="button" fontWeight="regular" color="text">
               {description}

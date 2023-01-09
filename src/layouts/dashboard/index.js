@@ -13,15 +13,17 @@ import Footer from "examples/Footer";
 import MiniStatisticsCard from "examples/Cards/StatisticsCards/MiniStatisticsCard";
 import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
 import GradientLineChart from "examples/Charts/LineCharts/GradientLineChart";
+import SuiAvatar from "components/SuiAvatar";
 
 // Soft UI Dashboard React base styles
 import typography from "assets/theme/base/typography";
 
 // Dashboard layout components
-import BuildByDevelopers from "layouts/dashboard/components/BuildByDevelopers";
-import WorkWithTheRockets from "layouts/dashboard/components/WorkWithTheRockets";
+import RecentModules from "layouts/dashboard/components/RecentModules";
+import Discover from "layouts/dashboard/components/Discover";
 import Projects from "layouts/dashboard/components/Projects";
 import OrderOverview from "layouts/dashboard/components/OrderOverview";
+import holones from "assets/images/illustrations/holobes2.jpg";
 
 // Data
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
@@ -47,49 +49,26 @@ function Dashboard() {
     <DashboardLayout>
       <DashboardNavbar />
       <SuiBox py={1}>
-        <SuiBox mb={3}>
+        <SuiBox mb={1}>
           <Grid container spacing={3}>
-            <Grid item xs={12} lg={7}>
-              <BuildByDevelopers />
+            <Grid item xs={12} lg={8}>
+              <RecentModules />
             </Grid>
-            <Grid item xs={12} lg={5}>
-              <WorkWithTheRockets />
+            <Grid item xs={12} lg={4}>
+              <Discover />
             </Grid>
           </Grid>
         </SuiBox>
         <SuiBox mb={3}>
           <Grid container spacing={3}>
-            <Grid item xs={12} lg={5}>
-              <ReportsBarChart
-                title="Bi-Weekly Reports"
-                description={
-                  <>
-                    (<strong>+23%</strong>) than last week
-                  </>
-                }
-                chart={chart}
-                items={items}
-              />
-            </Grid>
-            <Grid item xs={12} lg={7}>
-              <Projects />
+            <Grid item xs={12} lg={12}>
+              <SuiBox mb={3} >
+                <OrderOverview />
+              </SuiBox>
             </Grid>
           </Grid>
         </SuiBox>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={6} lg={8}>
-          <Card>
-
-                        
-          <SuiTypography variant="h6" gutterBottom ml={10} mt={2}>
-            Todays Schedule
-          </SuiTypography>
-          <DayCalendar /></Card>
-          </Grid>
-          <Grid item xs={12} md={6} lg={4}>
-            <OrderOverview />
-          </Grid>
-        </Grid>
+    
       </SuiBox>
       <Footer />
     </DashboardLayout>

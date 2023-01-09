@@ -51,7 +51,7 @@ const routes = [
   },
  
   {
-    type: "collapse",
+    type: "non-visible",
     name: "Timekeeping",
     key: "timesheet",
     route: "/timesheet",

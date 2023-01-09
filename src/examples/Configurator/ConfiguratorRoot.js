@@ -5,7 +5,7 @@ export default styled(Drawer)(({ theme, ownerState }) => {
   const { boxShadows, functions, transitions } = theme;
   const { openConfigurator } = ownerState;
 
-  const configuratorWidth = 360;
+  const configuratorWidth = 450;
   const { lg } = boxShadows;
   const { pxToRem } = functions;
 

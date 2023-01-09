@@ -11,7 +11,7 @@ import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
 import SuiButton from "components/SuiButton";
 import ConfiguratorRoot from "examples/Configurator/ConfiguratorRoot";
-import LogoImage from '../../assets/images/logos/logo-blue-name.png';
+import LogoImage from '../../assets/images/logos/logonopbg.png';
 import {
   useSoftUIController,
   setOpenConfigurator,

@@ -8,14 +8,13 @@ import Footer from "layouts/authentication/components/Footer";
 function BasicLayout({ title, description, image, children }) {
   return (
     <PageLayout>
-      <SuiBox
-        width="calc(100% - 2rem)"
-        minHeight="50vh"
+      <SuiBox width="calc(100% - 2rem)"
+        minHeight="35vh"
         borderRadius="lg"
         mx={2}
-        my={2}
-        pt={6}
-        pb={28}
+        my={0}
+        pt={3}
+        pb={5}
         sx={{
           backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
             image &&

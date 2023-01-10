@@ -32,7 +32,6 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
     if (user) {
       const db = getFirestore();
       const unsub = onSnapshot(doc(db, "users", auth.currentUser.uid), (doc) => {
-        console.log("Current data: ", doc.data().userType);
     });
     } else {
       console.log("User is not logged in");

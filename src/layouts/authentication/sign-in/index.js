@@ -26,7 +26,7 @@ function SignIn() {
     signInWithEmailAndPassword(auth, email, password)
       .then((response) => {
           navigate('/dashboard')
-          sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
+          sessionStorage.setItem('Auth Token', response.user.uid)
       })
       .catch((error) => {
         console.log(error);

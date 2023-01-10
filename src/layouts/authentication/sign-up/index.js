@@ -16,16 +16,21 @@ import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
 import SuiInput from "components/SuiInput";
 import SuiButton from "components/SuiButton";
-
+import Grid from '@mui/material/Grid';
 // Authentication layout components
 import BasicLayout from "layouts/authentication/components/BasicLayout";
 import Socials from "layouts/authentication/components/Socials";
 import Separator from "layouts/authentication/components/Separator";
 import banner from "assets/images/illustrations/banner.jpg";
 import Logo from "assets/images/logos/logo-name.png";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { collection, addDoc } from "firebase/firestore"; 
+import { getFirestore } from "firebase/firestore";
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+
 
 function SignUp() {
   const [agreement, setAgremment] = useState(true);
@@ -33,21 +38,37 @@ function SignUp() {
  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [organization, setOrganization] = useState(''); 
 
   let navigate = useNavigate();
   const handleSignUpAction = (id) => {
     const authentication = getAuth();
-    
       createUserWithEmailAndPassword(authentication, email, password)
-        .then((response) => {
-          navigate('/dashboard');
-          sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
+        .then( (response) => {
+          console.log(response.user.uid);
+          sessionStorage.setItem('Auth Token', response.user.uid)
+          handleDocRef();
         })
         .catch((error) => {
           if (error.code === 'auth/email-already-in-use') {
             toast.error('Email Already in Use');
           }
         })
+  }
+  const handleDocRef = () => {
+    const auth = getAuth();
+    updateProfile(auth.currentUser, {
+      displayName: firstName + " " + lastName,
+      photoURL: "https://example.com/jane-q-user/profile.jpg"
+    }).then(() => {
+      console.log('Profile Updated');
+      navigate('/dashboard');
+    }).catch((error) => {
+      // An error occurred
+      // ...
+    });
   }
 
   return (
@@ -58,36 +79,42 @@ function SignUp() {
     >
       <ToastContainer />
       <Card>
-        
         <SuiBox p={3} mb={0.5} textAlign="center">
         <SuiTypography variant="h2" fontWeight="medium" mb={2}>
-            Ovicore Labs.
+            Ovicore Technologies
           </SuiTypography>
           <SuiTypography variant="h5" fontWeight="medium">
             Register with
           </SuiTypography>
         </SuiBox>
-        <SuiBox mb={2}>
+        <SuiBox mb={1}>
           <Socials />
         </SuiBox>
         <Separator />
-        <SuiBox pt={2} pb={3} px={3}>
+        <SuiBox pt={1} pb={3} px={3}>
           <SuiBox ml={2}>
           </SuiBox>
-          <SuiBox component="form" role="form" mt={2}>
-
-            <SuiBox mb={2}>
-              <SuiInput placeholder="Name" />
+          <SuiBox component="form" role="form" mt={1}>
+            <Grid container spacing={1} mb={1}>
+              <Grid item xs={12} sm={6}>
+                <SuiInput placeholder="First Name"  value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <SuiInput placeholder="Last Name"  value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+              </Grid>
+            </Grid>
+            <SuiBox mb={1}>
+              <SuiInput type="email" placeholder="Organization Email" 
+              value={email} onChange={(e) => setEmail(e.target.value)}/>
             </SuiBox>
-            <SuiBox mb={2}>
-              <SuiInput type="email" placeholder="Email" 
-              value={email} onChange={(e) => setEmail(e.target.value)}
-              />
-            </SuiBox>
-            <SuiBox mb={2}>
+             
+            <SuiBox mb={1}>
               <SuiInput type="password" placeholder="Password" 
-              value={password} onChange={(e) => setPassword(e.target.value)}
-              />
+              value={password} onChange={(e) => setPassword(e.target.value)}/>
+            </SuiBox>
+            <SuiBox mb={1}>
+              <SuiInput type="password" placeholder="Confirm Password" 
+              value={password} onChange={(e) => setPassword(e.target.value)}/>
             </SuiBox>
             <SuiBox display="flex" alignItems="center">
               <Checkbox checked={agreement} onChange={handleSetAgremment} />
@@ -109,6 +136,7 @@ function SignUp() {
               >
                 sign up
               </SuiButton>
+             
             </SuiBox>
             <SuiBox mt={3} textAlign="center">
               <SuiTypography variant="button" color="text" fontWeight="regular">

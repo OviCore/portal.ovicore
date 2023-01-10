@@ -27,7 +27,7 @@ import breakpoints from "assets/theme/base/breakpoints";
 import burceMars from "assets/images/bruce-mars.jpg";
 import curved0 from "assets/images/curved-images/curved0.jpg";
 
-function Header() {
+function Header({name, email}) {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [tabValue, setTabValue] = useState(0);
 
@@ -98,10 +98,10 @@ function Header() {
           <Grid item>
             <SuiBox height="100%" mt={0.5} lineHeight={1}>
               <SuiTypography variant="h5" fontWeight="medium">
-                Alex Thompson
+                {name}
               </SuiTypography>
               <SuiTypography variant="button" color="text" fontWeight="medium">
-                CEO / Co-Founder
+                {email}
               </SuiTypography>
             </SuiBox>
           </Grid>

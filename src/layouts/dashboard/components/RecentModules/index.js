@@ -13,7 +13,12 @@ import image4 from "assets/images/modules/bio2.jpg";
 
 import SuiButton from "components/SuiButton";
 import TimelineItem from "examples/Timeline/TimelineItem";
-function RecentModules() {
+import { useEffect, useState } from "react";
+import { getAuth } from "firebase/auth";
+
+
+function RecentModules(  ) {
+  const [name, setName] = useState("");
   const modules = [
    
     {
@@ -30,6 +35,30 @@ function RecentModules() {
     },
 
   ];
+
+   useEffect(() => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (user !== null) {
+      // The user object has basic properties such as display name, email, etc.
+      const displayName = user.displayName;
+      setName(displayName);
+      const email = user.email;
+      const photoURL = user.photoURL;
+      const emailVerified = user.emailVerified;
+
+      // The user's ID, unique to the Firebase project. Do NOT use
+      // this value to authenticate with your backend server, if
+      // you have one. Use User.getToken() instead.
+      const uid = user.uid;
+    } else {
+      // User is signed out
+      // ...
+    }
+  }, []);
+
+
+   
   return (
     <Card sx={{ height: "320px" }}>
       <SuiBox p={2}>
@@ -40,7 +69,7 @@ function RecentModules() {
                 <SuiTypography variant="body2" color="text" fontWeight="medium"> May 15, 2020</SuiTypography>
               </SuiBox>
               <SuiTypography variant="h2" fontWeight="text" gutterBottom>
-                Welcome Oliver Williams,
+                Welcome {name},
               </SuiTypography>
               <SuiTypography variant="h4" color="text" mb={2}> Recent Modules </SuiTypography>
               <SuiBox mb={3} flexDirection="row" display="flex">

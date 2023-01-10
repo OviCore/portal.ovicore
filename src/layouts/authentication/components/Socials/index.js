@@ -1,10 +1,8 @@
 import SuiButton from "components/SuiButton";
 import SuiBox from "components/SuiBox";
 
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { collection, addDoc } from "firebase/firestore"; 
-import { getFirestore } from "firebase/firestore";
-import { Link, useNavigate} from "react-router-dom";
+import { getAuth, GoogleAuthProvider, signInWithPopup, GithubAuthProvider, OAuthProvider } from "firebase/auth";
+import { useNavigate} from "react-router-dom";
 
 
 
@@ -12,6 +10,8 @@ function Socials() {
 
     let navigate = useNavigate();
     const provider = new GoogleAuthProvider();
+    const provider2 = new GithubAuthProvider();
+    const provider3 = new OAuthProvider('microsoft.com');
 
     function handleSignUpWithGoogle() {
       const auth = getAuth();
@@ -35,11 +35,54 @@ function Socials() {
         });
     }
 
+    function handleSignUpWithGithub() {
+      const auth = getAuth();
+      signInWithPopup(auth, provider2)
+        .then((result) => {
+          // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+          const credential = GithubAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+          // The signed-in user info.
+          const user = result.user;
+          sessionStorage.setItem('Auth Token', user.uid)
+          navigate('/dashboard');
+        }).catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          // The AuthCredential type that was used.
+          const credential = GithubAuthProvider.credentialFromError(error);
+          console.log(errorCode, errorMessage, credential);
+        });
+    }
+
+    function handleSignUpWithMicrosoft() {
+      const auth = getAuth();
+      signInWithPopup(auth, provider3)
+        .then((result) => {
+          // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+          const credential = GithubAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+          // The signed-in user info.
+          const user = result.user;
+          sessionStorage.setItem('Auth Token', user.uid)
+          navigate('/dashboard');
+        }).catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          // The AuthCredential type that was used.
+          const credential = GithubAuthProvider.credentialFromError(error);
+          console.log(errorCode, errorMessage, credential);
+        });
+    }
+
   return (
     <SuiBox display="flex" justifyContent="center">
       
       <SuiButton variant="outlined" color="black" onClick={() => handleSignUpWithGoogle()}>
-        
         <svg width="24px" height="32px" viewBox="0 0 64 64" version="1.1">
           <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
             <g transform="translate(3.000000, 2.000000)" fillRule="nonzero">
@@ -62,6 +105,14 @@ function Socials() {
             </g>
           </g>
         </svg>
+      </SuiButton>
+      <SuiBox mr={1} />
+      <SuiButton variant="outlined" color="black" onClick={() => handleSignUpWithGithub()}>
+        <img width="24px" alt="Octicons-mark-github" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/512px-Octicons-mark-github.svg.png"/>
+      </SuiButton>
+      <SuiBox mr={1} />
+      <SuiButton variant="outlined" color="black" onClick={() => handleSignUpWithMicrosoft()}>
+        <img width="24" alt="Microsoft logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/512px-Microsoft_logo.svg.png"/>
       </SuiButton>
     </SuiBox>
 

@@ -10,7 +10,8 @@ import banner from "assets/images/illustrations/banner.jpg";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import ErrorIcon from '@mui/icons-material/Error';
 import { Image } from "@mui/icons-material";
-
+import Socials from "../components/Socials";
+import Separator from "../components/Separator";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -42,11 +43,14 @@ function SignIn() {
   return (
     <CoverLayout
       title="Welcome back"
-      description="Enter your email and password to sign in"
+      description="Sign in to continue to your account."
       image={banner}
     >
       <ToastContainer />
-       
+      <SuiBox mb={1}>
+          <Socials />
+        </SuiBox>
+        <Separator />
       <SuiBox component="form" role="form">
         <SuiBox mb={2}>
           <SuiBox mb={1} ml={0.5}>

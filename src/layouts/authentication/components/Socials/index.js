@@ -1,11 +1,45 @@
 import SuiButton from "components/SuiButton";
 import SuiBox from "components/SuiBox";
 
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { collection, addDoc } from "firebase/firestore"; 
+import { getFirestore } from "firebase/firestore";
+import { Link, useNavigate} from "react-router-dom";
+
+
+
 function Socials() {
+
+    let navigate = useNavigate();
+    const provider = new GoogleAuthProvider();
+
+    function handleSignUpWithGoogle() {
+      const auth = getAuth();
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+          // The signed-in user info.
+          const user = result.user;
+          sessionStorage.setItem('Auth Token', user.uid)
+          navigate('/dashboard');
+        }).catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          // The AuthCredential type that was used.
+          const credential = GoogleAuthProvider.credentialFromError(error);
+          console.log(errorCode, errorMessage, credential);
+        });
+    }
+
   return (
     <SuiBox display="flex" justifyContent="center">
       
-      <SuiButton variant="outlined" color="black">
+      <SuiButton variant="outlined" color="black" onClick={() => handleSignUpWithGoogle()}>
+        
         <svg width="24px" height="32px" viewBox="0 0 64 64" version="1.1">
           <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
             <g transform="translate(3.000000, 2.000000)" fillRule="nonzero">

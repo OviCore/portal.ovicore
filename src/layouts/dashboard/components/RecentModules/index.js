@@ -29,11 +29,7 @@ function RecentModules(  ) {
       name: "Calculus III",
       image: image2,
     },
-    {
-      name: "Statistics",
-      image: image3,
-    },
-
+   
   ];
 
    useEffect(() => {

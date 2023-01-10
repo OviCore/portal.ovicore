@@ -25,7 +25,7 @@ import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
 import Organization from "layouts/organization";
 import DeleteIcon from '@mui/icons-material/Delete';
-import Taxes from "layouts/taxes";
+import AllModules from "layouts/allModules";
 
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import HomeRepairServiceOutlinedIcon from '@mui/icons-material/HomeRepairServiceOutlined';
@@ -49,7 +49,15 @@ const routes = [
     component: <Dashboard />,
     noCollapse: true,
   },
- 
+  {
+    type: "collapse",
+    name: "All Modules",
+    key: "All Modules",
+    route: "/allmodules",
+    icon: <FormatAlignJustifyIcon />,
+    component: <AllModules />,
+    noCollapse: true,
+  },
   {
     type: "non-visible",
     name: "Timekeeping",

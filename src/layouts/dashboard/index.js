@@ -55,8 +55,8 @@ function Dashboard() {
       <DashboardNavbar />
       <SuiBox py={1}>
         <SuiBox mb={1}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} lg={8}>
+          <Grid container spacing={2}>
+            <Grid item xs>
               <RecentModules />
             </Grid>
             <Grid item xs={12} lg={4}>

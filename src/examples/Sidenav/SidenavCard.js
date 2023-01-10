@@ -39,7 +39,7 @@ function SidenavCard() {
           </SuiBox>
           <SuiButton
             component={Link}
-            href="https://www.creative-tim.com/learning-lab/react/quick-start/soft-ui-dashboard/"
+            href="https://ovicore.com/help"
             target="_blank"
             rel="noreferrer"
             size="small"

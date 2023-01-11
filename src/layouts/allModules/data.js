@@ -78,7 +78,7 @@ function Data() {
                   <Grid item>
                   <Card className="h-100" style={{ width: "300px", height: "280px"  }}>
                     <div class="sketchfab-embed-wrapper"> 
-                      <iframe title="" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src={item.link}>
+                      <iframe sandbox="allow-same-origin allow-scripts" title="" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src={item.link}>
                       </iframe> 
                       <TimelineItem
                         title={item.name}

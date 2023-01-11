@@ -91,11 +91,7 @@ function RecentModules(  ) {
               }>
              
               </Card> </Card>
-              <TimelineItem
-                  title={module.name}
-                  description="The human heart is a muscular organ in most animals, which pumps blood through the blood vessels of the circulatory system. "
-                  dateTime="12 March 2023"
-            />          
+                     
                 </>
                 ))}
 

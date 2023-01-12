@@ -131,9 +131,7 @@ function SignUp() {
       <ToastContainer />
       <Card>
         <SuiBox p={3} mb={0.5} textAlign="center">
-        <SuiTypography variant="h2" fontWeight="medium" mb={2}>
-            Ovicore Technologies
-          </SuiTypography>
+        <img width="42px" alt="Ovicore Technologies" src="https://media.licdn.com/dms/image/D560BAQFcDRsgYuT8eQ/company-logo_100_100/0/1667338740279?e=1681344000&v=beta&t=iza4wMRdQuvx-O1MyFCBJrHwY1BXbcIIYnX9lGftM4U"/>
           <SuiTypography variant="h5" fontWeight="medium">
             Register with
           </SuiTypography>

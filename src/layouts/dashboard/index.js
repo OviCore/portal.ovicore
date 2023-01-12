@@ -28,9 +28,10 @@ import holones from "assets/images/illustrations/holobes2.jpg";
 // Data
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import gradientLineChartData from "layouts/dashboard/data/gradientLineChartData";
-import DayCalendar from "./components/DayCalendar";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import {getAuth} from "firebase/auth";
+import { doc, onSnapshot, getFirestore } from "firebase/firestore"; 
 
 function Dashboard() {
   let navigate = useNavigate();
@@ -45,13 +46,17 @@ function Dashboard() {
   const { size } = typography;
   const { chart, items } = reportsBarChartData;
 
+  const [name, setName ] = useState('');
+
+
+
   return (
     <DashboardLayout>
       <DashboardNavbar />
       <SuiBox py={1}>
         <SuiBox mb={1}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} lg={8}>
+          <Grid container spacing={2}>
+            <Grid item xs>
               <RecentModules />
             </Grid>
             <Grid item xs={12} lg={4}>

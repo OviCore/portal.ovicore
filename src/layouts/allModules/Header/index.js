@@ -85,7 +85,25 @@ function Header({name, email}) {
           px: 2,
         }}
       >
-        <Grid container spacing={3} alignItems="center">
+        <Grid container spacing={1} alignItems="center">
+          <Grid item>
+            <SuiAvatar
+              src={burceMars}
+              alt="profile-image"
+              variant="rounded"
+              size="xl"
+              shadow="sm"
+            />
+          </Grid>
+          <Grid item>
+            <SuiAvatar
+              src={burceMars}
+              alt="profile-image"
+              variant="rounded"
+              size="xl"
+              shadow="sm"
+            />
+          </Grid>
           <Grid item>
             <SuiAvatar
               src={burceMars}

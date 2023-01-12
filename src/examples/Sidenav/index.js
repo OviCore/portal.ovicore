@@ -32,7 +32,6 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
     if (user) {
       const db = getFirestore();
       const unsub = onSnapshot(doc(db, "users", auth.currentUser.uid), (doc) => {
-        console.log("Current data: ", doc.data().userType);
     });
     } else {
       console.log("User is not logged in");
@@ -148,9 +147,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
             width={!brandName && "100%"}
             sx={(theme) => sidenavLogoLabel(theme, { miniSidenav })}
           >
-            <SuiTypography component="h6" variant="button" fontWeight="medium">
-              
-            </SuiTypography>
+           
           </SuiBox>
         </SuiBox>
       </SuiBox>

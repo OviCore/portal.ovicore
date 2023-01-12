@@ -52,7 +52,7 @@ const routes = [
  
   {
     type: "non-visible",
-    name: "Timekeeping",
+    name: "Send Feedback",
     key: "timesheet",
     route: "/timesheet",
     icon: <TimerOutlinedIcon />,

@@ -1,5 +1,3 @@
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
 import { useState } from "react";
 import FormControlLabel from '@mui/material/FormControlLabel';
 
@@ -10,7 +8,6 @@ import FormControl from '@mui/material/FormControl';
 // @mui material components
 import Card from "@mui/material/Card";
 import Checkbox from "@mui/material/Checkbox";
-
 // Soft UI Dashboard React components
 import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
@@ -22,14 +19,12 @@ import BasicLayout from "layouts/authentication/components/BasicLayout";
 import Socials from "layouts/authentication/components/Socials";
 import Separator from "layouts/authentication/components/Separator";
 import banner from "assets/images/illustrations/banner.jpg";
-import Logo from "assets/images/logos/logo-name.png";
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { collection, addDoc } from "firebase/firestore"; 
+import { doc, setDoc } from "firebase/firestore"; 
 import { getFirestore } from "firebase/firestore";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import AccountCircle from '@mui/icons-material/AccountCircle';
 
 
 function SignUp() {
@@ -38,23 +33,79 @@ function SignUp() {
  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [organization, setOrganization] = useState(''); 
+  const [organization, setOrganization] = useState('None'); 
+  const [activeButton, setActiveButton] = useState("student");
+
+  
+  const authentication = getAuth();
+
+  const updateOrganization =  ()  => {
+    const parts = email.split("@");
+    const organization = parts[parts.length - 1];
+    console.log(organization); // Output: "gmail.com"
+    // get rid of .
+    const organizationParts = organization.split(".");
+    const organizationName = organizationParts[0];
+    if (organizationName === "gmail") {
+      setOrganization("None");
+    }
+    else {
+      setOrganization(organizationName);
+    }
+  }
+
+  const handleNewUser = async () => {
+    const uid = sessionStorage.getItem('Auth Token');
+    const db = getFirestore();
+    const data = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      organization: organization,
+      role: activeButton,
+    };
+    await setDoc(doc(db, "users", uid), data).then(() => {
+      console.log("Document written with ID: ", uid);
+    })
+    .catch(error => {
+      console.error("Error writing document: ", error);
+      toast.error("Error creating account: ", error);
+    });
+  }
+
 
   let navigate = useNavigate();
   const handleSignUpAction = (id) => {
-    const authentication = getAuth();
+    if (!email || !password || !firstName || !lastName) {
+      toast.error('All fields are required');
+      return;
+    } 
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match');
+      return;
+    }
       createUserWithEmailAndPassword(authentication, email, password)
         .then( (response) => {
           console.log(response.user.uid);
           sessionStorage.setItem('Auth Token', response.user.uid)
           handleDocRef();
+          handleNewUser();
         })
         .catch((error) => {
           if (error.code === 'auth/email-already-in-use') {
             toast.error('Email Already in Use');
+          } 
+          if (error.code === 'auth/invalid-email') {
+            toast.error('Invalid Email');
           }
+          if (error.code === 'auth/weak-password') {
+            toast.error('Weak Password');
+          }
+          console.log(error);
+
         })
   }
   const handleDocRef = () => {
@@ -64,10 +115,10 @@ function SignUp() {
       photoURL: "https://example.com/jane-q-user/profile.jpg"
     }).then(() => {
       console.log('Profile Updated');
+      updateOrganization();
       navigate('/dashboard');
     }).catch((error) => {
-      // An error occurred
-      // ...
+       console.log(error);
     });
   }
 
@@ -95,9 +146,17 @@ function SignUp() {
           <SuiBox ml={2}>
           </SuiBox>
           <SuiBox component="form" role="form" mt={1}>
+          <Grid container spacing={1} mb={1}>
+      <Grid item xs={12} sm={6}>
+        <SuiButton variant={activeButton === "student" ? "contained" : "outlined"} color="info" fullWidth onClick={() => setActiveButton('student')}>Student</SuiButton>
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <SuiButton variant={activeButton === "educator" ? "contained" : "outlined"} color="info" fullWidth onClick={() => setActiveButton('educator')}>Educator</SuiButton>
+      </Grid>
+    </Grid>
             <Grid container spacing={1} mb={1}>
               <Grid item xs={12} sm={6}>
-                <SuiInput placeholder="First Name"  value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+                <SuiInput placeholder="First Name"  value={firstName} onChange={(e) => setFirstName(e.target.value)} />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <SuiInput placeholder="Last Name"  value={lastName} onChange={(e) => setLastName(e.target.value)}/>
@@ -114,7 +173,7 @@ function SignUp() {
             </SuiBox>
             <SuiBox mb={1}>
               <SuiInput type="password" placeholder="Confirm Password" 
-              value={password} onChange={(e) => setPassword(e.target.value)}/>
+              value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
             </SuiBox>
             <SuiBox display="flex" alignItems="center">
               <Checkbox checked={agreement} onChange={handleSetAgremment} />

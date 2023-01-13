@@ -35,6 +35,7 @@ import { getApp } from "firebase/app";
 import { useNavigate } from "react-router-dom";
 // @mui material components
 import Icon from "@mui/material/Icon";
+import Header from "./Header";
 
 // Soft UI Dashboard React components
 import SuiButton from "components/SuiButton";
@@ -60,7 +61,7 @@ function Organization() {
 
    return (
     <DashboardLayout>
-      <DashboardNavbar />
+      <Header />
       <Grid item xs={12} md={6} xl={4} mb={2}>
             <ProfileInfoCard
               title="ABC Properties LLC"

@@ -27,7 +27,7 @@ import breakpoints from "assets/theme/base/breakpoints";
 import burceMars from "assets/images/bruce-mars.jpg";
 import curved0 from "assets/images/curved-images/curved0.jpg";
 
-function Header({name, email}) {
+function Header() {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [tabValue, setTabValue] = useState(0);
 
@@ -65,9 +65,9 @@ function Header({name, email}) {
         sx={{
           backgroundImage: ({ functions: { rgba, linearGradient }, palette: { gradients } }) =>
             `${linearGradient(
-              rgba(gradients.info.main, 0.6),
-              rgba(gradients.info.state, 0.6)
-            )}, url(${curved0})`,
+              rgba(gradients.info.main, 0.0),
+              rgba(gradients.info.state, 0.0)
+            )}, url(https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg)`,
           backgroundSize: "cover",
           backgroundPosition: "50%",
           overflow: "hidden",
@@ -88,7 +88,7 @@ function Header({name, email}) {
         <Grid container spacing={3} alignItems="center">
           <Grid item>
             <SuiAvatar
-              src={burceMars}
+              src="https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
               alt="profile-image"
               variant="rounded"
               size="xl"
@@ -98,10 +98,10 @@ function Header({name, email}) {
           <Grid item>
             <SuiBox height="100%" mt={0.5} lineHeight={1}>
               <SuiTypography variant="h5" fontWeight="medium">
-                {name}
+                Gonzaga University
               </SuiTypography>
               <SuiTypography variant="button" color="text" fontWeight="medium">
-                {email}
+                Educator
               </SuiTypography>
             </SuiBox>
           </Grid>
@@ -114,7 +114,7 @@ function Header({name, email}) {
                 sx={{ background: "transparent" }}
               >
                 <Tab
-                  label="Saved Modules"
+                  label="Educators"
                   icon={<Cube />}
                   sx={{
                     color: ({ palette: { text } }) => text.secondary,
@@ -124,7 +124,7 @@ function Header({name, email}) {
                   }}
                   />
                 <Tab
-                  label="Settings"
+                  label="Students"
                   icon={<Document />}
                   sx={{
                     color: ({ palette: { text } }) => text.secondary,

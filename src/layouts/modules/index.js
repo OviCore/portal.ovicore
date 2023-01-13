@@ -17,12 +17,12 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Data from "./data";
 
-function AllModules() {
+function Modules() {
   let navigate = useNavigate();
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
     if (authToken) {
-        navigate('/allmodules')
+        navigate('/modules')
     }
     if (!authToken) {
         navigate('/sign-in')
@@ -40,11 +40,9 @@ function AllModules() {
          
         </Grid>
       </SuiBox>
-   
-
       <Footer />
     </DashboardLayout>
   );
 }
 
-export default AllModules;
+export default Modules;

@@ -20,15 +20,25 @@ import TimelineItem from "examples/Timeline/TimelineItem";
 
 
 function Data() {
+    let navigate = useNavigate();
+    const handleNavigateModule = (moduleNumber) => {
+        sessionStorage.setItem('Module Number', moduleNumber)
+        console.log(moduleNumber)
+        navigate('/modules/module')
+    }
+
     const data = [
         {
+            id: 1,
             name: "Human Heart",
             date: "2021-01-01",
             describe: "This is a description of the human heart",
             link: "https://sketchfab.com/models/ce09f4099a68467880f46e61eb9a3531/embed",
-            category: "Health"
+            category: "Health",
+
         },
         {
+            id: 2,
             name: "Human Heart",
             date: "2021-01-01",
             describe: "This is a description of the human heart",
@@ -77,6 +87,7 @@ function Data() {
         {data.map((item, index) => (
                   <Grid item>
                   <Card className="h-100" style={{ width: "300px", height: "280px"  }}>
+                   
                     <div class="sketchfab-embed-wrapper"> 
                       <iframe sandbox="allow-same-origin allow-scripts" title="" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src={item.link}>
                       </iframe> 
@@ -86,7 +97,10 @@ function Data() {
                         dateTime={item.date}
                       />
                     </div>
+                    <SuiButton variant="outlined" fontWeight="300" color="info" onClick={() => handleNavigateModule(item.id)}>View
+                    </SuiButton>
                   </Card>
+                  
                 </Grid>
         ))}
         </Grid>

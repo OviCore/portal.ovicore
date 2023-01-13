@@ -16,29 +16,25 @@
 
 // Soft UI Dashboard React layouts
 import Dashboard from "layouts/dashboard";
-import Wiki from "layouts/wiki";
-import Timesheet from "layouts/timesheet";
+import Module from "layouts/module";
+import Feedback from "layouts/feedback";
 import Reports from "layouts/reports";
 import GroupsAndMessages from "layouts/groupsAndMessages";
+import AssistantOutlinedIcon from '@mui/icons-material/AssistantOutlined';
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
 import Organization from "layouts/organization";
 import DeleteIcon from '@mui/icons-material/Delete';
-import AllModules from "layouts/allModules";
-
+import Modules from "layouts/modules";
+import ClassOutlinedIcon from '@mui/icons-material/ClassOutlined';
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
-import HomeRepairServiceOutlinedIcon from '@mui/icons-material/HomeRepairServiceOutlined';
 import TimerOutlinedIcon from '@mui/icons-material/TimerOutlined';
-import MessageIcon from '@mui/icons-material/Message';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import CorporateFareIcon from '@mui/icons-material/CorporateFare';
-import FormatAlignJustifyIcon from '@mui/icons-material/FormatAlignJustify';
-import PieChartIcon from '@mui/icons-material/PieChart';
-import PaidIcon from '@mui/icons-material/Paid';
 import People from "layouts/people";
-
+import ViewInArIcon from '@mui/icons-material/ViewInAr';
 const routes = [
   {
     type: "collapse",
@@ -51,20 +47,29 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "All Modules",
-    key: "All Modules",
-    route: "/allmodules",
-    icon: <FormatAlignJustifyIcon />,
-    component: <AllModules />,
+    name: "Modules",
+    key: "modules",
+    route: "/modules",
+    icon: <ViewInArIcon />,
+    component: <Modules />,
+    noCollapse: true,
+  },
+  {
+    type: "collapse",
+    name: "Courses",
+    key: "courses",
+    route: "/courses",
+    icon: <ClassOutlinedIcon />,
+    component: <Feedback />,
     noCollapse: true,
   },
   {
     type: "non-visible",
-    name: "Send Feedback",
-    key: "timesheet",
-    route: "/timesheet",
-    icon: <TimerOutlinedIcon />,
-    component: <Timesheet />,
+    name: "Module",
+    key: "modules/module",
+    route: "/modules/module",
+    icon: <ClassOutlinedIcon />,
+    component: <Module />,
     noCollapse: true,
   },
 
@@ -113,6 +118,15 @@ const routes = [
     route: "/people",
     icon:<PeopleAltIcon />,
     component: <People />,
+    noCollapse: true,
+  },
+  {
+    type: "collapse",
+    name: "Send Feedback",
+    key: "feedback",
+    route: "/feedback",
+    icon: <AssistantOutlinedIcon />,
+    component: <Feedback />,
     noCollapse: true,
   },
   

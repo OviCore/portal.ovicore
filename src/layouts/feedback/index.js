@@ -9,7 +9,7 @@ import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 import Table from "examples/Tables/Table";
 import Icon from "@mui/material/Icon";
-import authorsTableData from "layouts/timesheet/data/authorsTableData";
+import authorsTableData from "layouts/feedback/data/authorsTableData";
 import SuiInput from "components/SuiInput";
 import { useNavigate } from "react-router-dom";
 
@@ -17,12 +17,12 @@ import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 
 import Demo from './components/WeeklyCalendar';
 
-function Timesheet() {
+function Feedback() {
   let navigate = useNavigate();
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
     if (authToken) {
-        navigate('/timesheet')
+        navigate('/feedback')
     }
     if (!authToken) {
         navigate('/sign-in')
@@ -45,4 +45,4 @@ function Timesheet() {
   );
 }
 
-export default Timesheet;
+export default Feedback;

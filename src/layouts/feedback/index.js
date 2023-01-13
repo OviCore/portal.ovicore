@@ -9,16 +9,18 @@ import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 import Table from "examples/Tables/Table";
 import Icon from "@mui/material/Icon";
-import authorsTableData from "layouts/feedback/data/authorsTableData";
 import SuiInput from "components/SuiInput";
 import { useNavigate } from "react-router-dom";
+import { getAuth } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore"; 
+import { getFirestore } from "firebase/firestore";
 
-import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
-
-import Demo from './components/WeeklyCalendar';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Feedback() {
   let navigate = useNavigate();
+  const [feedback, setFeedback] = useState('');
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
     if (authToken) {
@@ -28,13 +30,62 @@ function Feedback() {
         navigate('/sign-in')
     }}, [])
 
-  const { columns, rows } = authorsTableData;
+  const handleFeedbackSubmition = async () => {
+    const uid = sessionStorage.getItem('Auth Token');
+    const db = getFirestore();
+    const data = {
+      uid: uid,
+      feedback: feedback,
+      date: new Date().toLocaleString(),
+    };
+    const auth = getAuth();
+    const user = auth.currentUser;
+    await setDoc(doc(db, "feedback", user.displayName), data).then(() => {
+      console.log("Document written with ID (Feedback): ", uid);
+      toast.success("Feedback Sent!")
+    })
+    .catch(error => {
+      console.error("Error writing document (Feedback): ", error);
+      toast.error("Feedback Failed to send ", error);
+    });
+    setFeedback('');
+  }
+
+
   return (
     <DashboardLayout>
       <DashboardNavbar />
+      <ToastContainer />
       <SuiBox py={3}>
-     
-   
+        <Card variant="outlined">
+          <SuiBox py={3} px={3}>
+            <SuiTypography variant="h6" fontWeight="medium">
+              Your Feedback
+            </SuiTypography>
+            <SuiBox mt={3}>
+              <SuiTypography variant="button" fontWeight="regular" textColor="text">
+                The feedback you provide will help us improve our services, and we will use it to make your experience better.
+              </SuiTypography>
+            </SuiBox>
+            <SuiBox mt={3}>
+              <SuiInput
+                placeholder="Enter your feedback here"
+                multiline
+                rows={4}
+                fullWidth
+                value={feedback} 
+                onChange={(e) => setFeedback(e.target.value)}
+              />
+            </SuiBox>
+          
+              <SuiBox mt={3}>
+                <SuiButton variant="contained" color="info" onClick={handleFeedbackSubmition}>
+                  Submit
+                </SuiButton>
+              </SuiBox>
+            </SuiBox>
+            </Card>
+              
          
       </SuiBox>
      

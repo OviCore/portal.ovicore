@@ -12,7 +12,7 @@ import Footer from "examples/Footer";
 
 
 import Header from "./Header";
-import Quarter from "layouts/taxes/components/Quarter";
+import Quarter from "layouts/courses/components/Quarter";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Data from "./data";

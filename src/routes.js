@@ -18,7 +18,7 @@
 import Dashboard from "layouts/dashboard";
 import Module from "layouts/module";
 import Feedback from "layouts/feedback";
-import Reports from "layouts/reports";
+import Courses from "layouts/courses";
 import GroupsAndMessages from "layouts/groupsAndMessages";
 import AssistantOutlinedIcon from '@mui/icons-material/AssistantOutlined';
 import Profile from "layouts/profile";
@@ -60,7 +60,7 @@ const routes = [
     key: "courses",
     route: "/courses",
     icon: <ClassOutlinedIcon />,
-    component: <Feedback />,
+    component: <Courses />,
     noCollapse: true,
   },
   {
@@ -112,7 +112,7 @@ const routes = [
   },
   
   {
-    type: "collapse",
+    type: "non-visible",
     name: "People",
     key: "people",
     route: "/people",

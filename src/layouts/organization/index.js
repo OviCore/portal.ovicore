@@ -62,37 +62,12 @@ function Organization() {
    return (
     <DashboardLayout>
       <Header />
-      <Grid item xs={12} md={6} xl={4} mb={2}>
-            <ProfileInfoCard
-              title="ABC Properties LLC"
-              description="ABC Properties LLC is a real estate company that specializes in the sale of multi-family properties in the United States."
-              info={{
-                fullName: "Alec M. Thompson",
-                mobile: "(44) 123 1234 123",
-                email: "alecthompson@mail.com",
-                location: "USA",
-              }}
-              social={[
-                {
-                  link: "https://www.facebook.com/CreativeTim/",
-                  icon: <FacebookIcon />,
-                  color: "facebook",
-                },
-                {
-                  link: "https://twitter.com/creativetim",
-                  icon: <TwitterIcon />,
-                  color: "twitter",
-                },
-                {
-                  link: "https://www.instagram.com/creativetimofficial/",
-                  icon: <InstagramIcon />,
-                  color: "instagram",
-                },
-              ]}
-              action={{ route: "", tooltip: "Edit Profile" }}
-            />
-
-            
+          <Grid item xs={12} md={6} xl={4} mb={2}>
+            <SuiBox mb={5} mt={5} ml={2}>
+              <SuiTypography variant="h6" fontWeight="medium">
+                This organization has not created a public profile yet.
+              </SuiTypography>
+            </SuiBox> 
           </Grid>
       <Footer />
     </DashboardLayout>

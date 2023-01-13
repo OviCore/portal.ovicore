@@ -16,49 +16,43 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import Footer from "examples/Footer";
 import ProfileInfoCard from "examples/Cards/InfoCards/ProfileInfoCard";
 import ProfilesList from "examples/Lists/ProfilesList";
-
+import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 // Overview page components
 import Header from "layouts/profile/components/Header";
-import Quarter from "layouts/taxes/components/Quarter";
+import Quarter from "layouts/courses/components/Quarter";
 
 // Data
 import profilesListData from "layouts/profile/data/profilesListData";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-function Taxes() {
+function Courses() {
   let navigate = useNavigate();
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
     if (authToken) {
-        navigate('/taxes')
+        navigate('/courses')
     }
     if (!authToken) {
         navigate('/sign-in')
     }}, [])
   return (
     <DashboardLayout>
-      <Header />
-      <SuiBox mt={5} mb={3}>
+      <DashboardNavbar />
+      <SuiBox mt={5} mb={5} ml={5}>
         <Grid container spacing={3}>
-          <Grid item xs={12} md={6} xl={4}>
-            <Quarter />
-          </Grid>
-          <Grid item xs={12} md={6} xl={4}>
-            
-          </Grid>
-          <Grid item xs={12} xl={4}>
-          </Grid>
+            <SuiTypography variant="h6" fontWeight="medium" textTransform="uppercase" textColor="text">
+              There are currently no courses available by your organization.
+            </SuiTypography>
+
+          
         </Grid>
       </SuiBox>
-      <SuiBox mb={3}>
-       
-       
-      </SuiBox>
+ 
 
       <Footer />
     </DashboardLayout>
   );
 }
 
-export default Taxes;
+export default Courses;

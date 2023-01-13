@@ -13,7 +13,7 @@ import Footer from "examples/Footer";
 
 
 import Header from "layouts/profile/components/Header";
-import Quarter from "layouts/taxes/components/Quarter";
+import Quarter from "layouts/courses/components/Quarter";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import TimelineItem from "examples/Timeline/TimelineItem";

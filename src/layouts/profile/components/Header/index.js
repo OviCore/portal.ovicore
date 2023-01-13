@@ -19,7 +19,7 @@ import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Cube from "examples/Icons/Cube";
 import Document from "examples/Icons/Document";
 import Settings from "examples/Icons/Settings";
-
+import SuiButton from "components/SuiButton";
 // Soft UI Dashboard React base styles
 import breakpoints from "assets/theme/base/breakpoints";
 
@@ -30,6 +30,7 @@ import curved0 from "assets/images/curved-images/curved0.jpg";
 function Header({name, email}) {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [tabValue, setTabValue] = useState(0);
+  const [activeButton, setActiveButton] = useState("student");
 
   useEffect(() => {
     // A function that sets the orientation state of the tabs.
@@ -107,33 +108,14 @@ function Header({name, email}) {
           </Grid>
           <Grid item xs={12} md={6} lg={4} sx={{ ml: "auto" }}>
             <AppBar position="static">
-              <Tabs
-                orientation={tabsOrientation}
-                value={tabValue}
-                onChange={handleSetTabValue}
-                sx={{ background: "transparent" }}
-              >
-                <Tab
-                  label="Saved Modules"
-                  icon={<Cube />}
-                  sx={{
-                    color: ({ palette: { text } }) => text.secondary,
-                    "&.Mui-selected": {
-                      color: ({ palette: { primary } }) => primary.main,
-                    },
-                  }}
-                  />
-                <Tab
-                  label="Settings"
-                  icon={<Document />}
-                  sx={{
-                    color: ({ palette: { text } }) => text.secondary,
-                    "&.Mui-selected": {
-                      color: ({ palette: { primary } }) => primary.main,
-                    },
-                  }}
-                  />
-              </Tabs>
+            <Grid container spacing={1} mb={1}>
+            <Grid item xs={12} sm={6}>
+              <SuiButton variant={activeButton === "student" ? "contained" : "outlined"} color="info" fullWidth onClick={() => setActiveButton('student')}>Student</SuiButton>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <SuiButton variant={activeButton === "educator" ? "contained" : "outlined"} color="info" fullWidth onClick={() => setActiveButton('educator')}>Educator</SuiButton>
+            </Grid>
+          </Grid>
             </AppBar>
           </Grid>
         </Grid>

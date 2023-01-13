@@ -33,7 +33,7 @@ function PlatformSettings() {
           </SuiBox>
           <SuiBox width="80%" ml={2}>
             <SuiTypography variant="button" fontWeight="regular" color="text">
-              Email me when someone follows me
+              Silence all notifications
             </SuiTypography>
           </SuiBox>
         </SuiBox>
@@ -43,7 +43,7 @@ function PlatformSettings() {
           </SuiBox>
           <SuiBox width="80%" ml={2}>
             <SuiTypography variant="button" fontWeight="regular" color="text">
-              Email me when someone answers on my post
+              Notify me when someone answers my post
             </SuiTypography>
           </SuiBox>
         </SuiBox>

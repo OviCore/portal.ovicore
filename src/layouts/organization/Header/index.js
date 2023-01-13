@@ -26,11 +26,19 @@ import breakpoints from "assets/theme/base/breakpoints";
 // Images
 import burceMars from "assets/images/bruce-mars.jpg";
 import curved0 from "assets/images/curved-images/curved0.jpg";
+import SuiButton from "components/SuiButton";
+import SuiInput from "components/SuiInput";
+
+import { doc, getDoc } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
+
 
 function Header() {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
-  const [tabValue, setTabValue] = useState(0);
-
+  const [showInput, setShowInput] = useState(false);
+  const [newOrgName, setNewOrgName] = useState("");
+  const [orgName, setOrgName] = useState("");
+  const [type , setType] = useState("");
   useEffect(() => {
     // A function that sets the orientation state of the tabs.
     function handleTabsOrientation() {
@@ -50,8 +58,27 @@ function Header() {
     // Remove event listener on cleanup
     return () => window.removeEventListener("resize", handleTabsOrientation);
   }, [tabsOrientation]);
+   
+  useEffect(async () => {
+    const auth = sessionStorage.getItem("Auth Token");
+    const db = getFirestore();
+    const docRef = doc(db, "users", auth);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+      setOrgName(docSnap.data().organization);
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
 
-  const handleSetTabValue = (event, newValue) => setTabValue(newValue);
+  }, []);
+
+  const handleTabsChange = () => {
+    // show the suiinput to edit the name
+    setShowInput(!showInput);
+
+  };
 
   return (
     <SuiBox position="relative">
@@ -88,7 +115,7 @@ function Header() {
         <Grid container spacing={3} alignItems="center">
           <Grid item>
             <SuiAvatar
-              src="https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
+              src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKBqz362k3ms8Gmcv___TLR_4q-njTXqt5oA&usqp=CAU"}
               alt="profile-image"
               variant="rounded"
               size="xl"
@@ -98,42 +125,48 @@ function Header() {
           <Grid item>
             <SuiBox height="100%" mt={0.5} lineHeight={1}>
               <SuiTypography variant="h5" fontWeight="medium">
-                Gonzaga University
+                {orgName ? orgName : "Organization Name"}
               </SuiTypography>
               <SuiTypography variant="button" color="text" fontWeight="medium">
-                Educator
+                {type ? type : "Your Role"}
+                
               </SuiTypography>
             </SuiBox>
           </Grid>
           <Grid item xs={12} md={6} lg={4} sx={{ ml: "auto" }}>
             <AppBar position="static">
-              <Tabs
-                orientation={tabsOrientation}
-                value={tabValue}
-                onChange={handleSetTabValue}
-                sx={{ background: "transparent" }}
-              >
-                <Tab
-                  label="Educators"
-                  icon={<Cube />}
-                  sx={{
-                    color: ({ palette: { text } }) => text.secondary,
-                    "&.Mui-selected": {
-                      color: ({ palette: { primary } }) => primary.main,
-                    },
+              {showInput ? (
+                <Grid container spacing={1} alignItems="center">
+                 <Grid item>
+                <SuiInput
+                  placeholder="New Organization Name"
+                  inputProps={{
+                    "aria-label": "search",
                   }}
-                  />
-                <Tab
-                  label="Students"
-                  icon={<Document />}
-                  sx={{
-                    color: ({ palette: { text } }) => text.secondary,
-                    "&.Mui-selected": {
-                      color: ({ palette: { primary } }) => primary.main,
-                    },
-                  }}
-                  />
-              </Tabs>
+                  value={newOrgName}
+                  onChange={(e) => setNewOrgName(e.target.value)}
+          
+                />
+                </Grid>
+                <Grid item>
+                <SuiButton variant="contained" color="warning" onClick={handleTabsChange}>
+                 Cancel
+                </SuiButton>
+                </Grid>
+                <Grid item>
+                <SuiButton variant="outlined" color="info" onClick={handleTabsChange}>
+                 Save
+                </SuiButton>
+                </Grid>
+                
+                </Grid>
+              ) : (
+                <SuiButton variant="contained" color="warning" onClick={handleTabsChange}>
+                Change Organization
+              </SuiButton>
+              )
+              }
+              
             </AppBar>
           </Grid>
         </Grid>

@@ -33,12 +33,11 @@ import { doc, getDoc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 
 
-function Header() {
+function Header({ organization, role }) {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [showInput, setShowInput] = useState(false);
   const [newOrgName, setNewOrgName] = useState("");
-  const [orgName, setOrgName] = useState("");
-  const [type , setType] = useState("");
+  
   useEffect(() => {
     // A function that sets the orientation state of the tabs.
     function handleTabsOrientation() {
@@ -59,26 +58,15 @@ function Header() {
     return () => window.removeEventListener("resize", handleTabsOrientation);
   }, [tabsOrientation]);
    
-  useEffect(async () => {
-    const auth = sessionStorage.getItem("Auth Token");
-    const db = getFirestore();
-    const docRef = doc(db, "users", auth);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-      setOrgName(docSnap.data().organization);
-    } else {
-      // doc.data() will be undefined in this case
-      console.log("No such document!");
-    }
-
-  }, []);
+ 
 
   const handleTabsChange = () => {
     // show the suiinput to edit the name
     setShowInput(!showInput);
 
   };
+
+  
 
   return (
     <SuiBox position="relative">
@@ -125,47 +113,17 @@ function Header() {
           <Grid item>
             <SuiBox height="100%" mt={0.5} lineHeight={1}>
               <SuiTypography variant="h5" fontWeight="medium">
-                {orgName ? orgName : "Organization Name"}
+                {organization ? organization : "Organization Name"}
               </SuiTypography>
               <SuiTypography variant="button" color="text" fontWeight="medium">
-                {type ? type : "Your Role"}
+                {role ? role : "Your Role"}
                 
               </SuiTypography>
             </SuiBox>
           </Grid>
           <Grid item xs={12} md={6} lg={4} sx={{ ml: "auto" }}>
             <AppBar position="static">
-              {showInput ? (
-                <Grid container spacing={1} alignItems="center">
-                 <Grid item>
-                <SuiInput
-                  placeholder="New Organization Name"
-                  inputProps={{
-                    "aria-label": "search",
-                  }}
-                  value={newOrgName}
-                  onChange={(e) => setNewOrgName(e.target.value)}
-          
-                />
-                </Grid>
-                <Grid item>
-                <SuiButton variant="contained" color="warning" onClick={handleTabsChange}>
-                 Cancel
-                </SuiButton>
-                </Grid>
-                <Grid item>
-                <SuiButton variant="outlined" color="info" onClick={handleTabsChange}>
-                 Save
-                </SuiButton>
-                </Grid>
-                
-                </Grid>
-              ) : (
-                <SuiButton variant="contained" color="warning" onClick={handleTabsChange}>
-                Change Organization
-              </SuiButton>
-              )
-              }
+             
               
             </AppBar>
           </Grid>

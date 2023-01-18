@@ -37,6 +37,12 @@ export default function App() {
     measurementId: "G-MHV1CTKH93",
 };
 
+  sessionStorage.setItem('SketchFab', 'e01696126f0545f3a8a60fc28e59f240');
+  sessionStorage.setItem('Anatomy', '7b063e41d3e7456b9e2009b727c7dbea');
+  sessionStorage.setItem('Biology', '13de60f760cc4b498f038cdec351a9b4');
+  sessionStorage.setItem('Chemistry', '25b7927be32a46a6acc207f0b66af5d5');
+
+
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);

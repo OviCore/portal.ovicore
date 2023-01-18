@@ -10,95 +10,194 @@ import SuiButton from "components/SuiButton";
 // Soft UI Dashboard React examples
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import Footer from "examples/Footer";
-
+import { useState } from "react";
 
 import Header from "layouts/profile/components/Header";
 import Quarter from "layouts/courses/components/Quarter";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import TimelineItem from "examples/Timeline/TimelineItem";
+import axios from 'axios';
 
 
 function Data() {
     let navigate = useNavigate();
-    const handleNavigateModule = (moduleNumber) => {
-        sessionStorage.setItem('Module Number', moduleNumber)
-        console.log(moduleNumber)
+    const [modules, setModules] = useState([]);
+    const [selected, setSelected] = useState('');
+
+    const handleNavigateModule = (embedUrl, name) => {
+        sessionStorage.setItem('EmbedUrl', embedUrl);
+        sessionStorage.setItem('ModuleName', name);
         navigate('/modules/module')
     }
 
-    const data = [
-        {
-            id: 1,
-            name: "Human Heart",
-            date: "2021-01-01",
-            describe: "This is a description of the human heart",
-            link: "https://sketchfab.com/models/ce09f4099a68467880f46e61eb9a3531/embed",
-            category: "Health",
+    useEffect(() => {
+      setSelected('Anatomy')
+      const API_TOKEN = sessionStorage.getItem('SketchFab');
+      async function getCollection() {
+          const collectionName = sessionStorage.getItem('Anatomy');
+          const url = `https://api.sketchfab.com/v3/collections/${collectionName}/models`;
+          const myCollectionsEndpoint =  url;
+          const headers = {
+              Authorization: `Token ${API_TOKEN}`,
+          };
+          try {
+              const response = await axios.get(myCollectionsEndpoint, { headers });
+              return response.data;
+          } catch (error) {
+              console.log(`An API error occurred: ${error}`);
+              process.exit(1);
+          }
+      }
+      async function main() {
+          console.log('Getting models from your profile...');
+          const collection = await getCollection();
 
-        },
-        {
-            id: 2,
-            name: "Human Heart",
-            date: "2021-01-01",
-            describe: "This is a description of the human heart",
-            link: "https://sketchfab.com/models/ce09f4099a68467880f46e61eb9a3531/embed",
-            category: "Health"
-        },
-    ]
+          if (!collection) {
+              console.log("You don't seem to have any collection, let's create one!");
+              return;
+          } else {
+              console.log('Your collections:');
+              console.log(collection.results);
+              setModules(collection.results)
+          }
+      }
+      main();
+    }, [])
 
+    const getAnatomyModules = () => {
+      setSelected('Anatomy')
+      const API_TOKEN = sessionStorage.getItem('SketchFab');
+      async function getCollection() {
+          const collectionName = sessionStorage.getItem('Anatomy');
+          const url = `https://api.sketchfab.com/v3/collections/${collectionName}/models`;
+          const myCollectionsEndpoint =  url;
+          const headers = {
+              Authorization: `Token ${API_TOKEN}`,
+          };
+          try {
+              const response = await axios.get(myCollectionsEndpoint, { headers });
+              return response.data;
+          } catch (error) {
+              console.log(`An API error occurred: ${error}`);
+              process.exit(1);
+          }
+      }
+      async function main() {
+          console.log('Getting models from your profile...');
+          const collection = await getCollection();
+
+          if (!collection) {
+              console.log("You don't seem to have any collection, let's create one!");
+              return;
+          } else {
+              console.log('Your collections:');
+              console.log(collection.results);
+              setModules(collection.results)
+          }
+      }
+      main();
+    }
+
+    const getBiologyModules = () => {
+      setSelected('Biology')
+      const API_TOKEN = sessionStorage.getItem('SketchFab');
+      async function getCollection() {
+          const collectionName = sessionStorage.getItem('Biology');
+          const url = `https://api.sketchfab.com/v3/collections/${collectionName}/models`;
+          const myCollectionsEndpoint =  url;
+          const headers = {
+              Authorization: `Token ${API_TOKEN}`,
+          };
+          try {
+              const response = await axios.get(myCollectionsEndpoint, { headers });
+              return response.data;
+          } catch (error) {
+              console.log(`An API error occurred: ${error}`);
+              process.exit(1);
+          }
+      }
+      async function main() {
+          console.log('Getting models from your profile...');
+          const collection = await getCollection();
+
+          if (!collection) {
+              console.log("You don't seem to have any collection, let's create one!");
+              return;
+          } else {
+              console.log('Your collections:');
+              console.log(collection.results);
+              setModules(collection.results)
+          }
+      }
+      main();
+    }     
+
+    const getChemistryModules = () => {
+      setSelected('Chemistry')
+      const API_TOKEN = sessionStorage.getItem('SketchFab');
+      async function getCollection() {
+          const collectionName = sessionStorage.getItem('Chemistry');
+          const url = `https://api.sketchfab.com/v3/collections/${collectionName}/models`;
+          const myCollectionsEndpoint =  url;
+          const headers = {
+              Authorization: `Token ${API_TOKEN}`,
+          };
+          try {
+              const response = await axios.get(myCollectionsEndpoint, { headers });
+              return response.data;
+          } catch (error) {
+              console.log(`An API error occurred: ${error}`);
+              process.exit(1);
+          }
+      }
+      async function main() {
+          console.log('Getting models from your profile...');
+          const collection = await getCollection();
+
+          if (!collection) {
+              console.log("You don't seem to have any collection, let's create one!");
+              return;
+          } else {
+              console.log('Your collections:');
+              console.log(collection.results);
+              setModules(collection.results)
+          }
+      }
+      main();
+    }
+    
     return(
         <SuiBox mb={3} ml={2}>
-           <SuiBox p={2}>
-        <Grid container spacing={0.5}>
-          <Grid item>
-          <SuiButton variant="contained" fontWeight="300" color="info">All</SuiButton>
-          </Grid>
-          <Grid item>
-          <SuiButton variant="outlined" fontWeight="300" color="info">Math</SuiButton>
-          </Grid>
-          <Grid item>
-            <SuiButton variant="outlined" fontWeight="300" color="info">Health</SuiButton>
-          </Grid>
-          <Grid item>
-            <SuiButton variant="outlined" fontWeight="300" color="info">Astronomy</SuiButton>
-          </Grid>
-          <Grid item>
-            <SuiButton variant="outlined" fontWeight="300" color="info">Statistics</SuiButton>
-          </Grid>
-          <Grid item>
-            <SuiButton variant="outlined" fontWeight="300" color="info">Environment</SuiButton>
-          </Grid>
-          <Grid item>
-            <SuiButton variant="outlined" fontWeight="300" color="info">Engineering</SuiButton>
-          </Grid>
-          <Grid item>
-            <SuiButton variant="outlined" fontWeight="300" color="info">Chemistry</SuiButton>
-          </Grid>
-          <Grid item>
-            <SuiButton variant="outlined" fontWeight="300" color="info">New</SuiButton>
-          </Grid>
-          <Grid item>
-            <SuiButton variant="outlined" fontWeight="300" color="info">Other</SuiButton>
-          </Grid>
-        </Grid>
-      </SuiBox>
-      <Grid container spacing={3}>
-        {data.map((item, index) => (
-                  <Grid item>
-                  <Card className="h-100" style={{ width: "300px", height: "280px"  }}>
+          <SuiBox p={2}>
+            <Grid container spacing={0.5}>
+              <Grid item>
+                <SuiButton variant={selected  === 'Anatomy' ? "contained" : "outlined"} fontWeight="300" color="info" onClick={() => getAnatomyModules()}>Anatomy</SuiButton>
+              </Grid>
+              <Grid item>
+                <SuiButton variant={selected  === 'Biology' ? "contained" : "outlined"} fontWeight="300" color="info" onClick={() => getBiologyModules()}>Biology</SuiButton>
+              </Grid>
+              <Grid item>
+                <SuiButton variant={selected  === 'Chemistry' ? "contained" : "outlined"} fontWeight="300" color="info" onClick={() => getChemistryModules()}>Chemistry</SuiButton>
+              </Grid>
+            </Grid>
+          </SuiBox>
+      <Grid container spacing={3} p={1}>
+        {modules.map((item, index) => (
+                  <Grid item key={index}>
+                  <Card className="h-100" style={{ width: "250px", height: "280px"  }}>
                    
-                    <div class="sketchfab-embed-wrapper"> 
-                      <iframe sandbox="allow-same-origin allow-scripts" title="" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src={item.link}>
-                      </iframe> 
+                    <div class="sketchfab-embed-wrapper embed-responsive embed-responsive-4by3">
+                      
+                      <img src={item.thumbnails.images[2].url} title="A 3D model" alt="A 3D model" className="sketchfab-embed-placeholder" style={{ width: "250px", height: "120px" }}></img>
                       <TimelineItem
                         title={item.name}
-                        description={item.describe}
-                        dateTime={item.date}
+                        // only show the first 100 characters of the description
+                        description={item.description.substring(0, 50)}
+                        dateTime={item.createdAt}
                       />
                     </div>
-                    <SuiButton variant="outlined" fontWeight="300" color="info" onClick={() => handleNavigateModule(item.id)}>View
-                    </SuiButton>
+                    <SuiButton variant="outlined" fontWeight="300" color="info" onClick={() => handleNavigateModule(item.embedUrl, item.name)}>View</SuiButton>
                   </Card>
                   
                 </Grid>

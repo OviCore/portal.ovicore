@@ -37,16 +37,18 @@ import Icon from "@mui/material/Icon";
 // Soft UI Dashboard React components
 import SuiButton from "components/SuiButton";
 
-function Module() {
-  const [moduleNumber, setModuleNumber] = useState();
+function Module({module}) {
+  const [moduleUrl, setModuleUrl] = useState("");
+  const [moduleTitle, setModuleTitle] = useState("");
 
-  useEffect(() => {
-    setModuleNumber(sessionStorage.getItem('Module Number'))
-  }, [])
+ 
 
   let navigate = useNavigate();
+
   useEffect(() => {
-    let authToken = sessionStorage.getItem('Auth Token')
+    setModuleUrl(sessionStorage.getItem('EmbedUrl'));
+    setModuleTitle(sessionStorage.getItem('ModuleName'));
+    let authToken = sessionStorage.getItem('Auth Token');
     if (authToken) {
         navigate('/modules/module')
     }
@@ -78,10 +80,8 @@ function Module() {
     }, []); */
 
 
-
+   
     
-  
-
 
    return (
     <DashboardLayout>
@@ -89,14 +89,15 @@ function Module() {
       <SuiBox mb={3}>
         <Card>
           <SuiBox pt={2} px={2}>
-            <SuiBox mb={0.5}>
+            <SuiButton color="info" variant="outlined" size="medium" onClick={() => navigate('/modules')}>Back to Modules</SuiButton>
+            <SuiBox mb={0.5} mt={1}>
               <SuiTypography variant="h3" fontWeight="medium">
-                Human Lungs
+                {moduleTitle}
               </SuiTypography>
             </SuiBox>
             <SuiBox mb={1}>
               <SuiTypography variant="button" fontWeight="regular" color="text">
-                Here you can manage your properties.
+                
               </SuiTypography>
             </SuiBox>
           </SuiBox>
@@ -104,24 +105,18 @@ function Module() {
             <Grid container spacing={3}>
                 
                      <Grid item>
-                     <Card className="h-100" style={{ width: "550px", height: "425px"  }}>
+                     <Card className="h-100" style={{ width: "750px", height: "525px"  }}>
                       
                        <div class="sketchfab-embed-wrapper"> 
-                         <iframe sandbox="allow-same-origin allow-scripts" title="" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="550" height="350"  src="https://sketchfab.com/models/ce09f4099a68467880f46e61eb9a3531/embed">
+                         <iframe sandbox="allow-same-origin allow-scripts" title="" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="100%" height="525px"  src={moduleUrl}>
                          </iframe> 
-                         <TimelineItem
-                           title="Human Anatomy"
-                           description="This is a 3D model of the human anatomy."
-                           dateTime="2021-05-24"
-                         />
+                        
                        </div>
                        
                      </Card>
                      
                    </Grid>
-      
-
-
+    
               <Grid item xs={12} md={6} xl={3}>
               
               </Grid>

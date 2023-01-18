@@ -9,7 +9,7 @@ import SuiButton from "components/SuiButton";
 import TimelineItem from "examples/Timeline/TimelineItem";
 // Images
 import ivancik from "assets/images/modules/heart.jpg";
-
+// https://sketchfab.com/models/003ec6e9706548a8a8ed487c46c28bbd/embed?autostart=1&cardboard=1&internal=1&tracking=0&ui_infos=0&ui_snapshots=1&ui_stop=0&ui_watermark=0
 function Discover() {
   return (
     <Card sx={{ height: "100%" }}>

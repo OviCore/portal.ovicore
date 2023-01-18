@@ -30,14 +30,11 @@ function Modules() {
 
   return (
     <DashboardLayout>
+    
       <Header />
       <SuiBox mt={5} mb={3}>
         <Grid container spacing={3}>
-          <Grid item xs={8} md={4} xl={2}>
-            <Quarter />
-          </Grid>
           <Data/>
-         
         </Grid>
       </SuiBox>
       <Footer />

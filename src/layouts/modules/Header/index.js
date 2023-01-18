@@ -87,31 +87,7 @@ function Header({name, email}) {
       >
         <Grid container spacing={1} alignItems="center">
           <Grid item>
-            <SuiAvatar
-              src={burceMars}
-              alt="profile-image"
-              variant="rounded"
-              size="xl"
-              shadow="sm"
-            />
-          </Grid>
-          <Grid item>
-            <SuiAvatar
-              src={burceMars}
-              alt="profile-image"
-              variant="rounded"
-              size="xl"
-              shadow="sm"
-            />
-          </Grid>
-          <Grid item>
-            <SuiAvatar
-              src={burceMars}
-              alt="profile-image"
-              variant="rounded"
-              size="xl"
-              shadow="sm"
-            />
+           
           </Grid>
           <Grid item>
             <SuiBox height="100%" mt={0.5} lineHeight={1}>

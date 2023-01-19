@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import TimelineItem from "examples/Timeline/TimelineItem";
 import axios from 'axios';
-
+import './spinner.css'
 
 function Data() {
     let navigate = useNavigate();
@@ -27,7 +27,10 @@ function Data() {
     const [biologyModules, setBiologyModules] = useState([]);
     const [chemistryModules, setChemistryModules] = useState([]);
     const [selected, setSelected] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
+    
+      
     const handleNavigateModule = (embedUrl) => {
         const modelId = embedUrl.split('/')[4];
         sessionStorage.setItem('ModelId', modelId);
@@ -66,6 +69,7 @@ function Data() {
           }
       }
       main();
+      setIsLoading(true);
     }, [])
 
     const getAnatomyModules = () => {
@@ -105,6 +109,7 @@ function Data() {
           }
       }
       main();
+      setIsLoading(true);
     }
 
     const getBiologyModules = () => {
@@ -145,6 +150,7 @@ function Data() {
           }
       }
       main();
+      setIsLoading(true);
     }     
 
     const getChemistryModules = () => {

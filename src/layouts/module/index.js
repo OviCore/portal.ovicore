@@ -39,6 +39,7 @@ import SuiButton from "components/SuiButton";
 
 function Module() {
   const [module, setModule] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   let navigate = useNavigate();
 
@@ -59,12 +60,12 @@ function Module() {
       const headers = {
           Authorization: `Token ${API_TOKEN}`,
       };
-
       async function fetchModel() {
           try {
               const { data } = await axios.get(url, { headers });
               console.log(data);
               setModule(data);
+              setLoading(false);
           } catch (error) {
               console.log(`An API error occurred: ${error}`);
           }
@@ -73,9 +74,22 @@ function Module() {
       fetchModel();
   }, []);
 
+  const LoadingSpinner = () => {
+    return (
+      <SuiBox mb={5} mt={5} display="flex" justifyContent="center" alignItems="center">
+      <SuiBox className="spinner-container" mb={5} mt={5}>
+        <SuiBox className="loading-spinner" mb={5}>
+        </SuiBox>
+      </SuiBox>
+      </SuiBox>
+    );
+  }
+
+
    return (
     <DashboardLayout>
       <DashboardNavbar />
+      {loading ? <LoadingSpinner /> : 
       <SuiBox mb={3}>
         <Card>
           <SuiBox pt={2} px={2}>
@@ -121,7 +135,7 @@ function Module() {
           
         </Card>
         
-      </SuiBox>
+      </SuiBox> }
       <Footer />
     </DashboardLayout>
   );

@@ -33,21 +33,16 @@ import { useNavigate } from "react-router-dom";
 
 // @mui material components
 import Icon from "@mui/material/Icon";
-
+import axios from "axios";
 // Soft UI Dashboard React components
 import SuiButton from "components/SuiButton";
 
-function Module({module}) {
-  const [moduleUrl, setModuleUrl] = useState("");
-  const [moduleTitle, setModuleTitle] = useState("");
-
- 
+function Module() {
+  const [module, setModule] = useState([]);
 
   let navigate = useNavigate();
 
   useEffect(() => {
-    setModuleUrl(sessionStorage.getItem('EmbedUrl'));
-    setModuleTitle(sessionStorage.getItem('ModuleName'));
     let authToken = sessionStorage.getItem('Auth Token');
     if (authToken) {
         navigate('/modules/module')
@@ -57,31 +52,26 @@ function Module({module}) {
     }}, [])
 
 
-    /*useEffect(() => {
-       const auth = getAuth();
-       const app = getApp();
-       const db = getFirestore(app);
-       // users - documents - properties 
-       const propertiesRef = collection(db, "users");
-       const userRef = doc(propertiesRef, auth.currentUser.uid);
-       const propRef = collection(userRef, "properties");
-       const propSnapshot = onSnapshot(propRef, (snapshot) => {
-        const properties = snapshot.docs.map(doc => {
-                return {
-                    id: doc.id,
-                    ...doc.data()
-                }
-            }
-            );
-            setProperties(properties);
-            console.log(properties);
-        }
-        );
-    }, []); */
+    useEffect(() => {
+      const API_TOKEN = sessionStorage.getItem('SketchFab');
+      const modelId = sessionStorage.getItem('ModelId');
+      const url = `https://api.sketchfab.com/v3/models/${modelId}`;
+      const headers = {
+          Authorization: `Token ${API_TOKEN}`,
+      };
 
+      async function fetchModel() {
+          try {
+              const { data } = await axios.get(url, { headers });
+              console.log(data);
+              setModule(data);
+          } catch (error) {
+              console.log(`An API error occurred: ${error}`);
+          }
+      }
 
-   
-    
+      fetchModel();
+  }, []);
 
    return (
     <DashboardLayout>
@@ -92,7 +82,7 @@ function Module({module}) {
             <SuiButton color="info" variant="outlined" size="medium" onClick={() => navigate('/modules')}>Back to Modules</SuiButton>
             <SuiBox mb={0.5} mt={1}>
               <SuiTypography variant="h3" fontWeight="medium">
-                {moduleTitle}
+                {module.name}
               </SuiTypography>
             </SuiBox>
             <SuiBox mb={1}>
@@ -108,18 +98,23 @@ function Module({module}) {
                      <Card className="h-100" style={{ width: "750px", height: "525px"  }}>
                       
                        <div class="sketchfab-embed-wrapper"> 
-                         <iframe sandbox="allow-same-origin allow-scripts" title="" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="100%" height="525px"  src={moduleUrl}>
+                         <iframe sandbox="allow-same-origin allow-scripts" title="" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="100%" height="525px"  src={module.embedUrl}>
                          </iframe> 
-                        
                        </div>
-                       
                      </Card>
-                     
                    </Grid>
     
               <Grid item xs={12} md={6} xl={3}>
-              
+                 <SuiTypography variant="h6" fontWeight="medium">
+                  Description: {module.description}
+                </SuiTypography>
               </Grid>
+              <Grid item xs={12} md={6} xl={3}>
+                 <SuiTypography variant="h6" fontWeight="medium">
+                  Date: {module.createdAt}
+                </SuiTypography>
+              </Grid>
+            
             
             </Grid>
           </SuiBox>

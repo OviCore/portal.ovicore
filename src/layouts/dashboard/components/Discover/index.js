@@ -17,7 +17,7 @@ function Discover() {
         <SuiBox
           display="flex"
           flexDirection="column"
-          height="100%"
+          height="250px"
           py={1}
           px={2}
           borderRadius="lg"
@@ -28,12 +28,12 @@ function Discover() {
         >
           <SuiBox mb={1} pt={1}>
             <SuiTypography variant="h4" color="black" fontWeight="bold">
-              Discover
+              Discover New Models
             </SuiTypography>
           </SuiBox>
 
           <div class="sketchfab-embed-wrapper flex-grow-1"> 
-          <iframe sandbox="allow-same-origin allow-scripts" title="" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="340" height="135" src="https://sketchfab.com/models/e48637d3399a4e5184bdf169929dc36e/embed"> 
+          <iframe sandbox="allow-same-origin allow-scripts" title="" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/e48637d3399a4e5184bdf169929dc36e/embed"> 
             </iframe> 
             <TimelineItem
                   title="Human Heart"

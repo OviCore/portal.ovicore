@@ -31,6 +31,7 @@ import { getAuth } from "firebase/auth";
 function Overview() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [photoURL, setPhotoURL] = useState("");
 
   let navigate = useNavigate();
   useEffect(() => {
@@ -49,11 +50,9 @@ function Overview() {
         // The user object has basic properties such as display name, email, etc.
         const displayName = user.displayName;
         setName(displayName);
-        const email = user.email;
-        setEmail(email);
-        const photoURL = user.photoURL;
+        setEmail(user.email);
+        setPhotoURL(user.photoURL);
         const emailVerified = user.emailVerified;
-  
         // The user's ID, unique to the Firebase project. Do NOT use
         // this value to authenticate with your backend server, if
         // you have one. Use User.getToken() instead.
@@ -66,7 +65,7 @@ function Overview() {
 
   return (
     <DashboardLayout>
-      <Header name={name} email={email}/>
+      <Header name={name} email={email} photo={photoURL}/>
       <SuiBox mt={3} mb={3}>
         
             <PlatformSettings />

@@ -27,7 +27,7 @@ import breakpoints from "assets/theme/base/breakpoints";
 import burceMars from "assets/images/bruce-mars.jpg";
 import curved0 from "assets/images/curved-images/curved0.jpg";
 
-function Header({name, email}) {
+function Header({name, email, photo}) {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [tabValue, setTabValue] = useState(0);
   const [activeButton, setActiveButton] = useState("student");
@@ -89,7 +89,7 @@ function Header({name, email}) {
         <Grid container spacing={3} alignItems="center">
           <Grid item>
             <SuiAvatar
-              src={burceMars}
+              src={photo}
               alt="profile-image"
               variant="rounded"
               size="xl"

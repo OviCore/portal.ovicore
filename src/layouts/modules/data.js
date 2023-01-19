@@ -23,11 +23,14 @@ import axios from 'axios';
 function Data() {
     let navigate = useNavigate();
     const [modules, setModules] = useState([]);
+    const [anatomyModules, setAnatomyModules] = useState([]);
+    const [biologyModules, setBiologyModules] = useState([]);
+    const [chemistryModules, setChemistryModules] = useState([]);
     const [selected, setSelected] = useState('');
 
-    const handleNavigateModule = (embedUrl, name) => {
-        sessionStorage.setItem('EmbedUrl', embedUrl);
-        sessionStorage.setItem('ModuleName', name);
+    const handleNavigateModule = (embedUrl) => {
+        const modelId = embedUrl.split('/')[4];
+        sessionStorage.setItem('ModelId', modelId);
         navigate('/modules/module')
     }
 
@@ -67,6 +70,10 @@ function Data() {
 
     const getAnatomyModules = () => {
       setSelected('Anatomy')
+      if(anatomyModules.length > 0) {
+        setModules(anatomyModules)
+        return;
+     }
       const API_TOKEN = sessionStorage.getItem('SketchFab');
       async function getCollection() {
           const collectionName = sessionStorage.getItem('Anatomy');
@@ -93,7 +100,8 @@ function Data() {
           } else {
               console.log('Your collections:');
               console.log(collection.results);
-              setModules(collection.results)
+              setAnatomyModules(collection.results);
+              setModules(collection.results);
           }
       }
       main();
@@ -101,6 +109,11 @@ function Data() {
 
     const getBiologyModules = () => {
       setSelected('Biology')
+        if(biologyModules.length > 0) {
+            setModules(biologyModules)
+            return;
+        }
+
       const API_TOKEN = sessionStorage.getItem('SketchFab');
       async function getCollection() {
           const collectionName = sessionStorage.getItem('Biology');
@@ -127,6 +140,7 @@ function Data() {
           } else {
               console.log('Your collections:');
               console.log(collection.results);
+              setBiologyModules(collection.results);
               setModules(collection.results)
           }
       }
@@ -135,6 +149,11 @@ function Data() {
 
     const getChemistryModules = () => {
       setSelected('Chemistry')
+      if(chemistryModules.length > 0) {
+            setModules(chemistryModules)
+            return;
+        }
+
       const API_TOKEN = sessionStorage.getItem('SketchFab');
       async function getCollection() {
           const collectionName = sessionStorage.getItem('Chemistry');
@@ -161,7 +180,8 @@ function Data() {
           } else {
               console.log('Your collections:');
               console.log(collection.results);
-              setModules(collection.results)
+              setModules(collection.results);
+              setChemistryModules(collection.results);
           }
       }
       main();
@@ -182,7 +202,7 @@ function Data() {
               </Grid>
             </Grid>
           </SuiBox>
-      <Grid container spacing={3} p={1}>
+      <Grid container gridAutoColumns spacing={2} p={1}>
         {modules.map((item, index) => (
                   <Grid item key={index}>
                   <Card className="h-100" style={{ width: "250px", height: "280px"  }}>
@@ -197,7 +217,7 @@ function Data() {
                         dateTime={item.createdAt}
                       />
                     </div>
-                    <SuiButton variant="outlined" fontWeight="300" color="info" onClick={() => handleNavigateModule(item.embedUrl, item.name)}>View</SuiButton>
+                    <SuiButton variant="outlined" fontWeight="300" color="info" onClick={() => handleNavigateModule(item.embedUrl)}>View</SuiButton>
                   </Card>
                   
                 </Grid>

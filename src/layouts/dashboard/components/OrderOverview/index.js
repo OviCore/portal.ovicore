@@ -38,40 +38,8 @@ function OrdersOverview() {
           </SuiTypography>
         </SuiBox>
       </SuiBox>
-      <SuiBox p={2}>
-        <Grid container spacing={0.5}>
-          <Grid item>
-          <SuiButton variant="contained" fontWeight="300" color="info">All</SuiButton>
-          </Grid>
-          <Grid item>
-          <SuiButton variant="outlined" fontWeight="300" color="info">Math</SuiButton>
-          </Grid>
-          <Grid item>
-            <SuiButton variant="outlined" fontWeight="300" color="info">Health</SuiButton>
-          </Grid>
-          <Grid item>
-            <SuiButton variant="outlined" fontWeight="300" color="info">Astronomy</SuiButton>
-          </Grid>
-          <Grid item>
-            <SuiButton variant="outlined" fontWeight="300" color="info">Statistics</SuiButton>
-          </Grid>
-          <Grid item>
-            <SuiButton variant="outlined" fontWeight="300" color="info">Environment</SuiButton>
-          </Grid>
-          <Grid item>
-            <SuiButton variant="outlined" fontWeight="300" color="info">Engineering</SuiButton>
-          </Grid>
-          <Grid item>
-            <SuiButton variant="outlined" fontWeight="300" color="info">Chemistry</SuiButton>
-          </Grid>
-          <Grid item>
-            <SuiButton variant="outlined" fontWeight="300" color="info">New</SuiButton>
-          </Grid>
-          <Grid item>
-            <SuiButton variant="outlined" fontWeight="300" color="info">Other</SuiButton>
-          </Grid>
-        </Grid>
-      </SuiBox>
+    
+    
       <SuiBox p={2}>
       <Grid container spacing={1}>
           <Grid item>

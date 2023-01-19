@@ -46,7 +46,7 @@ function Footer({ company, links }) {
         </SuiBox>
         <Link href={href} target="_blank">
           <SuiTypography variant="button" fontWeight="medium">
-            &nbsp;OviCore.&nbsp;
+            &nbsp;Ovicore Technologies.&nbsp; All rights reserved. Copyright 2022.
           </SuiTypography>
         </Link>
       </SuiBox>
@@ -75,9 +75,9 @@ function Footer({ company, links }) {
 
 // Setting default values for the props of Footer
 Footer.defaultProps = {
-  company: { href: "https://ovicore.com/", name: "OviCore" },
+  company: { href: "https://ovicore.com/", name: "Ovicore Technologies" },
   links: [
-    { href: "https://ovicore.com/", name: "OviCore" },
+    { href: "https://ovicore.com/", name: "Ovicore Technologies" },
     { href: "https://ovicore.com/about-us", name: "About Us" },
     { href: "https://ovicore.com/blog", name: "Blog" },
     { href: "https:/ovicore.com/privacy-policy", name: "Privacy" },

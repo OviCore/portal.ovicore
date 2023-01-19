@@ -1,24 +1,14 @@
-// @mui material components
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
-
-// Soft UI Dashboard React components
 import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
 import SuiButton from "components/SuiButton";
-
-// Soft UI Dashboard React examples
-import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
-import Footer from "examples/Footer";
 import { useState } from "react";
-
-import Header from "layouts/profile/components/Header";
-import Quarter from "layouts/courses/components/Quarter";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import TimelineItem from "examples/Timeline/TimelineItem";
 import axios from 'axios';
-import './spinner.css'
+import './spinner.css';
 
 function Data() {
     let navigate = useNavigate();
@@ -28,8 +18,6 @@ function Data() {
     const [chemistryModules, setChemistryModules] = useState([]);
     const [selected, setSelected] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-
-    
       
     const handleNavigateModule = (embedUrl) => {
         const modelId = embedUrl.split('/')[4];
@@ -223,7 +211,18 @@ function Data() {
                         dateTime={item.createdAt}
                       />
                     </div>
-                    <SuiButton variant="outlined" fontWeight="300" color="info" onClick={() => handleNavigateModule(item.embedUrl)}>View</SuiButton>
+                    <SuiButton variant="outlined" fontWeight="300" color="info" onClick={() => handleNavigateModule(item.embedUrl)} sx={
+                        {
+                            width: "100%",
+                            fontSize: "12px",
+                            textTransform: "none",
+                            borderRadius: "10px",
+                            borderTop: "1px solid #e0e0e0",
+                            position : "absolute",
+                            bottom: "1px"
+                        }
+                        
+                    }>View</SuiButton>
                   </Card>
                   
                 </Grid>

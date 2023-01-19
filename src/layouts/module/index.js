@@ -30,13 +30,13 @@ import { getAuth } from "firebase/auth";
 import { collection, getDoc, getFirestore, doc, onSnapshot } from "firebase/firestore"; 
 import { getApp } from "firebase/app";
 import { useNavigate } from "react-router-dom";
-
+import  '../modules/spinner.css';
 // @mui material components
 import Icon from "@mui/material/Icon";
 import axios from "axios";
 // Soft UI Dashboard React components
 import SuiButton from "components/SuiButton";
-
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 function Module() {
   const [module, setModule] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -81,10 +81,11 @@ function Module() {
         <SuiBox className="loading-spinner" mb={5}>
         </SuiBox>
       </SuiBox>
+      
       </SuiBox>
     );
   }
-
+   const { innerWidth: width, innerHeight: height } = window;
 
    return (
     <DashboardLayout>
@@ -93,10 +94,11 @@ function Module() {
       <SuiBox mb={3}>
         <Card>
           <SuiBox pt={2} px={2}>
-            <SuiButton color="info" variant="outlined" size="medium" onClick={() => navigate('/modules')}>Back to Modules</SuiButton>
-            <SuiBox mb={0.5} mt={1}>
-              <SuiTypography variant="h3" fontWeight="medium">
-                {module.name}
+            <SuiBox display="flex"  justifyContent="space-between" mt="auto" >
+            <SuiButton color="info" variant="outlined" size="small" onClick={() => navigate('/modules')}><ArrowBackIosIcon color="info" variant="outlined" size="small"/>
+              Back to Modules</SuiButton>
+              <SuiTypography variant="h3" fontWeight="light" pr={5}>
+                {module.name} - {module.categories[0].name}
               </SuiTypography>
             </SuiBox>
             <SuiBox mb={1}>
@@ -107,9 +109,8 @@ function Module() {
           </SuiBox>
           <SuiBox p={2}>
             <Grid container spacing={3}>
-                
                      <Grid item>
-                     <Card className="h-100" style={{ width: "750px", height: "525px"  }}>
+                     <Card className="h-100" style={{ width: innerWidth - 400, height: "525px"  }}>
                       
                        <div class="sketchfab-embed-wrapper"> 
                          <iframe sandbox="allow-same-origin allow-scripts" title="" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="100%" height="525px"  src={module.embedUrl}>

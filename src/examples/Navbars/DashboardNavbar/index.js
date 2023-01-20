@@ -8,6 +8,8 @@ import Menu from "@mui/material/Menu";
 import Icon from "@mui/material/Icon";
 import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
+import ViewInArRoundedIcon from '@mui/icons-material/ViewInArRounded';
+import ThreeDRotationRoundedIcon from '@mui/icons-material/ThreeDRotationRounded';
 import SuiInput from "components/SuiInput";
 import Breadcrumbs from "examples/Breadcrumbs";
 import NotificationItem from "examples/Items/NotificationItem";
@@ -26,10 +28,7 @@ import {
   setOpenConfigurator,
 } from "context";
 
-// Images
-import team2 from "assets/images/team-2.jpg";
-import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
-import SuiButton from "components/SuiButton";
+
 
 
 function DashboardNavbar({ absolute, light, isMini }) {
@@ -86,26 +85,22 @@ function DashboardNavbar({ absolute, light, isMini }) {
       sx={{ mt: 2 }}
     >
       <NotificationItem
-        image={<CheckCircleIcon color="success" fontSize="medium"/>}
-        title={["Paycheck Received", "Aug 18"]}
-        date="13 minutes ago"
+        image={<ViewInArRoundedIcon color="success" fontSize="medium"/>}
+        title={["New Module", "Human Brain"]}
+        date="2 days ago"
         onClick={handleCloseMenu}
       />
       <NotificationItem
         image={<CheckCircleIcon color="info" fontSize="medium"/>}
-        title={["W2 Available", "2022"]}
+        title={["Module Updated", "Human Heart"]}
         date="1 day"
         onClick={handleCloseMenu}
       />
       <NotificationItem
-        color="secondary"
-        image={
-          <Icon fontSize="small" sx={{ color: ({ palette: { white } }) => white.main }}>
-            payment
-          </Icon>
-        }
-        title={["", "Payment successfully completed"]}
-        date="2 days"
+        color="warning"
+        image={<ThreeDRotationRoundedIcon color="info" fontSize="medium"/>}
+        title={["New Model Viewer", ""]}
+        date="22 days"
         onClick={handleCloseMenu}
       />
     </Menu>

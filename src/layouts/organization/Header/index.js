@@ -27,7 +27,7 @@ import SuiInput from "components/SuiInput";
 import { doc, getDoc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 
-function Header({ organization, role, banner, logo }) {
+function Header({ organization, role, banner, logo, web }) {
    
 
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
@@ -69,7 +69,7 @@ function Header({ organization, role, banner, logo }) {
    
   const handleTabsChange = () => {
     // open new tab
-   // window.open(org.website_url, "_blank");
+    window.open(web, "_blank");
   };
 
   return (

@@ -26,111 +26,111 @@ import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 
 function Organization() {
-  const [orgs, setOrgs] = useState([]);
   const [selectedOrganization, setSelectedOrganization] = useState("");
   const [selectPosition, setSelectPosition] = useState("");
   const [show, setShow] = useState(false);
   const [banner, setBanner] = useState("");
   const [logo, setLogo] = useState("");
+  const [website, setWebsite] = useState("");
   let navigate = useNavigate();
 
   const organizations = [
     {
-        "college": "Central Washington University",
-        "website_url": "https://www.cwu.edu/",
-        "banner": "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
-        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
+        college: "Central Washington University",
+        website_url: "https://www.cwu.edu/",
+        banner: "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
     },
     {
-        "college": "Eastern Washington University",
-        "website_url": "https://www.ewu.edu/",            
-        "banner": "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
-        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
+        college: "Eastern Washington University",
+        website_url: "https://www.ewu.edu/",            
+        banner: "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
     },
     {
-        "college": "Gonzaga University",
-        "website_url": "https://www.gonzaga.edu/",
-        "banner": "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
-        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
+        college: "Gonzaga University",
+        website_url: "https://www.gonzaga.edu/",
+        banner: "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
     },
     {
-        "college": "Northwest University",
-        "website_url": "https://www.northwestu.edu/",
-        "banner": "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
-        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
+        college: "Northwest University",
+        website_url: "https://www.northwestu.edu/",
+        banner: "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
     },
     {
-        "college": "Pacific Lutheran University",
-        "website_url": "https://www.plu.edu/",
-        "banner": "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
-        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
+        college: "Pacific Lutheran University",
+        website_url: "https://www.plu.edu/",
+        banner: "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
      },
     {
-        "college": "Saint Martin's University",
-        "website_url": "https://www.stmartin.edu/",
-        "banner": "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
-        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
+        college: "Saint Martin's University",
+        website_url: "https://www.stmartin.edu/",
+        banner: "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
     },
     {
-        "college": "Seattle Pacific University",
-        "website_url": "https://www.spu.edu/",
-        "banner": "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
-        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
+        college: "Seattle Pacific University",
+        website_url: "https://www.spu.edu/",
+        banner: "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
     },
     {
-        "college": "Seattle University",
-        "website_url": "https://www.seattleu.edu/",
-        "banner": "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
-        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
+        college: "Seattle University",
+        website_url: "https://www.seattleu.edu/",
+        banner: "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
     },
     {
-        "college": "University of Puget Sound",
-        "website_url": "https://www.pugetsound.edu/",
-        "banner": "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
-        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
+        college: "University of Puget Sound",
+        website_url: "https://www.pugetsound.edu/",
+        banner: "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
     },
     {
-        "college": "University of Washington",
-        "website_url": "https://www.washington.edu/",
-        "banner": "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
-        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
+        college: "University of Washington",
+        website_url: "https://www.washington.edu/",
+        banner: "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
     },
   
     {
-        "college": "Walla Walla University",
-        "website_url": "https://www.wallawalla.edu/",
-        "banner": "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
-        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
+        college: "Walla Walla University",
+        website_url: "https://www.wallawalla.edu/",
+        banner: "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
     },
     {
-        "college": "Washington State University",
-        "website_url": "https://www.wsu.edu/",
-        "banner": "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
-        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
+        college: "Washington State University",
+        website_url: "https://www.wsu.edu/",
+        banner: "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
     },
     {
-        "college": "Western Governors University",
-        "website_url": "https://www.wgu.edu/",
-        "banner": "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
-        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
+        college: "Western Governors University",
+        website_url: "https://www.wgu.edu/",
+        banner: "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
     },
     {
-        "college": "Western Washington University",
-        "website_url": "https://www.wwu.edu/",
-        "banner": "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
-        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
+        college: "Western Washington University",
+        website_url: "https://www.wwu.edu/",
+        banner: "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
     },
     {
-        "college": "Whitman College",
-        "website_url": "https://www.whitman.edu/",
-        "banner": "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
-        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
+        college: "Whitman College",
+        website_url: "https://www.whitman.edu/",
+        banner: "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
     },
     {
-        "college": "Whitworth University",
-        "website_url": "https://www.whitworth.edu/",
-        "banner": "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
-        "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
+        college: "Whitworth University",
+        website_url: "https://www.whitworth.edu/",
+        banner: "https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"
     }
 ]
 
@@ -152,13 +152,16 @@ function Organization() {
         setShow(false);
         setSelectedOrganization(docSnap.data().organization);
         setSelectPosition(docSnap.data().role);
+        const org = organizations.find((org) => org.college === docSnap.data().organization);
+        setLogo(org.logo);
+        setBanner(org.banner);
+        setWebsite(org.website_url);
         navigate('/organization')
       } else {
         // doc.data() will be undefined in this case
         console.log("Failed to get document in Organization");
         setShow(true);
       }
-      setOrgs(organizations);
   
     }, []);
 
@@ -181,6 +184,7 @@ function Organization() {
     const org = organizations.find((org) => org.college === selectedOrganization);
     setLogo(org.logo);
     setBanner(org.banner);
+    setWebsite(org.website_url);
     const auth = getAuth();
     const uid = sessionStorage.getItem('Auth Token');
     const userRef = doc(getFirestore(), "users", uid);
@@ -207,7 +211,7 @@ function Organization() {
 
    return (
     <DashboardLayout>
-      <Header organization={selectedOrganization} role={selectPosition} banner={curved0} logo={"https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Gonzaga_Bulldogs_logo.svg/1200px-Gonzaga_Bulldogs_logo.svg.png"}/>
+      <Header organization={selectedOrganization} role={selectPosition} banner={banner} logo={logo} web={website}/>
       <ToastContainer />
 
           <Grid item xs={12} md={6} xl={4} mb={2}>
@@ -231,7 +235,7 @@ function Organization() {
 
               >
                 <MenuItem value="" disabled>Select Organization</MenuItem>
-                {orgs.map((org) => (
+                {organizations.map((org) => (
                   <MenuItem value={org.college}>{org.college}</MenuItem>
                 ))}
             </Select>

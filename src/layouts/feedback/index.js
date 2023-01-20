@@ -84,10 +84,9 @@ function Feedback() {
                 </SuiButton>
               </SuiBox>
             </SuiBox>
-            </Card>
-              
-         
+        </Card>
       </SuiBox>
+      
      
       
       <Footer />

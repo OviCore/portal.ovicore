@@ -106,12 +106,16 @@ function RecentModules(  ) {
                 <SuiTypography variant="button" fontWeight="regular" textColor="text">
                   <Icon className="fas fa-circle text-success" fontSize="small" /> Top Viewed
                 </SuiTypography>
+                <SuiBox mr={0.7} sx={{ position: "relative", left: "440px" }} >
+                  <SuiButton variant="text" color="info" size="small" buttonIcon="fas fa-arrow-right" pb={1} onClick={() => navigate("/courses")}>View All</SuiButton>
+              </SuiBox>
             </SuiBox>
+            
           </Grid>
           <Grid container ml={1} mt={2} spacing={2}>
             {modules ? modules.map((module, index) => (
               <Grid item key={index} justifyContent="center">
-              <Card sx={{ height: "150px", width: "175px"}} onClick={() => handleNavigateModule(module.embedUrl)} >
+              <Card sx={{ height: "145px", width: "175px"}} onClick={() => handleNavigateModule(module.embedUrl)} >
                 <SuiBox >
                     <Grid item  gridAutoColumns>
                       <SuiBox display="flex" flexDirection="column" height="95px">
@@ -119,7 +123,6 @@ function RecentModules(  ) {
                       </SuiBox>
                       <SuiTypography variant="caption" color="text" fontWeight="medium" ml={1}> {module.name.substring(0, 20)}...</SuiTypography>
                     </Grid>
-
                    
                 </SuiBox>
               </Card>
@@ -128,8 +131,7 @@ function RecentModules(  ) {
 
             
             }
-                                    <SuiButton variant="text" color="info" size="small" buttonIcon="fas fa-arrow-right" pb={1} onClick={() => navigate("/courses")}>View All</SuiButton>
-
+            
           </Grid> 
 
         </Grid>

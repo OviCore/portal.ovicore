@@ -32,10 +32,10 @@ function SignIn() {
       .catch((error) => {
         console.log(error);
         if(error.code === 'auth/wrong-password'){
-          toast.error('Incorrect Password or Email');
+          toast.error('Incorrect password or email');
         }
         if(error.code === 'auth/user-not-found'){
-          toast.error('User Not Found!');
+          toast.error('User is not found');
         }
       });
   };

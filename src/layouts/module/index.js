@@ -17,14 +17,7 @@ import Footer from "examples/Footer";
 import DefaultProjectCard from "examples/Cards/ProjectCards/DefaultProjectCard";
 import PlaceholderCard from "examples/Cards/PlaceholderCard";
 
-// Images
-import homeDecor1 from "assets/images/home-decor-1.jpg";
-import homeDecor2 from "assets/images/home-decor-2.jpg";
-import homeDecor3 from "assets/images/home-decor-3.jpg";
-import team1 from "assets/images/team-1.jpg";
-import team2 from "assets/images/team-2.jpg";
-import team3 from "assets/images/team-3.jpg";
-import team4 from "assets/images/team-4.jpg";
+
 
 import { getAuth } from "firebase/auth";
 import { collection, getDoc, getFirestore, doc, onSnapshot } from "firebase/firestore"; 
@@ -97,7 +90,7 @@ function Module() {
             <SuiBox display="flex"  justifyContent="space-between" mt="auto" >
             <SuiButton color="info" variant="outlined" size="small" onClick={() => navigate('/modules')}><ArrowBackIosIcon color="info" variant="outlined" size="small"/>
               Back to Modules</SuiButton>
-              <SuiTypography variant="h3" fontWeight="light" pr={5}>
+              <SuiTypography variant="h3" fontWeight="light" pr={2}>
                 {module.name} - {module.categories[0].name}
               </SuiTypography>
             </SuiBox>

@@ -17,13 +17,29 @@ function Data() {
     const [biologyModules, setBiologyModules] = useState([]);
     const [chemistryModules, setChemistryModules] = useState([]);
     const [selected, setSelected] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
       
     const handleNavigateModule = (embedUrl) => {
         const modelId = embedUrl.split('/')[4];
         sessionStorage.setItem('ModelId', modelId);
         navigate('/modules/module')
     }
+
+    const LoadingSpinner = () => {
+        return (
+          <SuiBox mb={5} mt={5} sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}>
+          <SuiBox className="spinner-container" mb={5} mt={5}>
+            <SuiBox className="loading-spinner" mb={5}>
+            </SuiBox>
+          </SuiBox>
+          </SuiBox>
+        );
+      }
 
     useEffect(() => {
       setSelected('Anatomy')
@@ -53,11 +69,11 @@ function Data() {
           } else {
               console.log('Your collections:');
               console.log(collection.results);
-              setModules(collection.results)
+              setModules(collection.results);
+              setLoading(false);
           }
       }
       main();
-      setIsLoading(true);
     }, [])
 
     const getAnatomyModules = () => {
@@ -197,7 +213,7 @@ function Data() {
             </Grid>
           </SuiBox>
       <Grid container gridAutoColumns spacing={2} p={1}>
-        {modules.map((item, index) => (
+        {loading ? <LoadingSpinner /> : modules.map((item, index) => (
                   <Grid item key={index}>
                   <Card className="h-100" style={{ width: "250px", height: "280px"  }}>
                    
@@ -213,13 +229,14 @@ function Data() {
                     </div>
                     <SuiButton variant="outlined" fontWeight="300" color="info" onClick={() => handleNavigateModule(item.embedUrl)} sx={
                         {
-                            width: "100%",
+                            width: "240px",
                             fontSize: "12px",
+                            
                             textTransform: "none",
                             borderRadius: "10px",
-                            borderTop: "1px solid #e0e0e0",
                             position : "absolute",
-                            bottom: "1px"
+                            bottom: "2px",
+                            left: "5px",
                         }
                         
                     }>View</SuiButton>

@@ -11,20 +11,15 @@ import Tab from "@mui/material/Tab";
 import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
 import SuiAvatar from "components/SuiAvatar";
-
 // Soft UI Dashboard React examples
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-
 // Soft UI Dashboard React icons
 import Cube from "examples/Icons/Cube";
-import Document from "examples/Icons/Document";
-import Settings from "examples/Icons/Settings";
 
 // Soft UI Dashboard React base styles
 import breakpoints from "assets/theme/base/breakpoints";
 
 // Images
-import burceMars from "assets/images/bruce-mars.jpg";
 import curved0 from "assets/images/curved-images/curved0.jpg";
 import SuiButton from "components/SuiButton";
 import SuiInput from "components/SuiInput";
@@ -32,12 +27,26 @@ import SuiInput from "components/SuiInput";
 import { doc, getDoc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 
+function Header({ organization, role, banner, logo }) {
+   
 
-function Header({ organization, role }) {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
-  const [showInput, setShowInput] = useState(false);
-  const [newOrgName, setNewOrgName] = useState("");
+  const [org, setOrg] = useState({});
   
+  useEffect(() => {
+    console.log("organization", organization);
+    console.log("role", role);
+    console.log("banner", banner);
+    console.log("logo", logo);
+    const data = {
+      name: organization,
+      role: role,
+      banner: banner,
+      logo: logo,
+    };
+    setOrg(data);
+  }, []);
+
   useEffect(() => {
     // A function that sets the orientation state of the tabs.
     function handleTabsOrientation() {
@@ -58,15 +67,10 @@ function Header({ organization, role }) {
     return () => window.removeEventListener("resize", handleTabsOrientation);
   }, [tabsOrientation]);
    
- 
-
   const handleTabsChange = () => {
-    // show the suiinput to edit the name
-    setShowInput(!showInput);
-
+    // open new tab
+   // window.open(org.website_url, "_blank");
   };
-
-  
 
   return (
     <SuiBox position="relative">
@@ -82,7 +86,7 @@ function Header({ organization, role }) {
             `${linearGradient(
               rgba(gradients.info.main, 0.0),
               rgba(gradients.info.state, 0.0)
-            )}, url(https://www.commonapp.org/static/8b267091de413fd8a7de56c3770edd25/gonzaga-university_105.jpg)`,
+            )}, url(${banner})`,
           backgroundSize: "cover",
           backgroundPosition: "50%",
           overflow: "hidden",
@@ -102,13 +106,23 @@ function Header({ organization, role }) {
       >
         <Grid container spacing={3} alignItems="center">
           <Grid item>
-            <SuiAvatar
-              src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKBqz362k3ms8Gmcv___TLR_4q-njTXqt5oA&usqp=CAU"}
+            {logo === "" ? (
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-building-check" viewBox="0 0 16 16">
+              <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514Z"/>
+              <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6.5a.5.5 0 0 1-1 0V1H3v14h3v-2.5a.5.5 0 0 1 .5-.5H8v4H3a1 1 0 0 1-1-1V1Z"/>
+              <path d="M4.5 2a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Z"/>
+            </svg>
+            ) : (
+              <SuiAvatar
+              src={logo}
               alt="profile-image"
               variant="rounded"
               size="xl"
               shadow="sm"
             />
+            
+            )}
+            
           </Grid>
           <Grid item>
             <SuiBox height="100%" mt={0.5} lineHeight={1}>
@@ -123,7 +137,15 @@ function Header({ organization, role }) {
           </Grid>
           <Grid item xs={12} md={6} lg={4} sx={{ ml: "auto" }}>
             <AppBar position="static">
-             
+               <Tabs
+                value={0}
+                variant={tabsOrientation}
+                textColor="primary"
+                indicatorColor="primary"
+                aria-label="tabs"
+              >
+                <Tab label="Website"  onClick={handleTabsChange} />
+              </Tabs>
               
             </AppBar>
           </Grid>

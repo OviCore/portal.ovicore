@@ -29,11 +29,14 @@ function RecentModules(  ) {
       const displayName = user.displayName;
       setName(displayName);
       setEmail(user.email);
-      if (user.photoURL === null) {
-        setPhoto("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png");
-      } else {
-        setPhoto(user.photoURL);
-      }
+      console.log("user.photoURL", user.photoURL)
+      // if user.ptotoURL starts https://example.com then set to default image
+      if (!user.photoURL || user.photoURL.startsWith("https://example.com")) {
+        setPhoto("https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg")
+      } else
+       {
+         setPhoto(user.photoURL);
+       }
       const emailVerified = user.emailVerified;
       const uid = user.uid;
     } else {

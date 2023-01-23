@@ -51,7 +51,13 @@ function Overview() {
         const displayName = user.displayName;
         setName(displayName);
         setEmail(user.email);
-        setPhotoURL(user.photoURL);
+        if (!user.photoURL || user.photoURL.startsWith("https://example.com")) {
+          setPhotoURL("https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg")
+        } else
+         {
+           setPhotoURL(user.photoURL);
+         }
+       
         const emailVerified = user.emailVerified;
         // The user's ID, unique to the Firebase project. Do NOT use
         // this value to authenticate with your backend server, if
@@ -70,8 +76,7 @@ function Overview() {
         
             <PlatformSettings />
             
-          
-        
+    
       </SuiBox>
       <SuiBox mb={3}>
        

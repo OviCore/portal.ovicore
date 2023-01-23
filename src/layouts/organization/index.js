@@ -148,7 +148,7 @@ function Organization() {
       const db = getFirestore();
       const docRef = doc(db, "users", auth);
       const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
+      if (docSnap.exists() && docSnap.data().organization !== "None") {
         setShow(false);
         setSelectedOrganization(docSnap.data().organization);
         setSelectPosition(docSnap.data().role);
@@ -158,6 +158,7 @@ function Organization() {
         setWebsite(org.website_url);
         navigate('/organization')
       } else {
+        setBanner(curved0);
         // doc.data() will be undefined in this case
         console.log("Failed to get document in Organization");
         setShow(true);

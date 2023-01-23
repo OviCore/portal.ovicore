@@ -52,7 +52,7 @@ function Overview() {
         setName(displayName);
         setEmail(user.email);
         if (!user.photoURL || user.photoURL.startsWith("https://example.com")) {
-          setPhotoURL("https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg")
+          setPhotoURL("https://st3.depositphotos.com/3102403/17634/v/600/depositphotos_176349124-stock-illustration-anonymous-user-circle-icon.jpg")
         } else
          {
            setPhotoURL(user.photoURL);

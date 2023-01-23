@@ -142,38 +142,10 @@ function Configurator() {
 
         <Divider />
 
-        <SuiBox mt={3} mb={2}>
-          
-          <SuiButton
-            component={Link}
-            href="https://ovicore.com"
-            target="_blank"
-            rel="noreferrer"
-            color="dark"
-            variant="outlined"
-            fullWidth
-          >
-            Mobile App
-          </SuiButton>
-        </SuiBox>
-        <SuiBox mt={3} mb={2}>
-          
-          <SuiButton
-            component={Link}
-            href="https://ovicore.com/"
-            target="_blank"
-            rel="noreferrer"
-            color="dark"
-            variant="outlined"
-            fullWidth
-          >
-            Profile
-          </SuiButton>
-        </SuiBox>
         <SuiBox sx={{display: "flex",mt: 2,}}>   
             <SuiButton
               color="info"
-              variant="outlined"
+              variant="contained"
               onClick={handleWhiteSidenav}
               disabled={disabled}
               fullWidth

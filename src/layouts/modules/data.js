@@ -212,14 +212,14 @@ function Data() {
               </Grid>
             </Grid>
           </SuiBox>
-      <Grid container gridAutoColumns spacing={2} p={1}>
+      <Grid container spacing={2} p={1}>
         {loading ? <LoadingSpinner /> : modules.map((item, index) => (
-                  <Grid item key={index}>
-                  <Card className="h-100" style={{ width: "250px", height: "280px"  }}>
+                  <Grid item key={index} xs={12} sm={7} md={5} lg={4} xl={3}>
+                  <Card className="h-100" style={{ width: "100%", height: "19rem"  }}>
                    
                     <div class="sketchfab-embed-wrapper embed-responsive embed-responsive-4by3">
                       
-                      <img src={item.thumbnails.images[2].url} title="A 3D model" alt="A 3D model" className="sketchfab-embed-placeholder" style={{ width: "250px", height: "120px" }}></img>
+                      <img src={item.thumbnails.images[2].url} title="A 3D model" alt="A 3D model" className="sketchfab-embed-placeholder" style={{ width: "100%", height: "8rem" }}></img>
                       <TimelineItem
                         title={item.name}
                         // only show the first 100 characters of the description
@@ -229,9 +229,8 @@ function Data() {
                     </div>
                     <SuiButton variant="outlined" fontWeight="300" color="info" onClick={() => handleNavigateModule(item.embedUrl)} sx={
                         {
-                            width: "240px",
+                            width: "96%",
                             fontSize: "12px",
-                            
                             textTransform: "none",
                             borderRadius: "10px",
                             position : "absolute",

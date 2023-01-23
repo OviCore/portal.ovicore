@@ -21,7 +21,7 @@ function Discover() {
 
  
   return (
-    <Card sx={{ height: "100%" }}>
+    <Card sx={{ height: "100%" }} xs={12} sm={6} md={4} xl={3}>
       <SuiBox position="relative" height="100%" p={2}>
         <SuiBox
           display="flex"
@@ -42,8 +42,8 @@ function Discover() {
             </SuiTypography>
           </SuiBox>
 
-               <Card className="h-100" style={{ width: "360px", height: "250px"}} >
-                      <img src={"https://media.sketchfab.com/models/e48637d3399a4e5184bdf169929dc36e/thumbnails/3f47f989397747f6bbe422427c971aec/d1d1f89f7d294447b1cb6b6986494ca5.jpeg"} title="A 3D model" alt="A 3D model" className="sketchfab-embed-placeholder" style={{ width: "360px", height: "220px" }}></img>
+               <Card className="h-100" style={{ width: "100%", height: "15rem"}} xs={12} sm={6} md={4} xl={3}>
+                      <img src={"https://media.sketchfab.com/models/e48637d3399a4e5184bdf169929dc36e/thumbnails/3f47f989397747f6bbe422427c971aec/d1d1f89f7d294447b1cb6b6986494ca5.jpeg"} title="A 3D model" alt="A 3D model" className="sketchfab-embed-placeholder" style={{ width: "100%", height: "13rem" }}></img>
                   </Card>
                   <SuiTypography variant="h6" fontWeight="bold" color="black" mb={1}>
                     Human Heart - Anatomy

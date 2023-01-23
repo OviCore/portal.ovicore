@@ -108,14 +108,7 @@ function Header({name, email, photo}) {
           </Grid>
           <Grid item xs={12} md={6} lg={4} sx={{ ml: "auto" }}>
             <AppBar position="static">
-            <Grid container spacing={1} mb={1}>
-            <Grid item xs={12} sm={6}>
-              <SuiButton variant={activeButton === "student" ? "contained" : "outlined"} color="info" fullWidth onClick={() => setActiveButton('student')}>Student</SuiButton>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <SuiButton variant={activeButton === "educator" ? "contained" : "outlined"} color="info" fullWidth onClick={() => setActiveButton('educator')}>Educator</SuiButton>
-            </Grid>
-          </Grid>
+           
             </AppBar>
           </Grid>
         </Grid>

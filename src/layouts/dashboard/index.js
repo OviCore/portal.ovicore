@@ -43,12 +43,6 @@ function Dashboard() {
     if (!authToken) {
         navigate('/sign-in')
     }}, [])
-  const { size } = typography;
-  const { chart, items } = reportsBarChartData;
-
-  const [name, setName ] = useState('');
-
-
 
   return (
     <DashboardLayout>

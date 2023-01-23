@@ -70,11 +70,9 @@ function Module() {
   const LoadingSpinner = () => {
     return (
       <SuiBox mb={5} mt={5} display="flex" justifyContent="center" alignItems="center">
-      <SuiBox className="spinner-container" mb={5} mt={5}>
-        <SuiBox className="loading-spinner" mb={5}>
-        </SuiBox>
+        <SuiBox className="spinner-container" mb={5} mt={5}>
+          <SuiBox className="loading-spinner" mb={5}></SuiBox>
       </SuiBox>
-      
       </SuiBox>
     );
   }
@@ -85,7 +83,7 @@ function Module() {
       <DashboardNavbar />
       {loading ? <LoadingSpinner /> : 
       <SuiBox mb={3}>
-        <Card>
+        <Card >
           <SuiBox pt={2} px={2}>
             <SuiBox display="flex"  justifyContent="space-between" mt="auto" >
             <SuiButton color="info" variant="outlined" size="small" onClick={() => navigate('/modules')}><ArrowBackIosIcon color="info" variant="outlined" size="small"/>
@@ -101,9 +99,9 @@ function Module() {
             </SuiBox>
           </SuiBox>
           <SuiBox p={2}>
-            <Grid container spacing={3}>
-                     <Grid item>
-                     <Card className="h-100" style={{ width: innerWidth - 400, height: "525px"  }}>
+            <Grid container>
+                     <Grid item xs={12}>
+                     <Card className="h-100" style={{ width: "100%", height: "525px"  }}>
                       
                        <div class="sketchfab-embed-wrapper"> 
                          <iframe sandbox="allow-same-origin allow-scripts" title="" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="100%" height="525px"  src={module.embedUrl}>
@@ -112,13 +110,13 @@ function Module() {
                      </Card>
                    </Grid>
     
-              <Grid item xs={12} md={6} xl={3}>
+              <Grid item xs={12} mt={2}>
                  <SuiTypography variant="h6" fontWeight="medium">
                   Description: {module.description}
                 </SuiTypography>
               </Grid>
-              <Grid item xs={12} md={6} xl={3}>
-                 <SuiTypography variant="h6" fontWeight="medium">
+              <Grid item xs={12} >
+                 <SuiTypography variant="h6" fontWeight="medium" mt={2}>
                   Date: {module.createdAt}
                 </SuiTypography>
               </Grid>

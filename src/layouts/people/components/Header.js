@@ -91,23 +91,8 @@ function Header() {
           
           <Grid item xs={12} md={6} lg={4} sx={{ ml: "auto" }}>
             <AppBar position="static">
-              <Tabs
-                value={tabValue}
-                onChange={handleSetTabValue}
-                orientation={tabsOrientation}
-                variant="scrollable"
-                scrollButtons="auto"
-                textColor="primary"
-                indicatorColor="primary"
-                >
-                <Tab
-                  label="Auto Payroll"
-                  icon={<MotionPhotosAutoIcon />}
-                  sx={{ minWidth: "auto" }}
-                  
-                >
-                </Tab>
-                </Tabs>
+              
+               
             </AppBar>
           </Grid>
         </Grid>

@@ -18,6 +18,7 @@ import { getAuth } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
+import ARModule from "layouts/armodule";
 
 export default function App() {
   const [controller, dispatch] = useSoftUIController();
@@ -109,6 +110,7 @@ export default function App() {
       return null;
     });
 
+
   const configsButton = (
     <SuiBox
       display="flex"
@@ -135,18 +137,21 @@ export default function App() {
 
   return direction === "rtl" ? (
     <CacheProvider value={rtlCache}>
+   
       <ThemeProvider theme={themeRTL}>
         <CssBaseline />
         {layout === "dashboard" && (
           <>
-            <Sidenav
-              color={sidenavColor}
-              brand={brand}
-              brandName="OviCore Dashboard"
-              routes={routes}
-              onMouseEnter={handleOnMouseEnter}
-              onMouseLeave={handleOnMouseLeave}
-            />
+             {!location.pathname.startsWith('/ar-module') && (
+          <Sidenav
+          color={sidenavColor}
+          brand={brand}
+          brandName="Ovicore Labs"
+          routes={routes}
+          onMouseEnter={handleOnMouseEnter}
+          onMouseLeave={handleOnMouseLeave}
+        />
+      )}
             <Configurator />
             {configsButton}
           </>
@@ -163,14 +168,16 @@ export default function App() {
       <CssBaseline />
       {layout === "dashboard" && (
         <>
+      {!location.pathname.startsWith('/ar-module') && (
           <Sidenav
-            color={sidenavColor}
-            brand={brand}
-            brandName="Ovicore Labs"
-            routes={routes}
-            onMouseEnter={handleOnMouseEnter}
-            onMouseLeave={handleOnMouseLeave}
-          />
+          color={sidenavColor}
+          brand={brand}
+          brandName="Ovicore Labs"
+          routes={routes}
+          onMouseEnter={handleOnMouseEnter}
+          onMouseLeave={handleOnMouseLeave}
+        />
+      )}
           <Configurator />
         </>
       )}

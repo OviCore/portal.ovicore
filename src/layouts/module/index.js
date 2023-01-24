@@ -18,7 +18,7 @@ import './module.css'
 import { getAuth } from "firebase/auth";
 import { collection, getDoc, getFirestore, doc, onSnapshot } from "firebase/firestore"; 
 import { getApp } from "firebase/app";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import  '../modules/spinner.css';
 // @mui material components
 import Icon from "@mui/material/Icon";
@@ -31,6 +31,22 @@ function Module() {
   const [loading, setLoading] = useState(true);
 
   let navigate = useNavigate();
+
+ 
+  const handleNavigateModule = () => {
+    // open a new tab
+    const modelId = sessionStorage.getItem('ModelId');
+    navigate(`/ar-module/${modelId}`);
+  }
+
+  const convertDate = (date) => {
+    const newDate = new Date(date);
+    const month = newDate.toLocaleString('default', { month: 'long' });
+    const day = newDate.getDate();
+    const year = newDate.getFullYear();
+    return `${month} ${day}, ${year}`;
+  }
+
 
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token');
@@ -85,8 +101,7 @@ function Module() {
             <SuiBox display="flex"  justifyContent="space-between" mt="auto">
             <SuiButton color="info" variant="outlined" size="small" onClick={() => navigate('/modules')}><ArrowBackIosIcon color="info" variant="outlined" size="small"/>
               Back to Modules</SuiButton>
-              <SuiButton color="secondary" variant="contained" size="small" onClick={() => navigate('/modules')}>View In AR<SuiBox mr={1}></SuiBox><Icon>3d_rotation</Icon>
-             </SuiButton>
+              <SuiButton color="secondary" variant="contained" size="small" onClick={handleNavigateModule}>View in AR</SuiButton>
               <SuiTypography variant="h3" fontWeight="light" pr={2}>
                 {module.name} - {module.categories[0].name}
               </SuiTypography>
@@ -125,7 +140,7 @@ function Module() {
               </Grid>
               <Grid item xs={12} >
                  <SuiTypography variant="h6" fontWeight="medium" mt={2}>
-                  Date: {module.createdAt}
+                  Date: {convertDate(module.createdAt)}
                 </SuiTypography>
               </Grid>
             

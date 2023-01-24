@@ -35,6 +35,8 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import CorporateFareIcon from '@mui/icons-material/CorporateFare';
 import People from "layouts/people";
 import ViewInArIcon from '@mui/icons-material/ViewInAr';
+import { AirplaySharp } from "@mui/icons-material";
+import ARModule from "layouts/armodule";
 const routes = [
   {
     type: "collapse",
@@ -108,6 +110,15 @@ const routes = [
     route: "/sign-up",
     icon:<DeleteIcon />,
     component: <SignUp />,
+    noCollapse: true,
+  },
+  {
+    type: "non-visible",
+    name: "armodule",
+    key: "armodule",
+    route: "/ar-module/:id",
+    icon:<AirplaySharp />,
+    component: <ARModule />,
     noCollapse: true,
   },
   

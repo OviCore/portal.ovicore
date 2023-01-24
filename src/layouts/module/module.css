@@ -1,0 +1,24 @@
+
+  .control-cover-top {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    z-index: 1;
+    background-color: rgba(255, 255, 255);
+  }
+
+  .control-cover-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    z-index: 1;
+    background-color: rgba(255, 255, 255);
+  }
+
+
+  
+  

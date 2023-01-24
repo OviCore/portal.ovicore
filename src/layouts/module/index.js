@@ -6,9 +6,6 @@ import Card from "@mui/material/Card";
 // Soft UI Dashboard React components
 import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
-import SuiInput from "components/SuiInput";
-import Link from "@mui/material/Link";
-import TimelineItem from "examples/Timeline/TimelineItem";
 // Soft UI Dashboard React examples
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
@@ -16,8 +13,7 @@ import Footer from "examples/Footer";
 
 import DefaultProjectCard from "examples/Cards/ProjectCards/DefaultProjectCard";
 import PlaceholderCard from "examples/Cards/PlaceholderCard";
-
-
+import './module.css'
 
 import { getAuth } from "firebase/auth";
 import { collection, getDoc, getFirestore, doc, onSnapshot } from "firebase/firestore"; 
@@ -76,18 +72,23 @@ function Module() {
       </SuiBox>
     );
   }
-   const { innerWidth: width, innerHeight: height } = window;
+
+  const height = window.innerHeight - 300;
 
    return (
     <DashboardLayout>
       <DashboardNavbar />
       {loading ? <LoadingSpinner /> : 
       <SuiBox mb={3}>
-        <Card >
-          <SuiBox pt={2} px={2}>
-            <SuiBox display="flex"  justifyContent="space-between" mt="auto" >
+        <Card>
+          <SuiBox pt={2} px={2} sx={{
+            zIndex: 999999,
+          }}>
+            <SuiBox display="flex"  justifyContent="space-between" mt="auto">
             <SuiButton color="info" variant="outlined" size="small" onClick={() => navigate('/modules')}><ArrowBackIosIcon color="info" variant="outlined" size="small"/>
               Back to Modules</SuiButton>
+              <SuiButton color="secondary" variant="contained" size="small" onClick={() => navigate('/modules')}>View In AR<SuiBox mr={1}></SuiBox><Icon>3d_rotation</Icon>
+             </SuiButton>
               <SuiTypography variant="h3" fontWeight="light" pr={2}>
                 {module.name} - {module.categories[0].name}
               </SuiTypography>
@@ -101,21 +102,34 @@ function Module() {
           <SuiBox p={2}>
             <Grid container>
                      <Grid item xs={12}>
-                     <Card className="h-100" style={{ width: "100%", height: "525px"  }}>
-                      
-                       <div class="sketchfab-embed-wrapper"> 
-                         <iframe sandbox="allow-same-origin allow-scripts" title="" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="100%" height="525px"  src={module.embedUrl}>
-                         </iframe> 
-                       </div>
+                  
+                     <Card className="viewer-container">
+                       <SuiBox class="sketchfab-embed-wrapper" style={{ width: "100%", height: height }}> 
+                         <iframe src={module.embedUrl + `?autostart=1&camera=0&ui_hint=2`} 
+                              sandbox="allow-same-origin allow-scripts" 
+                              frameborder="0" allow="autoplay; fullscreen; xr-spatial-tracking" 
+                              xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered 
+                              ui_hint="2"
+                              width="100%" height={height}
+                              className="iframe-border"
+                              >
+                          </iframe> 
+                          <div className="control-cover-top"></div>
+                          <div className="control-cover-bottom"></div>
+                       </SuiBox>
                      </Card>
                    </Grid>
     
-              <Grid item xs={12} mt={2}>
+              <Grid item xs={12} mt={2} sx={{
+            zIndex: 999999,
+          }}>
                  <SuiTypography variant="h6" fontWeight="medium">
                   Description: {module.description}
                 </SuiTypography>
               </Grid>
-              <Grid item xs={12} >
+              <Grid item xs={12} sx={{
+            zIndex: 999999,
+          }}>
                  <SuiTypography variant="h6" fontWeight="medium" mt={2}>
                   Date: {module.createdAt}
                 </SuiTypography>

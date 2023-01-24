@@ -81,9 +81,7 @@ function Module() {
       {loading ? <LoadingSpinner /> : 
       <SuiBox mb={3}>
         <Card>
-          <SuiBox pt={2} px={2} sx={{
-            zIndex: 999999,
-          }}>
+          <SuiBox pt={2} px={2} >
             <SuiBox display="flex"  justifyContent="space-between" mt="auto">
             <SuiButton color="info" variant="outlined" size="small" onClick={() => navigate('/modules')}><ArrowBackIosIcon color="info" variant="outlined" size="small"/>
               Back to Modules</SuiButton>
@@ -120,16 +118,12 @@ function Module() {
                      </Card>
                    </Grid>
     
-              <Grid item xs={12} mt={2} sx={{
-            zIndex: 999999,
-          }}>
+              <Grid item xs={12} mt={2} >
                  <SuiTypography variant="h6" fontWeight="medium">
                   Description: {module.description}
                 </SuiTypography>
               </Grid>
-              <Grid item xs={12} sx={{
-            zIndex: 999999,
-          }}>
+              <Grid item xs={12} >
                  <SuiTypography variant="h6" fontWeight="medium" mt={2}>
                   Date: {module.createdAt}
                 </SuiTypography>

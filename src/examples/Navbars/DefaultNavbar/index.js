@@ -75,7 +75,9 @@ function DefaultNavbar({ transparent, light, action }) {
         <SuiBox component={Link} to="/home" py={transparent ? 1.5 : 0.75} lineHeight={1}>
         <img src={Logo} alt="logo" width={200} />
           <SuiTypography variant="button" fontWeight="300" color={light ? "white" : "dark"}>
+      
           </SuiTypography>
+         
         </SuiBox>
         
         {action &&

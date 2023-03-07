@@ -13,6 +13,7 @@ import TimelineItem from "examples/Timeline/TimelineItem";
 import { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import axios from "axios";
+import { Typography } from "@mui/material";
 
 function RecentModules(  ) {
   const [name, setName] = useState("");
@@ -90,41 +91,22 @@ function RecentModules(  ) {
         <Grid container spacing={3}>
           <Grid item  gridAutoColumns>
             <SuiBox display="flex" flexDirection="column" height="100%">
-              <SuiBox display="flex"  justifyContent="space-between" mt="auto">
-                <SuiAvatar src={photo} alt="profile-image" variant="rounded" size="xl" shadow="sm"/>  
-                <Grid item  gridAutoColumns mt={1} ml={2}>
-                  <SuiTypography variant="body2" color="text" fontWeight="medium"> {email}</SuiTypography>
-                  <SuiTypography variant="h2" fontWeight="text" gutterBottom> Welcome {name},</SuiTypography>
-                </Grid>
-            </SuiBox>
+                <Typography variant="h6" color="text" fontWeight="medium" ml={1}> Most Viewed</Typography>
+
             
-             
-              <SuiBox display="flex"  justifyContent="space-between" mt="auto">
-                  <SuiButton variant="outlined" color="info" size="small"  fullWidth onClick={() => navigate("/profile")}>View Profile</SuiButton>
-                  <SuiBox mr={0.7} />
-                 <SuiButton variant="outlined" color="info" size="small" fullWidth onClick={() => navigate("/organization")}>Organization</SuiButton>
-              </SuiBox>
-            </SuiBox>
-            <SuiBox display="flex" alignItems="center" justifyContent="space-between" mt="auto">
-                <SuiTypography variant="button" fontWeight="regular" textColor="text">
-                  <Icon className="fas fa-circle text-success" fontSize="small" /> Top Viewed
-                </SuiTypography>
-                <SuiBox mr={0.7} sx={{ position: "relative", left: "440px" }} >
-                  <SuiButton variant="text" color="info" size="small" buttonIcon="fas fa-arrow-right" pb={1} onClick={() => navigate("/courses")}>View All</SuiButton>
-              </SuiBox>
             </SuiBox>
             
           </Grid>
-          <Grid container ml={1} mt={2} spacing={2}>
+          <Grid container ml={1} mt={0.5} spacing={2}>
             {modules ? modules.map((module, index) => (
               <Grid item key={index} justifyContent="center">
-              <Card sx={{ height: "145px", width: "175px"}} onClick={() => handleNavigateModule(module.embedUrl)} >
+              <Card sx={{ height: "125px", width: "200px"}} onClick={() => handleNavigateModule(module.embedUrl)} >
                 <SuiBox >
                     <Grid item  gridAutoColumns>
-                      <SuiBox display="flex" flexDirection="column" height="95px">
-                          <img src={module.thumbnails.images[0].url} alt="profile-image" variant="rounded" size="xl" shadow="sm" width={"175px"}/>
+                      <SuiBox display="flex" flexDirection="column" height="60px">
+                          <img src={module.thumbnails.images[0].url} alt="profile-image" variant="rounded" size="xl" shadow="sm" width={"200px"}  />
                       </SuiBox>
-                      <SuiTypography variant="caption" color="text" fontWeight="medium" ml={1}> {module.name.substring(0, 20)}...</SuiTypography>
+                      <SuiTypography variant="caption" color="text" fontWeight="medium" ml={1}> {module.name.substring(0, 25)}...</SuiTypography>
                     </Grid>
                    
                 </SuiBox>

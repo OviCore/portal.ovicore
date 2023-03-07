@@ -13,10 +13,10 @@ import SidenavCard from "examples/Sidenav/SidenavCard";
 import SidenavRoot from "examples/Sidenav/SidenavRoot";
 import sidenavLogoLabel from "examples/Sidenav/styles/sidenav";
 import LogoImage from "assets/images/logos/logonopbg.png";
-
 import { useSoftUIController, setMiniSidenav } from "context";
 import {getAuth} from "firebase/auth";
 import { doc, onSnapshot, getFirestore } from "firebase/firestore"; 
+import SuiAvatar from "components/SuiAvatar";
 
 
 function Sidenav({ color, brand, brandName, routes, ...rest }) {
@@ -147,13 +147,13 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
             width={!brandName && "100%"}
             sx={(theme) => sidenavLogoLabel(theme, { miniSidenav })}
           >
-           
           </SuiBox>
         </SuiBox>
       </SuiBox>
       <Divider />
+      <Profile />
+      <Divider />
       <List>
-        
        {renderRoutes}</List>
       <SuiBox pt={2} my={2} mx={2} mt="auto">
         <SidenavCard />
@@ -171,6 +171,53 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
       </SuiBox>
     </SidenavRoot>
   );
+}
+
+const Profile = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [photo, setPhoto] = useState("");
+
+
+  useEffect(() => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (user !== null) {
+      // The user object has basic properties such as display name, email, etc.
+      const displayName = user.displayName;
+      setName(displayName);
+      setEmail(user.email);
+      console.log("user.photoURL", user.photoURL)
+      // if user.ptotoURL starts https://example.com then set to default image
+      if (!user.photoURL || user.photoURL.startsWith("https://example.com")) {
+        setPhoto("https://st3.depositphotos.com/3102403/17634/v/600/depositphotos_176349124-stock-illustration-anonymous-user-circle-icon.jpg")
+      } else
+       {
+         setPhoto(user.photoURL);
+       }
+      const emailVerified = user.emailVerified;
+      const uid = user.uid;
+    } else {
+      // User is signed out
+      // ...
+    }
+  }, []);
+
+  return (
+    <SuiBox px={4} py={1} display="flex" alignItems="center">
+      <SuiAvatar src={photo} alt="profile-image" variant="rounded" size="xl" shadow="sm"/>  
+      <SuiBox ml={2}>
+        <SuiTypography variant="h6" fontWeight="medium">
+          {name}
+        </SuiTypography>
+        <SuiTypography variant="caption" fontWeight="regular" textColor="text">
+          {email}
+        </SuiTypography>
+      </SuiBox>
+    </SuiBox>
+  );
+
+
 }
 
 // Setting default values for the props of Sidenav

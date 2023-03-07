@@ -163,7 +163,7 @@ function Configurator() {
             <SuiBox mr={1.5}>
               <SuiButton
                 component={Link}
-                href="//twitter.com/intent/tweet?text=Check%20Soft%20UI%20Dashboard%20React%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23react%23mui&url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard-react"
+                href="//twitter.com/intent/tweet?text=Check%20Ovicore%20Labs%20Dashboard%20%233dmodules%20%23education%20%23ar%20%23mui&url=https%3A%2F%2Fwww.ovicore.com"
                 target="_blank"
                 rel="noreferrer"
                 color="dark"
@@ -174,7 +174,7 @@ function Configurator() {
             </SuiBox>
             <SuiButton
               component={Link}
-              href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/soft-ui-dashboard-react"
+              href="https://www.facebook.com/sharer/sharer.php?u=https://www.ovicore.com/"
               target="_blank"
               rel="noreferrer"
               color="dark"

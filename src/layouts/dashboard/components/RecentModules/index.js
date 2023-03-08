@@ -33,7 +33,7 @@ function RecentModules(  ) {
       console.log("user.photoURL", user.photoURL)
       // if user.ptotoURL starts https://example.com then set to default image
       if (!user.photoURL || user.photoURL.startsWith("https://example.com")) {
-        setPhoto("https://st3.depositphotos.com/3102403/17634/v/600/depositphotos_176349124-stock-illustration-anonymous-user-circle-icon.jpg")
+        setPhoto("hhttps://th.bing.com/th/id/OIP.IYrRuWb2nT0FhFybvJ4zBAHaHa?pid=ImgDet&rs=1")
       } else
        {
          setPhoto(user.photoURL);

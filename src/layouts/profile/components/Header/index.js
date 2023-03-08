@@ -1,37 +1,28 @@
 import { useState, useEffect } from "react";
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import Badge from '@mui/material/Badge';
 
 // @mui material components
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import AppBar from "@mui/material/AppBar";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-
-// Soft UI Dashboard React components
 import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
 import SuiAvatar from "components/SuiAvatar";
-
-// Soft UI Dashboard React examples
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-
-// Soft UI Dashboard React icons
-import Cube from "examples/Icons/Cube";
-import Document from "examples/Icons/Document";
-import Settings from "examples/Icons/Settings";
-import SuiButton from "components/SuiButton";
-// Soft UI Dashboard React base styles
 import breakpoints from "assets/theme/base/breakpoints";
-
-// Images
-import burceMars from "assets/images/bruce-mars.jpg";
 import curved0 from "assets/images/curved-images/curved0.jpg";
+import { getAuth } from "firebase/auth";
+import { updateProfile } from "firebase/auth";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { borderColor } from "@mui/system";
+import Profile from "examples/Profile";
 
-function Header({name, email, photo}) {
+
+function Header() {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
-  const [tabValue, setTabValue] = useState(0);
-  const [activeButton, setActiveButton] = useState("student");
-
   useEffect(() => {
     // A function that sets the orientation state of the tabs.
     function handleTabsOrientation() {
@@ -44,15 +35,10 @@ function Header({name, email, photo}) {
      The event listener that's calling the handleTabsOrientation function when resizing the window.
     */
     window.addEventListener("resize", handleTabsOrientation);
-
     // Call the handleTabsOrientation function to set the state with the initial value.
     handleTabsOrientation();
-
-    // Remove event listener on cleanup
     return () => window.removeEventListener("resize", handleTabsOrientation);
   }, [tabsOrientation]);
-
-  const handleSetTabValue = (event, newValue) => setTabValue(newValue);
 
   return (
     <SuiBox position="relative">
@@ -79,36 +65,14 @@ function Header({name, email, photo}) {
           backdropFilter: `saturate(200%) blur(30px)`,
           backgroundColor: ({ functions: { rgba }, palette: { white } }) => rgba(white.main, 0.8),
           boxShadow: ({ boxShadows: { navbarBoxShadow } }) => navbarBoxShadow,
-          position: "relative",
-          mt: -8,
-          mx: 3,
-          py: 2,
-          px: 2,
-        }}
-      >
-        <Grid container spacing={3} alignItems="center">
+          position: "relative", mt: -8, mx: 3, py: 2, px: 2,}}>
+        <Grid container spacing={0} alignItems="center">
           <Grid item>
-            <SuiAvatar
-              src={photo}
-              alt="profile-image"
-              variant="rounded"
-              size="xl"
-              shadow="sm"
-            />
-          </Grid>
-          <Grid item>
-            <SuiBox height="100%" mt={0.5} lineHeight={1}>
-              <SuiTypography variant="h5" fontWeight="medium">
-                {name}
-              </SuiTypography>
-              <SuiTypography variant="button" color="text" fontWeight="medium">
-                {email}
-              </SuiTypography>
-            </SuiBox>
+            <Profile />
           </Grid>
           <Grid item xs={12} md={6} lg={4} sx={{ ml: "auto" }}>
             <AppBar position="static">
-           
+              
             </AppBar>
           </Grid>
         </Grid>

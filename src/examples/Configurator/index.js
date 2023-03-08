@@ -20,6 +20,8 @@ import {
   setSidenavColor,
 } from "context";
 
+import PlatformSettings from "./PlatformSettings";
+
 function Configurator() {
   const [controller, dispatch] = useSoftUIController();
   const { openConfigurator, transparentSidenav, fixedNavbar, sidenavColor } = controller;
@@ -142,24 +144,13 @@ function Configurator() {
 
         <Divider />
 
-        <SuiBox sx={{display: "flex",mt: 2,}}>   
-            <SuiButton
-              color="info"
-              variant="contained"
-              onClick={handleWhiteSidenav}
-              disabled={disabled}
-              fullWidth
-              sx={sidenavTypeButtonsStyles}
-            >
-              Log Out
-            </SuiButton>
-          </SuiBox>
         
         <SuiBox mt={3} textAlign="center">
-          <SuiBox mb={0.8}>
-            <img src={LogoImage} alt="ovicore." width="60%"/>
-          </SuiBox>
-          <SuiBox display="flex" justifyContent="center">
+          <SuiBox mb={0.8}><PlatformSettings />
+          </SuiBox> 
+          
+          <SuiBox display="flex" justifyContent="center"> 
+         
             <SuiBox mr={1.5}>
               <SuiButton
                 component={Link}
@@ -183,7 +174,20 @@ function Configurator() {
               &nbsp; Share
             </SuiButton>
           </SuiBox>
+         
         </SuiBox>
+        <SuiBox sx={{display: "flex",mt: 2,}}>   
+            <SuiButton
+              color="info"
+              variant="contained"
+              onClick={handleWhiteSidenav}
+              disabled={disabled}
+              fullWidth
+              sx={sidenavTypeButtonsStyles}
+            >
+              Log Out
+            </SuiButton>
+          </SuiBox>
       </SuiBox>
     </ConfiguratorRoot>
   );

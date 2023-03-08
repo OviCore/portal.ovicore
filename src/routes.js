@@ -77,7 +77,7 @@ const routes = [
 
   { type: "title", title: "Manage", key: "account-pages" },
   {
-    type: "collapse",
+    type: "non-visible",
     name: "Profile",
     key: "profile",
     route: "/profile",

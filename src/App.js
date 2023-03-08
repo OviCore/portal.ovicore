@@ -19,6 +19,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import ARModule from "layouts/armodule";
+import PageNotFound from "layouts/PageNotFound";
 
 export default function App() {
   const [controller, dispatch] = useSoftUIController();
@@ -49,13 +50,14 @@ export default function App() {
   const db = getFirestore(app);
   const analytics = getAnalytics(app);
 
+  /*
   let navigate = useNavigate();
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
     if (authToken) {
       navigate('/sign-in')
     }
-  }, [])
+  }, []) */
 
   // Cache for the rtl
   useMemo(() => {
@@ -135,40 +137,13 @@ export default function App() {
     </SuiBox>
   );
 
-  return direction === "rtl" ? (
-    <CacheProvider value={rtlCache}>
-   
-      <ThemeProvider theme={themeRTL}>
-        <CssBaseline />
-        {layout === "dashboard" && (
-          <>
-             {!location.pathname.startsWith('/ar-module') && (
-          <Sidenav
-          color={sidenavColor}
-          brand={brand}
-          brandName="Ovicore Labs"
-          routes={routes}
-          onMouseEnter={handleOnMouseEnter}
-          onMouseLeave={handleOnMouseLeave}
-        />
-      )}
-            <Configurator />
-            {configsButton}
-          </>
-        )}
-        <Routes basename="/">
-          {getRoutes(routes)}
-          <Route path="*" element={<Navigate to="/dashboard" />} />
-          <Route path="*" element={<Navigate to="/sign-in" />} />
-        </Routes>
-      </ThemeProvider>
-    </CacheProvider>
-  ) : (
+  return  (
+
     <ThemeProvider theme={theme}>
       <CssBaseline />
       {layout === "dashboard" && (
         <>
-      {!location.pathname.startsWith('/ar-module') && (
+      {!location.pathname.startsWith('/ar-module') && !location.pathname.startsWith('/page-not-found') && (
           <Sidenav
           color={sidenavColor}
           brand={brand}
@@ -183,8 +158,8 @@ export default function App() {
       )}
       <Routes>
         {getRoutes(routes)}
-        <Route path="*" element={<Navigate to="/dashboard" />} />
-        <Route path="*" element={<Navigate to="/sign-in" />} />
+        <Route path="/" element={<Navigate to="/dashboard" />} />
+        <Route path="*" element={<Navigate to="/page-not-found" />} />
       </Routes>
     </ThemeProvider>
   );

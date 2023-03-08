@@ -37,6 +37,7 @@ import People from "layouts/people";
 import ViewInArIcon from '@mui/icons-material/ViewInAr';
 import { AirplaySharp } from "@mui/icons-material";
 import ARModule from "layouts/armodule";
+import PageNotFound from "layouts/PageNotFound";
 const routes = [
   {
     type: "collapse",
@@ -138,6 +139,15 @@ const routes = [
     route: "/feedback",
     icon: <AssistantOutlinedIcon />,
     component: <Feedback />,
+    noCollapse: true,
+  },
+  {
+    type: "non-visible",
+    name: "Page Not Found",
+    key: "page-not-found",
+    route: "/page-not-found",
+    icon: <AssistantOutlinedIcon />,
+    component: <PageNotFound />,
     noCollapse: true,
   },
   

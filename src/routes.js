@@ -17,9 +17,7 @@
 // Soft UI Dashboard React layouts
 import Dashboard from "layouts/dashboard";
 import Module from "layouts/module";
-import Feedback from "layouts/feedback";
 import Courses from "layouts/courses";
-import GroupsAndMessages from "layouts/groupsAndMessages";
 import AssistantOutlinedIcon from '@mui/icons-material/AssistantOutlined';
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
@@ -132,15 +130,7 @@ const routes = [
     component: <People />,
     noCollapse: true,
   },
-  {
-    type: "collapse",
-    name: "Send Feedback",
-    key: "feedback",
-    route: "/feedback",
-    icon: <AssistantOutlinedIcon />,
-    component: <Feedback />,
-    noCollapse: true,
-  },
+
   {
     type: "non-visible",
     name: "Page Not Found",

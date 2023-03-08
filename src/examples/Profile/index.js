@@ -7,8 +7,7 @@ import SuiAvatar from "components/SuiAvatar";
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Badge from '@mui/material/Badge';
-
-import { updateProfile } from "firebase/auth";
+import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';import { updateProfile } from "firebase/auth";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 const Profile = (show ) => {
@@ -70,24 +69,28 @@ const Profile = (show ) => {
       }
   
     return (
-      <SuiBox px={2} py={1} display="flex" alignItems="center">
+      <SuiBox px={3} py={1} display="flex" alignItems="center">
         <Badge
           overlap="circular"
           anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
           badgeContent={
-            <div style={{
-              backgroundColor: "white",
-              padding: "0.1px",
-              borderRadius: "50%",
-              borderColor: "black",
-           
-            }}><IconButton color="info" aria-label="upload picture" component="label">
+           <IconButton color="info" aria-label="upload picture" component="label" sx={{
+            color: (theme) => theme.palette.info.contrastText,
+            backgroundColor: (theme) => theme.palette.light.main,
+            '&:hover': {
+                backgroundColor: (theme) => theme.palette.info.main,
+                color: (theme) => theme.palette.light.main,
+            },
+            width: 28,
+            height: 28,
+        }}
+            >
              <input hidden accept="image/*" type="file" id="fileUploader" onChange={onFileUpload} />
-            <PhotoCamera />
-          </IconButton></div>
+            <CameraAltOutlinedIcon /> 
+          </IconButton>
           }
         >
-          <SuiAvatar alt="Travis Howard" size="xl" src={photo} />
+          <SuiAvatar alt="Travis Howard" size="large" src={photo} />
         </Badge>
         <SuiBox ml={2}>
           <SuiTypography variant="h6" fontWeight="medium">

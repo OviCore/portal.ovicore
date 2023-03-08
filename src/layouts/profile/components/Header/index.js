@@ -1,23 +1,11 @@
 import { useState, useEffect } from "react";
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import PhotoCamera from '@mui/icons-material/PhotoCamera';
-import Badge from '@mui/material/Badge';
-
-// @mui material components
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import AppBar from "@mui/material/AppBar";
 import SuiBox from "components/SuiBox";
-import SuiTypography from "components/SuiTypography";
-import SuiAvatar from "components/SuiAvatar";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import breakpoints from "assets/theme/base/breakpoints";
 import curved0 from "assets/images/curved-images/curved0.jpg";
-import { getAuth } from "firebase/auth";
-import { updateProfile } from "firebase/auth";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
-import { borderColor } from "@mui/system";
 import Profile from "examples/Profile";
 
 

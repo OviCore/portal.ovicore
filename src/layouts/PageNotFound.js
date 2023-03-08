@@ -1,4 +1,4 @@
-import { Button, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2'
 import SuiButton from 'components/SuiButton'
 import React from 'react'

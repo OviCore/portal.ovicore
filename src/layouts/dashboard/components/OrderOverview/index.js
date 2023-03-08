@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 function OrdersOverview() {
   const [modules, setModules] = useState([]);
+  const [loading, setLoading] = useState(true);
   let navigate = useNavigate();
 
   const handleNavigateModule = (embedUrl) => {
@@ -49,6 +50,7 @@ function OrdersOverview() {
         } else {
             console.log('Your collections:' + collection.results);
             setModules(collection.results);
+            setLoading(false);
         }
     }
     main();
@@ -83,7 +85,9 @@ function OrdersOverview() {
         </SuiBox>
       </SuiBox>
     
-    
+      {loading ? (  <div>loading....</div> 
+
+      ) : (
       <SuiBox p={2}>
       <Grid container spacing={2}>
       {modules.map((item, index) => (
@@ -118,7 +122,7 @@ function OrdersOverview() {
         ))}
 
         </Grid>
-      </SuiBox>
+      </SuiBox> )}
     </Card>
   );
 }

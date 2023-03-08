@@ -7,9 +7,7 @@ import SuiBox from "components/SuiBox";
 import Sidenav from "examples/Sidenav";
 import Configurator from "examples/Configurator";
 import theme from "assets/theme";
-import themeRTL from "assets/theme/theme-rtl";
 import rtlPlugin from "stylis-plugin-rtl";
-import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import routes from "routes";
 import { useSoftUIController, setMiniSidenav, setOpenConfigurator } from "context";
@@ -18,8 +16,7 @@ import { getAuth } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
-import ARModule from "layouts/armodule";
-import PageNotFound from "layouts/PageNotFound";
+
 
 export default function App() {
   const [controller, dispatch] = useSoftUIController();

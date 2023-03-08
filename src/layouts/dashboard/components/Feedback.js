@@ -19,16 +19,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Feedback() {
-  let navigate = useNavigate();
   const [feedback, setFeedback] = useState('');
-  useEffect(() => {
-    let authToken = sessionStorage.getItem('Auth Token')
-    if (authToken) {
-        navigate('/feedback')
-    }
-    if (!authToken) {
-        navigate('/sign-in')
-    }}, [])
 
   const handleFeedbackSubmition = async () => {
     const uid = sessionStorage.getItem('Auth Token');
@@ -53,21 +44,19 @@ function Feedback() {
 
 
   return (
-    <DashboardLayout>
-      <DashboardNavbar />
+    <>
       <ToastContainer />
-      <SuiBox py={3}>
-        <Card variant="outlined">
-          <SuiBox py={3} px={3}>
+      <SuiBox py={1}>
+          <SuiBox py={1} px={4}>
             <SuiTypography variant="h6" fontWeight="medium">
               Your Feedback
             </SuiTypography>
-            <SuiBox mt={3}>
+            <SuiBox>
               <SuiTypography variant="button" fontWeight="regular" textColor="text">
                 The feedback you provide will help us improve our services, and we will use it to make your experience better.
               </SuiTypography>
             </SuiBox>
-            <SuiBox mt={3}>
+            <SuiBox mt={1}>
               <SuiInput
                 placeholder="Enter your feedback here"
                 multiline
@@ -78,19 +67,17 @@ function Feedback() {
               />
             </SuiBox>
           
-              <SuiBox mt={3}>
+              <SuiBox mt={1}>
                 <SuiButton variant="contained" color="info" onClick={handleFeedbackSubmition}>
                   Submit
                 </SuiButton>
               </SuiBox>
             </SuiBox>
-        </Card>
       </SuiBox>
       
      
       
-      <Footer />
-    </DashboardLayout>
+     </>
    
   );
 }

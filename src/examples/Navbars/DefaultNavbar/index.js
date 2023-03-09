@@ -8,7 +8,6 @@ import PropTypes from "prop-types";
 
 // @mui material components
 import Container from "@mui/material/Container";
-import Icon from "@mui/material/Icon";
 
 // Soft UI Dashboard React components
 import SuiBox from "components/SuiBox";
@@ -22,7 +21,6 @@ import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMob
 // Soft UI Dashboard React base styles
 import breakpoints from "assets/theme/base/breakpoints";
 import Logo from "assets/images/logos/logo-blue-name.png";
-
 
 function DefaultNavbar({ transparent, light, action }) {
   const [mobileNavbar, setMobileNavbar] = useState(false);

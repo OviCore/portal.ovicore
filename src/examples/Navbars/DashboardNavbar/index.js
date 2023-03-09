@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import React from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
@@ -7,6 +8,10 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import Icon from "@mui/material/Icon";
 import SuiBox from "components/SuiBox";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
 import SuiTypography from "components/SuiTypography";
 import ViewInArRoundedIcon from '@mui/icons-material/ViewInArRounded';
 import ThreeDRotationRoundedIcon from '@mui/icons-material/ThreeDRotationRounded';
@@ -14,6 +19,9 @@ import SuiInput from "components/SuiInput";
 import Breadcrumbs from "examples/Breadcrumbs";
 import NotificationItem from "examples/Items/NotificationItem";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import axios from 'axios';
 import {
   navbar,
   navbarContainer,
@@ -27,7 +35,85 @@ import {
   setMiniSidenav,
   setOpenConfigurator,
 } from "context";
+import SuiButton from "components/SuiButton";
 
+function SearchModal(modules) {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const [backupModules, setBackupModules] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    setBackupModules(modules.modules);
+    console.log(modules.modules);
+  }, []);
+
+  useEffect(() => {
+    if (searchTerm === "") {
+      setBackupModules(modules.modules);
+    } else {
+      setBackupModules(modules.modules.filter((module) => {
+        return module.name.includes(searchTerm) || module.name.includes(searchTerm);
+      }));
+    }
+
+   
+  }, [searchTerm]);
+
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 500,
+    bgcolor: 'background.paper',
+    border: '0.5px solid #000',
+    boxShadow: 24,
+    p: 4,
+    borderRadius: 2,
+  };
+
+  return (
+    <div>
+      <Button onClick={handleOpen}>
+      <SuiInput placeholder="Search here..." icon={{ component: "search", direction: "left" }}/></Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="caption" >
+            Search Modules
+          </Typography>
+        <SuiInput placeholder="Type here..."  icon={{ component: "search", direction: "left" }} id="search" onInput={(e) => {
+          setSearchTerm(e.target.value);
+      }}/>
+      <div style={{height: 300, overflow: "auto"}}>
+      {backupModules.map((module) => {
+        return (
+          <div>
+            
+            <Typography id="modal-modal-description" >
+              {module.name}
+            </Typography>
+            </div>
+        );
+      })}
+      </div>
+
+
+
+
+
+        </Box>
+      </Modal>
+    </div>
+  );
+}
 
 
 
@@ -37,6 +123,45 @@ function DashboardNavbar({ absolute, light, isMini }) {
   const { miniSidenav, transparentNavbar, fixedNavbar, openConfigurator } = controller;
   const [openMenu, setOpenMenu] = useState(false);
   const route = useLocation().pathname.split("/").slice(1);
+  const [modules, setModules] = useState([]);
+
+  const moduleUrls = [
+    {
+      name: "Anatomy",
+      url: `https://api.sketchfab.com/v3/collections/${sessionStorage.getItem('Anatomy')}/models`,
+    },
+    {
+      name: "Biology",
+      url: `https://api.sketchfab.com/v3/collections/${sessionStorage.getItem('Biology')}/models`,
+    },
+    {
+      name: "Chemistry",
+      url: `https://api.sketchfab.com/v3/collections/${sessionStorage.getItem('Chemistry')}/models`
+    }
+  ]
+
+
+  useEffect(() => { 
+    const API_TOKEN = sessionStorage.getItem('SketchFab');     
+    try { 
+      const headers = {
+       Authorization: `Token ${API_TOKEN}`,
+      };
+      moduleUrls.forEach(async (moduleUrl) => {
+        const response = await axios.get(moduleUrl.url, { headers });
+        console.log(response.data.results);
+        // add it to the modules array
+        if (response.data.results) {
+          response.data.results.forEach((module) => {
+               modules.push(module);
+          });
+        }
+      });
+    } catch (error) {
+          console.log(`An API error occurred: ${error}`);
+      }
+     
+}, []);
 
   useEffect(() => {
     // Setting the navbar type
@@ -51,10 +176,6 @@ function DashboardNavbar({ absolute, light, isMini }) {
       setTransparentNavbar(dispatch, (fixedNavbar && window.scrollY === 0) || !fixedNavbar);
     }
 
-    /** 
-     The event listener that's calling the handleTransparentNavbar function when 
-     scrolling the window.
-    */
     window.addEventListener("scroll", handleTransparentNavbar);
 
     // Call the handleTransparentNavbar function to set the state with the initial value.
@@ -119,10 +240,8 @@ function DashboardNavbar({ absolute, light, isMini }) {
         {isMini ? null : (
           <SuiBox sx={(theme) => navbarRow(theme, { isMini })}>
             <SuiBox pr={1}>
-              <SuiInput
-                placeholder="Type here..."
-                icon={{ component: "search", direction: "left" }}
-              />
+             
+              <SearchModal modules={modules}/>
             </SuiBox>
             <SuiBox color={light ? "white" : "inherit"}> 
               
@@ -130,7 +249,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
                 color="inherit"
                 width="10%"
                 onClick={handleConfiguratorOpen}>
-                <Icon>settings</Icon>
+                <SettingsOutlinedIcon/>
               </IconButton>
               <IconButton size="medium"
                 color="inherit"
@@ -139,7 +258,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
                 variant="contained"
                 onClick={handleOpenMenu}
               >
-                <Icon className={light ? "text-white" : "text-dark"}>notifications</Icon>
+                <NotificationsNoneOutlinedIcon />
               </IconButton>
               {renderMenu()}
               <IconButton

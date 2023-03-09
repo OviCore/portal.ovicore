@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { Typography } from "@mui/material";
 import Feedback from "../Feedback";
+import DashBanner from "assets/images/bannerdash.jpeg";
 
 function RecentModules(  ) {
   const [name, setName] = useState("");
@@ -25,13 +26,31 @@ function RecentModules(  ) {
     <Card sx={{ height: "345px" }}>
       <SuiBox p={3}>
         <Grid container spacing={3}>
-          <Grid item  gridAutoColumns>
-            <SuiBox display="flex" flexDirection="column" height="100%">
-                <Typography variant="h2" color="text" fontWeight="medium" ml={1}> Welcome, {name}!</Typography>
-                <Typography variant="caption" color="text" fontWeight="medium" ml={1}> {email} </Typography>
-            </SuiBox>
-            
-          </Grid>
+        <SuiBox
+        display="flex"
+        alignItems="center"
+        position="relative"
+        minHeight="18.75rem"
+        borderRadius="xl"
+        sx={{
+          backgroundImage: ({ functions: { rgba, linearGradient }, palette: { gradients } }) =>
+            `${linearGradient(
+              rgba(gradients.info.main, 0.8),
+              rgba(gradients.info.state, 0.8)
+            )}, url(${DashBanner})`,
+          backgroundSize: "cover",
+          backgroundPosition: "50%",
+          overflow: "hidden",
+
+        }}
+      >
+        <SuiBox position="absolute" top={0} left={0} width="100%" height="100%" bgcolor="black"  >
+          <Typography variant="h1" style={{ color: "white", textAlign: "center", paddingTop: "5rem" }}>Welcome to the Dashboard</Typography>
+
+        </SuiBox>
+
+
+      </SuiBox>
          <Feedback />
 
         </Grid>

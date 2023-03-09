@@ -11,7 +11,7 @@ import { height } from "@mui/system";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import CircularProgress from "@mui/material/CircularProgress";
 function OrdersOverview() {
   const [modules, setModules] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -85,7 +85,16 @@ function OrdersOverview() {
         </SuiBox>
       </SuiBox>
     
-      {loading ? (  <div>loading....</div> 
+      {loading ? (  <div style={{
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        fontSize: "20px",
+        fontWeight: "bold",
+        color: "grey",
+      
+      }}><CircularProgress color="inherit" /></div> 
 
       ) : (
       <SuiBox p={2}>

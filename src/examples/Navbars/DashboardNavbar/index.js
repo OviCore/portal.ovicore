@@ -22,6 +22,10 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import axios from 'axios';
+import { Alert } from "@mui/material";
+import ViewInArIcon from '@mui/icons-material/ViewInAr';
+import SubdirectoryArrowLeftIcon from '@mui/icons-material/SubdirectoryArrowLeft';
+
 import {
   navbar,
   navbarContainer,
@@ -57,9 +61,15 @@ function SearchModal(modules) {
         return module.name.includes(searchTerm) || module.name.includes(searchTerm);
       }));
     }
-
-   
   }, [searchTerm]);
+
+  let navigate = useNavigate();
+  const handleNavigateModule = (embedUrl) => {
+    handleClose();
+    const modelId = embedUrl.split('/')[4];
+    sessionStorage.setItem('ModelId', modelId);
+    navigate('/modules/module')
+  }
 
 
   const style = {
@@ -96,15 +106,25 @@ function SearchModal(modules) {
       {backupModules.map((module) => {
         return (
           <div>
-            
-            <Typography id="modal-modal-description" >
-              {module.name}
-            </Typography>
+            <Alert icon={<ViewInArIcon fontSize="inherit"/>} severity="success" sx={{
+              marginTop: 1,
+            }}  action={
+              <Button  size="medium" onClick={() => handleNavigateModule(module.embedUrl)}>
+                <SubdirectoryArrowLeftIcon fontSize="large"/>
+              </Button>
+            }>
+            {module.name}
+            </Alert>
             </div>
         );
-      })}
+      })} 
       </div>
+       <Button onClick={handleClose} variant="outlined" size="medium" sx={{
+        marginTop: 2,
+        float: "right",
+        color: "info.main",
 
+       }}>Close</Button>
 
 
 

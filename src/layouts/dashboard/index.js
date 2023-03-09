@@ -1,37 +1,17 @@
 // @mui material components
 import Grid from "@mui/material/Grid";
-import Icon from "@mui/material/Icon";
-import Card from "@mui/material/Card";
-// Soft UI Dashboard React components
 import SuiBox from "components/SuiBox";
-import SuiTypography from "components/SuiTypography";
-
-// Soft UI Dashboard React examples
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import MiniStatisticsCard from "examples/Cards/StatisticsCards/MiniStatisticsCard";
-import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
-import GradientLineChart from "examples/Charts/LineCharts/GradientLineChart";
-import SuiAvatar from "components/SuiAvatar";
-
-// Soft UI Dashboard React base styles
-import typography from "assets/theme/base/typography";
 
 // Dashboard layout components
 import RecentModules from "layouts/dashboard/components/RecentModules";
 import Discover from "layouts/dashboard/components/Discover";
-import Projects from "layouts/dashboard/components/Projects";
 import OrderOverview from "layouts/dashboard/components/OrderOverview";
-import holones from "assets/images/illustrations/holobes2.jpg";
-
-// Data
-import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
-import gradientLineChartData from "layouts/dashboard/data/gradientLineChartData";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import {getAuth} from "firebase/auth";
-import { doc, onSnapshot, getFirestore } from "firebase/firestore"; 
+
 
 function Dashboard() {
   let navigate = useNavigate();

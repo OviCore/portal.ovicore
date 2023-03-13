@@ -25,6 +25,11 @@ import axios from 'axios';
 import { Alert } from "@mui/material";
 import ViewInArIcon from '@mui/icons-material/ViewInAr';
 import SubdirectoryArrowLeftIcon from '@mui/icons-material/SubdirectoryArrowLeft';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
 
 import {
   navbar,
@@ -77,7 +82,7 @@ function SearchModal(modules) {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 500,
+    width: 700,
     bgcolor: 'background.paper',
     border: '0.5px solid #000',
     boxShadow: 24,
@@ -102,19 +107,18 @@ function SearchModal(modules) {
         <SuiInput placeholder="Type here..."  icon={{ component: "search", direction: "left" }} id="search" onInput={(e) => {
           setSearchTerm(e.target.value);
       }}/>
-      <div style={{height: 300, overflow: "auto"}}>
+      <div style={{height: 300, overflow: "auto", marginTop: "4px"}}>
       {backupModules.map((module) => {
         return (
           <div>
-            <Alert icon={<ViewInArIcon fontSize="inherit"/>} severity="success" sx={{
-              marginTop: 1,
-            }}  action={
-              <Button  size="medium" onClick={() => handleNavigateModule(module.embedUrl)}>
-                <SubdirectoryArrowLeftIcon fontSize="large"/>
-              </Button>
-            }>
-            {module.name}
-            </Alert>
+             <ListItem disablePadding>
+            <ListItemButton onClick={() => handleNavigateModule(module.embedUrl)}>
+              <ListItemIcon>
+                <ViewInArIcon />
+              </ListItemIcon>
+              <ListItemText primary=  {module.name} />
+            </ListItemButton>
+          </ListItem>
             </div>
         );
       })} 

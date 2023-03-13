@@ -47,14 +47,19 @@ export default function App() {
   const db = getFirestore(app);
   const analytics = getAnalytics(app);
 
-  /*
+  
   let navigate = useNavigate();
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
     if (authToken) {
-      navigate('/sign-in')
+      // refresh the page
+      // remove the token from the session storage
+      // navigate to the sign in page
+       sessionStorage.removeItem('Auth Token');
+       window.location.reload();
+       navigate('/sign-in')
     }
-  }, []) */
+  }, []) 
 
   // Cache for the rtl
   useMemo(() => {

@@ -176,18 +176,7 @@ function Configurator() {
           </SuiBox>
          
         </SuiBox>
-        <SuiBox sx={{display: "flex",mt: 2,}}>   
-            <SuiButton
-              color="info"
-              variant="contained"
-              onClick={handleWhiteSidenav}
-              disabled={disabled}
-              fullWidth
-              sx={sidenavTypeButtonsStyles}
-            >
-              Log Out
-            </SuiButton>
-          </SuiBox>
+       
       </SuiBox>
     </ConfiguratorRoot>
   );

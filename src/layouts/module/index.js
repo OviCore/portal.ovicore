@@ -133,14 +133,10 @@ function Module() {
                      </Card>
                    </Grid>
     
-              <Grid item xs={12} mt={2} >
-                 <SuiTypography variant="h6" fontWeight="medium">
-                  Description: {module.description}
-                </SuiTypography>
-              </Grid>
+           
               <Grid item xs={12} >
                  <SuiTypography variant="h6" fontWeight="medium" mt={2}>
-                  Date: {convertDate(module.createdAt)}
+                  Date Created: January 9th, 2024
                 </SuiTypography>
               </Grid>
             

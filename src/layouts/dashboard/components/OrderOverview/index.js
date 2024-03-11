@@ -67,7 +67,7 @@ function OrdersOverview() {
     }}>
       <SuiBox pt={3} px={3}>
         <SuiTypography variant="h6" fontWeight="medium">
-          Recommended Modules
+          Modules Assigned by Instructor
         </SuiTypography>
         <SuiBox mt={0} mb={0}>
           <SuiTypography variant="button" color="text" fontWeight="regular">
@@ -78,9 +78,9 @@ function OrdersOverview() {
             </SuiTypography>
             &nbsp;
             <SuiTypography variant="button" color="text" fontWeight="medium">
-              3 modules
+              4 modules
             </SuiTypography>{" "}
-            this month
+            this week
           </SuiTypography>
         </SuiBox>
       </SuiBox>
@@ -124,7 +124,7 @@ function OrdersOverview() {
                             left: "5px",
                         }
                         
-                    }>View</SuiButton>
+                    }>View (AR Device Required)</SuiButton>
                   </Card>
                   
                 </Grid>
